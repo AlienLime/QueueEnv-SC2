@@ -10,7 +10,7 @@ class WorkerRushBot(BotAI):
             for worker in self.workers:
                 worker.attack(self.enemy_start_locations[0])
 
-run_game(maps.get("Abyssal Reef LE"), [
+run_game(maps.get("Simple64"), [
     Bot(Race.Terran, WorkerRushBot()),
     Computer(Race.Protoss, Difficulty.Medium)
 ], realtime=True)
