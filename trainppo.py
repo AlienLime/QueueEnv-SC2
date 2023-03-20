@@ -6,13 +6,15 @@ import os
 import ray
 
 ray.init()
-algo = ppo.PPO(env=Sc2Env)
+#algo = ppo.PPO(env=Sc2Env)
 
 #env = Sc2Env()
 
-#onfig = (PPOConfig().environment(env=env).rollouts(num_rollout_workers=2))
+config = (PPOConfig().environment(env=Sc2Env).rollouts(num_rollout_workers=1))
 
-#algo = config.build()
+algo = config.build()
 
-for i in range(5):
+for i in range(1):
     print(algo.train())
+
+algo.stop()

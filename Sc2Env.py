@@ -18,12 +18,12 @@ import ray
 
 class Sc2Env(gym.Env):
 	"""Custom Environment that follows gym interface"""
-	def __init__(self, config):
+	def __init__(self, config=None, render_mode=None): # None, "human", "rgb_array"
 		super(Sc2Env, self).__init__()
 		# Define action and observation space
 		# They must be gym.spaces objects
 		# Example when using discrete actions:
-		self.action_space = spaces.Discrete(6)
+		self.action_space = spaces.Discrete(2)
 		self.observation_space = spaces.Box(low=0, high=255, shape=(224, 224, 3), dtype=np.uint8)
 
 	def step(self, action):
@@ -97,18 +97,28 @@ class Sc2Env(gym.Env):
 		subprocess.Popen(['python', 'incredibot-sct.py'])
 		return observation, {}  # reward, done, info can't be included
 	
+def ppostuff():
+	ray.init()
+	#algo = ppo.PPO(env=Sc2Env)
 
+	#env = Sc2Env()
 
-ray.init()
-#algo = ppo.PPO(env=Sc2Env)
+	config = (PPOConfig().environment(env=Sc2Env).rollouts(num_rollout_workers=1))
 
-#env = Sc2Env()
+	algo = config.build()
 
-config = (PPOConfig().environment(env=Sc2Env).rollouts(num_rollout_workers=1))
+	for i in range(1):
+		print(algo.train())
 
-algo = config.build()
+	algo.stop()
 
-for i in range(1):
-    print(algo.train())
+def env_check():
+	env = Sc2Env()
 
-algo.stop()
+	env.reset()
+	for _ in range(10):
+		sp, reward, done, _, info = env.step(env.action_space.sample())
+		print(sp.shape, reward, info)
+if __name__ == "__main__":
+	env_check()
+
