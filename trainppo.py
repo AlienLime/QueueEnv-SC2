@@ -1,4 +1,4 @@
-from Sc2Env import *
+from Sc2EnvOld import *
 from ray.rllib.algorithms.ppo import PPOConfig
 from ray.rllib.algorithms import ppo
 import time

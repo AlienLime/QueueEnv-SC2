@@ -1,5 +1,6 @@
 import asyncio
 import aiohttp
+import gymnasium as gym
 # from codetiming import Timer
 
 async def task(name, work_queue):
@@ -66,11 +67,12 @@ if __name__ == "__main__":
     asyncio.run(addtv2("http://dr.dk"))
 
     bb = 234
-    class SC2Env():
-        def reset():
+    class SC2Env(gym.env):
+        
+        def reset(self):
             self.pcom = AST()
 
-        def step(a):
+        def step(self, a):
             async def add_an_action(action):
                 await self.pcom.action_in_queue.put(action)
             # Husk at checke om koerne er sat op.
@@ -78,8 +80,8 @@ if __name__ == "__main__":
 
             async def get_an_action(action):
                 # check out-køen i et while-loop. Når den har et element, returnerer det.
-                 result = await self.pcom.result_queue_out.pop()
-                SC2Env.value = result.value()
+                 result = await self.pcom.result_queue_out.get()
+                 SC2Env.value = result.value()
 
             value = asyncio.run(get_an_action(a)) # who knows..
 
