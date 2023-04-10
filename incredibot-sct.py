@@ -11,7 +11,7 @@ import numpy as np
 import sys
 import pickle
 import time
-
+assert False
 
 SAVE_REPLAY = True
 
