@@ -1,0 +1,24 @@
+2023-04-04 13:16:29,330 INFO    MainThread:19924 [wandb_setup.py:_flush():76] Configure stats pid to 19924
+2023-04-04 13:16:29,330 INFO    MainThread:19924 [wandb_setup.py:_flush():76] Loading settings from C:\Users\emil\.config\wandb\settings
+2023-04-04 13:16:29,330 INFO    MainThread:19924 [wandb_setup.py:_flush():76] Loading settings from C:\Users\emil\SentDex\SC2RL\wandb\settings
+2023-04-04 13:16:29,330 INFO    MainThread:19924 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2023-04-04 13:16:29,330 INFO    MainThread:19924 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2023-04-04 13:16:29,330 INFO    MainThread:19924 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'trainppo.py', 'program': 'c:\\Users\\emil\\SentDex\\SC2RL\\trainppo.py'}
+2023-04-04 13:16:29,331 INFO    MainThread:19924 [wandb_setup.py:_flush():76] Applying login settings: {'mode': 'offline'}
+2023-04-04 13:16:29,331 INFO    MainThread:19924 [wandb_init.py:_log_setup():506] Logging user logs to C:\Users\emil\SentDex\SC2RL\wandb\offline-run-20230404_131629-8xzlhhc6\logs\debug.log
+2023-04-04 13:16:29,331 INFO    MainThread:19924 [wandb_init.py:_log_setup():507] Logging internal logs to C:\Users\emil\SentDex\SC2RL\wandb\offline-run-20230404_131629-8xzlhhc6\logs\debug-internal.log
+2023-04-04 13:16:29,332 INFO    MainThread:19924 [wandb_init.py:init():546] calling init triggers
+2023-04-04 13:16:29,332 INFO    MainThread:19924 [wandb_init.py:init():552] wandb.init called with sweep_config: {}
+config: {'Model': 'v19', 'Machine': 'Main', 'policy': 'MlpPolicy', 'model_save_name': '1680606985'}
+2023-04-04 13:16:29,332 INFO    MainThread:19924 [wandb_init.py:init():602] starting backend
+2023-04-04 13:16:29,333 INFO    MainThread:19924 [wandb_init.py:init():606] setting up manager
+2023-04-04 13:16:29,340 INFO    MainThread:19924 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=spawn, using: spawn
+2023-04-04 13:16:29,350 INFO    MainThread:19924 [wandb_init.py:init():613] backend started and connected
+2023-04-04 13:16:29,359 INFO    MainThread:19924 [wandb_init.py:init():701] updated telemetry
+2023-04-04 13:16:29,396 INFO    MainThread:19924 [wandb_init.py:init():789] starting run threads in backend
+2023-04-04 13:16:29,806 INFO    MainThread:19924 [wandb_run.py:_console_start():2114] atexit reg
+2023-04-04 13:16:29,806 INFO    MainThread:19924 [wandb_run.py:_redirect():1969] redirect: SettingsConsole.WRAP_RAW
+2023-04-04 13:16:29,806 INFO    MainThread:19924 [wandb_run.py:_redirect():2034] Wrapping output streams.
+2023-04-04 13:16:29,806 INFO    MainThread:19924 [wandb_run.py:_redirect():2059] Redirects installed.
+2023-04-04 13:16:29,806 INFO    MainThread:19924 [wandb_init.py:init():831] run started, returning control to user process
+2023-04-04 13:16:31,708 WARNING MsgRouterThr:19924 [router.py:message_loop():77] message_loop has been closed

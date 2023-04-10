@@ -1,30 +1,21 @@
-# Imports for Sc2Env
-import gymnasium as gym
-from gymnasium import spaces
+import gym
+from gym import spaces
 import numpy as np
 import subprocess
 import pickle
 import time
 import os
 
-# Imports for PPO
-from ray.rllib.algorithms.ppo import PPOConfig
-from ray.rllib.algorithms import ppo
-import time
-import os
-import ray
-
-
-
 class Sc2Env(gym.Env):
 	"""Custom Environment that follows gym interface"""
-	def __init__(self, config=None, render_mode=None): # None, "human", "rgb_array"
+	def __init__(self):
 		super(Sc2Env, self).__init__()
 		# Define action and observation space
 		# They must be gym.spaces objects
 		# Example when using discrete actions:
-		self.action_space = spaces.Discrete(2)
-		self.observation_space = spaces.Box(low=0, high=255, shape=(224, 224, 3), dtype=np.uint8)
+		self.action_space = spaces.Discrete(6)
+		self.observation_space = spaces.Box(low=0, high=255,
+											shape=(144, 160, 3), dtype=np.uint8)
 
 	def step(self, action):
 		wait_for_action = True
@@ -68,7 +59,7 @@ class Sc2Env(gym.Env):
 
 			except Exception as e:
 				wait_for_state = True   
-				map = np.zeros((224, 224, 3), dtype=np.uint8)
+				map = np.zeros((144, 160, 3), dtype=np.uint8)
 				observation = map
 				# if still failing, input an ACTION, 3 (scout)
 				data = {"state": map, "reward": 0, "action": 3, "done": False}  # empty action waiting for the next one!
@@ -82,43 +73,19 @@ class Sc2Env(gym.Env):
 
 		info ={}
 		observation = state
-		return observation, reward, done, False, info
+		return observation, reward, done, info
 
 
-	def reset(self, *, seed=None, options=None):
+	def reset(self):
 		print("RESETTING ENVIRONMENT!!!!!!!!!!!!!")
-		map = np.zeros((224, 224, 3), dtype=np.uint8)
+		map = np.zeros((144, 160, 3), dtype=np.uint8)
 		observation = map
 		data = {"state": map, "reward": 0, "action": None, "done": False}  # empty action waiting for the next one!
 		with open('state_rwd_action.pkl', 'wb') as f:
 			pickle.dump(data, f)
 
 		# run incredibot-sct.py non-blocking:
-		subprocess.Popen(['python', 'incredibot-sct.py'])
-		return observation, {}  # reward, done, info can't be included
-	
-def ppostuff():
-	ray.init()
-	#algo = ppo.PPO(env=Sc2Env)
-
-	#env = Sc2Env()
-
-	config = (PPOConfig().environment(env=Sc2Env).rollouts(num_rollout_workers=1))
-
-	algo = config.build()
-
-	for i in range(1):
-		print(algo.train())
-
-	algo.stop()
-
-def env_check():
-	env = Sc2Env()
-
-	env.reset()
-	for _ in range(10):
-		sp, reward, done, _, info = env.step(env.action_space.sample())
-		print(sp.shape, reward, info)
-if __name__ == "__main__":
-	env_check()
-
+		print("Popen now!")
+		subprocess.Popen(['incredibot-sct.py'], shell=True)
+		print("Popen gone through")
+		return observation  # reward, done, info can't be included

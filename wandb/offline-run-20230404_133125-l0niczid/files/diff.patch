@@ -1,0 +1,26 @@
+diff --git a/incredibot-sct.py b/incredibot-sct.py
+index 2fb80df..c994e98 100644
+--- a/incredibot-sct.py
++++ b/incredibot-sct.py
+@@ -324,7 +324,7 @@ class IncrediBot(BotAI): # inhereits from BotAI (part of BurnySC2)
+ 
+ 
+ result = run_game(  # run_game is a function that runs the game.
+-    maps.get("2000AtmospheresAIE"), # the map we are playing on
++    maps.get("WaterfallAIE"), # the map we are playing on
+     [Bot(Race.Protoss, IncrediBot()), # runs our coded bot, protoss race, and we pass our bot object 
+      Computer(Race.Zerg, Difficulty.Hard)], # runs a pre-made computer agent, zerg race, with a hard difficulty.
+     realtime=False, # When set to True, the agent is limited in how long each step can take to process.
+diff --git a/sc2env.py b/sc2env.py
+index ab39c19..509dfd6 100644
+--- a/sc2env.py
++++ b/sc2env.py
+@@ -85,5 +85,7 @@ class Sc2Env(gym.Env):
+ 			pickle.dump(data, f)
+ 
+ 		# run incredibot-sct.py non-blocking:
+-		subprocess.Popen(['python3', 'incredibot-sct.py'])
++		print("Popen now!")
++		subprocess.Popen(['incredibot-sct.py'], shell=True)
++		print("Popen gone through")
+ 		return observation  # reward, done, info can't be included

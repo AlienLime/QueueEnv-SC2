@@ -1,0 +1,61 @@
+diff --git a/incredibot-sct.py b/incredibot-sct.py
+index 2fb80df..8765ac3 100644
+--- a/incredibot-sct.py
++++ b/incredibot-sct.py
+@@ -324,7 +324,7 @@ class IncrediBot(BotAI): # inhereits from BotAI (part of BurnySC2)
+ 
+ 
+ result = run_game(  # run_game is a function that runs the game.
+-    maps.get("2000AtmospheresAIE"), # the map we are playing on
++    maps.get("WaterfallAIE"), # the map we are playing on
+     [Bot(Race.Protoss, IncrediBot()), # runs our coded bot, protoss race, and we pass our bot object 
+      Computer(Race.Zerg, Difficulty.Hard)], # runs a pre-made computer agent, zerg race, with a hard difficulty.
+     realtime=False, # When set to True, the agent is limited in how long each step can take to process.
+@@ -340,7 +340,7 @@ with open("results.txt","a") as f:
+     f.write(f"{result}\n")
+ 
+ 
+-map = np.zeros((224, 224, 3), dtype=np.uint8)
++map = np.zeros((144, 160, 3), dtype=np.uint8)
+ observation = map
+ data = {"state": map, "reward": rwd, "action": None, "done": True}  # empty action waiting for the next one!
+ with open('state_rwd_action.pkl', 'wb') as f:
+diff --git a/sc2env.py b/sc2env.py
+index ab39c19..34030b6 100644
+--- a/sc2env.py
++++ b/sc2env.py
+@@ -15,7 +15,7 @@ class Sc2Env(gym.Env):
+ 		# Example when using discrete actions:
+ 		self.action_space = spaces.Discrete(6)
+ 		self.observation_space = spaces.Box(low=0, high=255,
+-											shape=(224, 224, 3), dtype=np.uint8)
++											shape=(144, 160, 3), dtype=np.uint8)
+ 
+ 	def step(self, action):
+ 		wait_for_action = True
+@@ -59,7 +59,7 @@ class Sc2Env(gym.Env):
+ 
+ 			except Exception as e:
+ 				wait_for_state = True   
+-				map = np.zeros((224, 224, 3), dtype=np.uint8)
++				map = np.zeros((144, 160, 3), dtype=np.uint8)
+ 				observation = map
+ 				# if still failing, input an ACTION, 3 (scout)
+ 				data = {"state": map, "reward": 0, "action": 3, "done": False}  # empty action waiting for the next one!
+@@ -78,12 +78,14 @@ class Sc2Env(gym.Env):
+ 
+ 	def reset(self):
+ 		print("RESETTING ENVIRONMENT!!!!!!!!!!!!!")
+-		map = np.zeros((224, 224, 3), dtype=np.uint8)
++		map = np.zeros((144, 160, 3), dtype=np.uint8)
+ 		observation = map
+ 		data = {"state": map, "reward": 0, "action": None, "done": False}  # empty action waiting for the next one!
+ 		with open('state_rwd_action.pkl', 'wb') as f:
+ 			pickle.dump(data, f)
+ 
+ 		# run incredibot-sct.py non-blocking:
+-		subprocess.Popen(['python3', 'incredibot-sct.py'])
++		print("Popen now!")
++		subprocess.Popen(['incredibot-sct.py'], shell=True)
++		print("Popen gone through")
+ 		return observation  # reward, done, info can't be included
