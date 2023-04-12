@@ -103,26 +103,14 @@ class AST(Thread):
     # def join() -> None:
     #     pass
 
-class SC2Env(gym.Env):
+class QueueEnv(gym.Env):
         def __init__(self, config=None, render_mode=None): # None, "human", "rgb_array"
-            super(SC2Env, self).__init__()
+            super(QueueEnv, self).__init__()
             # Define action and observation space
             # They must be gym.spaces objects
             # Example when using discrete actions:
             self.action_space = spaces.Discrete(2)
             self.observation_space = spaces.Box(low=0, high=255, shape=(224, 224, 3), dtype=np.uint8)
-
-
-        def reset(self):
-            print("RESETTING ENVIRONMENT!!!!!!!!!!!!!")
-            map = np.zeros((224, 224, 3), dtype=np.uint8)
-            observation = map
-            self.pcom = AST()
-            # self.pcom.start()
-            # asyncio.set_event_loop(asyncio.new_event_loop())
-            self.pcom.start()
-            # assert False
-            return observation, {}
         
         def step(self, action):
             # assert self.pcom.action_in.empty
@@ -133,28 +121,23 @@ class SC2Env(gym.Env):
             out = self.pcom.result_out.get()
             print("SC2.step().step(), got", out)
             reward = 0
-            terminated=False
-            truncated=False
+            done=False
             info={}
-            return out, reward, terminated, truncated, info
-
-
-def ast_old():
-    print("main JUBIIII")
-    t = AST()
-    t.start()
-    async def addSome(action=1):
-        t.value = action
-        await t.action_in.put(action)
-    asyncio.run(addSome(0))
-
-
-    s = [addSome() for _ in range(10)]
-    asyncio.run(addSome(0))
-
+            return observation, reward, done, info
+        
+        def reset(self):
+            print("RESETTING ENVIRONMENT!!!!!!!!!!!!!")
+            map = np.zeros((224, 224, 3), dtype=np.uint8)
+            observation = map
+            self.pcom = AST()
+            # self.pcom.start()
+            # asyncio.set_event_loop(asyncio.new_event_loop())
+            self.pcom.start()
+            # assert False
+            return observation
 
 def run_sc2():
-    env = SC2Env()
+    env = QueueEnv()
     s0, info = env.reset()
     # env.pcom.action_in.put("something")
     # £print("first state is", s0)
