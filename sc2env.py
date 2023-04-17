@@ -24,7 +24,7 @@ class Sc2Env(gym.Env):
 		# Example when using discrete actions:
 		self.action_space = spaces.Discrete(6)
 		self.observation_space = spaces.Box(low=0, high=255,
-											shape=(144, 160, 3), dtype=np.uint8)
+											shape=(64, 64, 3), dtype=np.uint8)
 
 	def step(self, action):
 		#wait_for_action = True
@@ -70,7 +70,7 @@ class Sc2Env(gym.Env):
 #
 		#	except Exception as e:
 		#		wait_for_state = True   
-		#		map = np.zeros((144, 160, 3), dtype=np.uint8)
+		#		map = np.zeros((64, 64, 3), dtype=np.uint8)
 		#		observation = map
 		#		# if still failing, input an ACTION, 3 (scout)
 		#		data = {"state": map, "reward": 0, "action": 3, "done": False}  # empty action waiting for the next one!
@@ -92,7 +92,7 @@ class Sc2Env(gym.Env):
 
 	def reset(self):
 		print("RESETTING ENVIRONMENT!!!!!!!!!!!!!")
-		map = np.zeros((144, 160, 3), dtype=np.uint8)
+		map = np.zeros((64, 64, 3), dtype=np.uint8)
 		observation = map
 		self.pcom = AST()
 		self.pcom.start()

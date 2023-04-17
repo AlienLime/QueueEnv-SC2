@@ -1,0 +1,355 @@
+diff --git a/ArmyBot.py b/ArmyBot.py
+index 360aa21..c8029c1 100644
+--- a/ArmyBot.py
++++ b/ArmyBot.py
+@@ -7,6 +7,7 @@ from sc2.ids.unit_typeid import UnitTypeId
+ 
+ import sc2.main
+ import numpy as np
++import random
+ import cv2
+ import math
+ import time
+@@ -42,35 +43,163 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
+         if self.action is None:
+             # print("no action returning.")
+             return None
+-        time.sleep(1)
+-        # 0: Force Move
+-        print("Action is", self.action)
++        
++        '''
++        0: expand (ie: move to next spot, or build to 16 (minerals)+3 assemblers+3)
++        1: build stargate (or up to one) (evenly)
++        2: build voidray (evenly)
++        3: send scout (evenly/random/closest to enemy?)
++        4: attack (known buildings, units, then enemy base, just go in logical order.)
++        5: voidray flee (back to base)
++        '''
++
++        # 0: expand (ie: move to next spot, or build to 16 (minerals)+3 assemblers+3)
+         if self.action == 0:
+-            print("Action is", self.action)
+             try:
+-                for probe in self.units(UnitTypeId.PROBE):
+-                    probe.move(self.enemy_start_locations[0])
+-                print("action", self.action, "performed")
++                found_something = False
++                if self.supply_left < 4:
++                    # build pylons. 
++                    if self.already_pending(UnitTypeId.PYLON) == 0:
++                        if self.can_afford(UnitTypeId.PYLON):
++                            await self.build(UnitTypeId.PYLON, near=random.choice(self.townhalls))
++                            found_something = True
++
++                if not found_something:
++
++                    for nexus in self.townhalls:
++                        # get worker count for this nexus:
++                        worker_count = len(self.workers.closer_than(10, nexus))
++                        if worker_count < 22: # 16+3+3
++                            if nexus.is_idle and self.can_afford(UnitTypeId.PROBE):
++                                nexus.train(UnitTypeId.PROBE)
++                                found_something = True
++
++                        # have we built enough assimilators?
++                        # find vespene geysers
++                        for geyser in self.vespene_geyser.closer_than(10, nexus):
++                            # build assimilator if there isn't one already:
++                            if not self.can_afford(UnitTypeId.ASSIMILATOR):
++                                break
++                            if not self.structures(UnitTypeId.ASSIMILATOR).closer_than(2.0, geyser).exists:
++                                await self.build(UnitTypeId.ASSIMILATOR, geyser)
++                                found_something = True
++
++                if not found_something:
++                    if self.already_pending(UnitTypeId.NEXUS) == 0 and self.can_afford(UnitTypeId.NEXUS):
++                        await self.expand_now()
++
+             except Exception as e:
+                 print(e)
+-        
+-        #1: Attack Move
++
++
++        #1: build stargate (or up to one) (evenly)
+         elif self.action == 1:
+-            print("Action is", self.action)
+             try:
+-                for probe in self.units(UnitTypeId.PROBE):
++                # iterate thru all nexus and see if these buildings are close
++                for nexus in self.townhalls:
++                    # is there is not a gateway close:
++                    if not self.structures(UnitTypeId.GATEWAY).closer_than(10, nexus).exists:
++                        # if we can afford it:
++                        if self.can_afford(UnitTypeId.GATEWAY) and self.already_pending(UnitTypeId.GATEWAY) == 0:
++                            # build gateway
++                            await self.build(UnitTypeId.GATEWAY, near=nexus)
++                        
++                    # if the is not a cybernetics core close:
++                    if not self.structures(UnitTypeId.CYBERNETICSCORE).closer_than(10, nexus).exists:
++                        # if we can afford it:
++                        if self.can_afford(UnitTypeId.CYBERNETICSCORE) and self.already_pending(UnitTypeId.CYBERNETICSCORE) == 0:
++                            # build cybernetics core
++                            await self.build(UnitTypeId.CYBERNETICSCORE, near=nexus)
++
++                    # if there is not a stargate close:
++                    if not self.structures(UnitTypeId.STARGATE).closer_than(10, nexus).exists:
++                        # if we can afford it:
++                        if self.can_afford(UnitTypeId.STARGATE) and self.already_pending(UnitTypeId.STARGATE) == 0:
++                            # build stargate
++                            await self.build(UnitTypeId.STARGATE, near=nexus)
++
++            except Exception as e:
++                print(e)
++
++
++        #2: build voidray (random stargate)
++        elif self.action == 2:
++            try:
++                if self.can_afford(UnitTypeId.VOIDRAY):
++                    for sg in self.structures(UnitTypeId.STARGATE).ready.idle:
++                        if self.can_afford(UnitTypeId.VOIDRAY):
++                            sg.train(UnitTypeId.VOIDRAY)
++            
++            except Exception as e:
++                print(e)
++
++        #3: send scout
++        elif self.action == 3:
++            # are there any idle probes:
++            try:
++                self.last_sent
++            except:
++                self.last_sent = 0
++
++            # if self.last_sent doesnt exist yet:
++            if (iteration - self.last_sent) > 200:
++                try:
++                    if self.units(UnitTypeId.PROBE).idle.exists:
++                        # pick one of these randomly:
++                        probe = random.choice(self.units(UnitTypeId.PROBE).idle)
++                    else:
++                        probe = random.choice(self.units(UnitTypeId.PROBE))
++                    # send probe towards enemy base:
+                     probe.attack(self.enemy_start_locations[0])
+-                print("action", self.action, "performed")
++                    self.last_sent = iteration
++
++                except Exception as e:
++                    pass
++
++
++        #4: attack (known buildings, units, then enemy base, just go in logical order.)
++        elif self.action == 4:
++            try:
++                # take all void rays and attack!
++                for voidray in self.units(UnitTypeId.VOIDRAY).idle:
++                    # if we can attack:
++                    if self.enemy_units.closer_than(10, voidray):
++                        # attack!
++                        voidray.attack(random.choice(self.enemy_units.closer_than(10, voidray)))
++                    # if we can attack:
++                    elif self.enemy_structures.closer_than(10, voidray):
++                        # attack!
++                        voidray.attack(random.choice(self.enemy_structures.closer_than(10, voidray)))
++                    # any enemy units:
++                    elif self.enemy_units:
++                        # attack!
++                        voidray.attack(random.choice(self.enemy_units))
++                    # any enemy structures:
++                    elif self.enemy_structures:
++                        # attack!
++                        voidray.attack(random.choice(self.enemy_structures))
++                    # if we can attack:
++                    elif self.enemy_start_locations:
++                        # attack!
++                        voidray.attack(self.enemy_start_locations[0])
++            
+             except Exception as e:
+                 print(e)
++            
++
++        #5: voidray flee (back to base)
++        elif self.action == 5:
++            if self.units(UnitTypeId.VOIDRAY).amount > 0:
++                for vr in self.units(UnitTypeId.VOIDRAY):
++                    vr.attack(self.start_location)
+         
+         print("returning a resultfrom army bot..")
+ 
+         map = np.zeros((self.game_info.map_size[0], self.game_info.map_size[1], 3), dtype=np.uint8)
+ 
+-        self.result_out.put({"observation" : map, "reward" : 0, "action" : self.action, "done" : False})
+-        return
+-    
++        # self.result_out.put({"observation" : map, "reward" : 0, "action" : self.action, "done" : False})
++        # return
++
+         # draw the minerals:
+         for mineral in self.mineral_field:
+             pos = mineral.position
+@@ -168,11 +297,12 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
+ 
+         try:
+             attack_count = 0
+-            # iterate through our marine:
+-            for marine in self.units(UnitTypeId.MARINE):
+-                # if marine is attacking and is in range of enemy unit:
+-                if marine.is_attacking and marine.target_in_range:
+-                    if self.enemy_units.closer_than(4, marine) or self.enemy_structures.closer_than(4, marine):
++            # iterate through our void rays:
++            for voidray in self.units(UnitTypeId.VOIDRAY):
++                # if voidray is attacking and is in range of enemy unit:
++                if voidray.is_attacking and voidray.target_in_range:
++                    if self.enemy_units.closer_than(8, voidray) or self.enemy_structures.closer_than(8, voidray):
++                        # reward += 0.005 # original was 0.005, decent results, but let's 3x it. 
+                         reward += 0.015  
+                         attack_count += 1
+ 
+@@ -180,7 +310,11 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
+             print("reward",e)
+             reward = 0
+ 
++        if iteration % 100 == 0:
++            print(f"Iter: {iteration}. RWD: {reward}. VR: {self.units(UnitTypeId.VOIDRAY).amount}")
++
+         self.result_out.put({"observation" : map, "reward" : reward, "action" : None, "done" : False})
++        
+ 
+ #cv2.destroyAllWindows()
+ #cv2.waitKey(1)
+diff --git a/QueueEnv.py b/QueueEnv.py
+index d1966eb..68367e3 100644
+--- a/QueueEnv.py
++++ b/QueueEnv.py
+@@ -1,15 +1,18 @@
+ #General Python packages
+ import gymnasium as gym
+-from gymnasium import spaces
++from gym import spaces
+ import numpy as np
++import os
+ import asyncio
+ from threading import Thread
+ import time
+ from queue import Queue
++from wandb.integration.sb3 import WandbCallback
++import wandb
++from stable_baselines3 import PPO
+ 
+ 
+ #API imports
+-from sc2.bot_ai import BotAI  # parent class we inherit from
+ from sc2.data import Difficulty, Race  # difficulty for bots, race for the 1 of 3 races
+ from sc2.main import run_game  # function that facilitates actually running the agents in games
+ from sc2.player import Bot, Computer  #wrapper for whether or not the agent is one of your bots, or a "computer" player
+@@ -69,7 +72,7 @@ class AST(Thread):
+         #asyncio.set_event_loop(loop)
+         # print("starting game.")
+         self.bot = ArmyBot(action_in=self.action_in, result_out=self.result_out)
+-        print("starting gamem.")
++        print("starting game.")
+         run_game(  # run_game is a function that runs the game.
+             maps.get("WaterfallAIE"), # the map we are playing on
+             [Bot(Race.Protoss, self.bot), # runs our coded bot, Terran race, and we pass our bot object 
+@@ -109,7 +112,7 @@ class QueueEnv(gym.Env):
+             # Define action and observation space
+             # They must be gym.spaces objects
+             # Example when using discrete actions:
+-            self.action_space = spaces.Discrete(2)
++            self.action_space = spaces.Discrete(6)
+             self.observation_space = spaces.Box(low=0, high=255, shape=(144, 160, 3), dtype=np.uint8)
+         
+         def step(self, action):
+@@ -150,8 +153,46 @@ def run_sc2():
+         go+=1
+     print("done ya grease")
+ 
+-    
++def train_ppo():
++    model_name = f"{int(time.time())}"
++
++    models_dir = f"models/{model_name}/"
++    logdir = f"logs/{model_name}/"
++
++
++    conf_dict = {"Model": "v19",
++                "Machine": "Main",
++                "policy":"MlpPolicy",
++                "model_save_name": model_name}
++
++
++    run = wandb.init(
++        project=f'SC2RLv6',
++        entity="KrisEmil",
++        config=conf_dict,
++        sync_tensorboard=True,  # auto-upload sb3's tensorboard metrics
++        save_code=True,  # optional
++    )
++
++
++    if not os.path.exists(models_dir):
++        os.makedirs(models_dir)
++
++    if not os.path.exists(logdir):
++        os.makedirs(logdir)
++
++    env = QueueEnv()
++
++    model = PPO('MlpPolicy', env, verbose=1, tensorboard_log=logdir)
++
++    TIMESTEPS = 10000
++    iters = 0
++    while True:
++        print("On iteration: ", iters)
++        iters += 1
++        model.learn(total_timesteps=TIMESTEPS, reset_num_timesteps=False, tb_log_name=f"PPO")
++        model.save(f"{models_dir}/{TIMESTEPS*iters}")
+ 
+ if __name__ == "__main__":
+ 
+-    run_sc2()
+\ No newline at end of file
++    train_ppo()
+\ No newline at end of file
+diff --git a/__pycache__/ArmyBot.cpython-310.pyc b/__pycache__/ArmyBot.cpython-310.pyc
+index 83eedc4..546c2c6 100644
+Binary files a/__pycache__/ArmyBot.cpython-310.pyc and b/__pycache__/ArmyBot.cpython-310.pyc differ
+diff --git a/__pycache__/IncrediBot.cpython-310.pyc b/__pycache__/IncrediBot.cpython-310.pyc
+index be953bb..280aac9 100644
+Binary files a/__pycache__/IncrediBot.cpython-310.pyc and b/__pycache__/IncrediBot.cpython-310.pyc differ
+diff --git a/__pycache__/Sc2Env.cpython-310.pyc b/__pycache__/Sc2Env.cpython-310.pyc
+index ce39822..6821003 100644
+Binary files a/__pycache__/Sc2Env.cpython-310.pyc and b/__pycache__/Sc2Env.cpython-310.pyc differ
+diff --git a/trainppo.py b/trainppo.py
+index 29e60d0..9a63c28 100644
+--- a/trainppo.py
++++ b/trainppo.py
+@@ -1,6 +1,8 @@
+ from stable_baselines3 import PPO
+ import os
+ from sc2env import Sc2Env
++import QueueEnv
++from QueueEnv import QueueEnv
+ import time
+ from wandb.integration.sb3 import WandbCallback
+ import wandb
+@@ -20,7 +22,7 @@ conf_dict = {"Model": "v19",
+ 
+ run = wandb.init(
+     project=f'SC2RLv6',
+-    entity="sentdex",
++    entity="KrisEmil",
+     config=conf_dict,
+     sync_tensorboard=True,  # auto-upload sb3's tensorboard metrics
+     save_code=True,  # optional
+@@ -33,7 +35,7 @@ if not os.path.exists(models_dir):
+ if not os.path.exists(logdir):
+ 	os.makedirs(logdir)
+ 
+-env = Sc2Env()
++env = QueueEnv()
+ 
+ model = PPO('MlpPolicy', env, verbose=1, tensorboard_log=logdir)
+ 

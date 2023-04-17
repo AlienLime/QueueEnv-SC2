@@ -1,6 +1,6 @@
 #General Python packages
 import gymnasium as gym
-from gym import spaces
+from gymnasium import spaces
 import numpy as np
 import os
 import asyncio
@@ -74,7 +74,7 @@ class AST(Thread):
         self.bot = ArmyBot(action_in=self.action_in, result_out=self.result_out)
         print("starting game.")
         run_game(  # run_game is a function that runs the game.
-            maps.get("BerlingradAIE"), # the map we are playing on
+            maps.get("WaterfallAIE"), # the map we are playing on
             [Bot(Race.Protoss, self.bot), # runs our coded bot, Terran race, and we pass our bot object 
             Computer(Race.Zerg, Difficulty.Hard)], # runs a pre-made computer agent, zerg race, with a hard difficulty.
             realtime=False, # When set to True, the agent is limited in how long each step can take to process.
@@ -112,8 +112,8 @@ class QueueEnv(gym.Env):
             # Define action and observation space
             # They must be gym.spaces objects
             # Example when using discrete actions:
-            self.action_space = spaces.Discrete(6)
-            self.observation_space = spaces.Box(low=0, high=255, shape=(152, 168, 3), dtype=np.uint8)
+            self.action_space = spaces.Discrete(2)
+            self.observation_space = spaces.Box(low=0, high=255, shape=(144, 160, 3), dtype=np.uint8)
         
         def step(self, action):
             # assert self.pcom.action_in.empty
@@ -122,6 +122,7 @@ class QueueEnv(gym.Env):
             self.pcom.action_in.put(action)
             # print("step, waiting..")
             out = self.pcom.result_out.get()
+            print("SC2.step().step(), got", out)
             observation = out["observation"]
             reward = out["reward"]
             done = out["done"]
@@ -130,14 +131,14 @@ class QueueEnv(gym.Env):
         
         def reset(self):
             print("RESETTING ENVIRONMENT!!!!!!!!!!!!!")
-            map = np.zeros((152, 168, 3), dtype=np.uint8)
+            map = np.zeros((144, 160, 3), dtype=np.uint8)
             observation = map
             self.pcom = AST()
             # self.pcom.start()
             # asyncio.set_event_loop(asyncio.new_event_loop())
             self.pcom.start()
             # assert False
-            return observation
+            return observation, {}
 
 def run_sc2():
     env = QueueEnv()
@@ -164,7 +165,7 @@ def train_ppo():
                 "policy":"MlpPolicy",
                 "model_save_name": model_name}
 
-    '''
+
     run = wandb.init(
         project=f'SC2RLv6',
         entity="KrisEmil",
@@ -172,7 +173,7 @@ def train_ppo():
         sync_tensorboard=True,  # auto-upload sb3's tensorboard metrics
         save_code=True,  # optional
     )
-    '''
+
 
     if not os.path.exists(models_dir):
         os.makedirs(models_dir)
