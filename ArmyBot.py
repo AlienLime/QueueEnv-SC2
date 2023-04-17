@@ -5,6 +5,7 @@ from sc2.bot_ai import BotAI  # parent class we inherit from
 #from sc2 import maps  # maps method for loading maps to play in.
 from sc2.ids.unit_typeid import UnitTypeId
 
+import sc2.main
 import numpy as np
 import cv2
 import math
@@ -16,16 +17,14 @@ import sys
 
 class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
     action = None
-    output = None
-    # action_in_queue = asyncio.Queue()
+    output = {"observation" : map, "reward" : 0, "action" : None, "done" : False}
     def __init__(self, *args,bot_in_box=None, action_in=None, result_out=None, **kwargs, ):
         super().__init__(*args, **kwargs)
-        # self.bot_in_box = bot_in_box
         self.action_in = action_in
         self.result_out = result_out
 
     async def on_step(self, iteration): # on_step is a method that is called every step of the game.
-        # action = await action_in.get()
+        self.action = self.action_in.get()
         '''
         0: Force Move
         1: Attack Move        
@@ -35,44 +34,43 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         #     action = self.bot_in_box.get()
         #     print("action,", action)
         #     action = asyncio.run(action)
-        print("Got action from outside", self.action_in.get(), "I will now execute that action.")
+        print("Got action from outside", self.action, "I will now execute that action.")
         # print("<updating...")
         # This gets an action and returns a state. You probably need to put logic here such as waiting a certain amount of in-game time before retuning etc. (you
         # don't want the states to be 'too close' if that makes sense)
-        self.result_out.put(self.game_info)
 
-        return
         if self.action is None:
             # print("no action returning.")
             return None
-        else:
-            self.action = None
-        # print("got action updateing.")
         time.sleep(1)
         # 0: Force Move
-        if action == 0:
+        print("Action is", self.action)
+        if self.action == 0:
+            print("Action is", self.action)
             try:
-                for marine in self.units(UnitTypeId.MARINE):
-                    marine.move(32, 32)
+                for probe in self.units(UnitTypeId.PROBE):
+                    probe.move(self.enemy_start_locations[0])
+                print("action", self.action, "performed")
             except Exception as e:
                 print(e)
         
-
-
         #1: Attack Move
-        elif action == 1:
+        elif self.action == 1:
+            print("Action is", self.action)
             try:
-                for marine in self.units(UnitTypeId.MARINE):
-                    marine.attack(32, 32)
+                for probe in self.units(UnitTypeId.PROBE):
+                    probe.attack(self.enemy_start_locations[0])
+                print("action", self.action, "performed")
             except Exception as e:
                 print(e)
         
-        # return f"this is from starcrap! {}"
         print("returning a resultfrom army bot..")
-        self.output = f"ARMY BOT OUTPUT: {self.game_info.map_size[0]}"
-        return self.game_info.map_size[0]
+
         map = np.zeros((self.game_info.map_size[0], self.game_info.map_size[1], 3), dtype=np.uint8)
 
+        self.result_out.put({"observation" : map, "reward" : 0, "action" : self.action, "done" : False})
+        return
+    
         # draw the minerals:
         for mineral in self.mineral_field:
             pos = mineral.position
@@ -181,6 +179,8 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         except Exception as e:
             print("reward",e)
             reward = 0
+
+        self.result_out.put({"observation" : map, "reward" : reward, "action" : None, "done" : False})
 
 #cv2.destroyAllWindows()
 #cv2.waitKey(1)

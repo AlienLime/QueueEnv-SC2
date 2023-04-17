@@ -71,8 +71,8 @@ class AST(Thread):
         self.bot = ArmyBot(action_in=self.action_in, result_out=self.result_out)
         print("starting gamem.")
         run_game(  # run_game is a function that runs the game.
-            maps.get("TestMap1"), # the map we are playing on
-            [Bot(Race.Terran, self.bot), # runs our coded bot, Terran race, and we pass our bot object 
+            maps.get("WaterfallAIE"), # the map we are playing on
+            [Bot(Race.Protoss, self.bot), # runs our coded bot, Terran race, and we pass our bot object 
             Computer(Race.Zerg, Difficulty.Hard)], # runs a pre-made computer agent, zerg race, with a hard difficulty.
             realtime=False, # When set to True, the agent is limited in how long each step can take to process.
         )
@@ -110,42 +110,45 @@ class QueueEnv(gym.Env):
             # They must be gym.spaces objects
             # Example when using discrete actions:
             self.action_space = spaces.Discrete(2)
-            self.observation_space = spaces.Box(low=0, high=255, shape=(224, 224, 3), dtype=np.uint8)
+            self.observation_space = spaces.Box(low=0, high=255, shape=(144, 160, 3), dtype=np.uint8)
         
         def step(self, action):
             # assert self.pcom.action_in.empty
             # assert action > 0 
             print("SC2.step()> putting action.")
-            self.pcom.action_in.put(f"A=action from step={action}")
+            self.pcom.action_in.put(action)
             # print("step, waiting..")
             out = self.pcom.result_out.get()
             print("SC2.step().step(), got", out)
-            reward = 0
-            done=False
-            info={}
+            observation = out["observation"]
+            reward = out["reward"]
+            done = out["done"]
+            info = {}
             return observation, reward, done, info
         
         def reset(self):
             print("RESETTING ENVIRONMENT!!!!!!!!!!!!!")
-            map = np.zeros((224, 224, 3), dtype=np.uint8)
+            map = np.zeros((144, 160, 3), dtype=np.uint8)
             observation = map
             self.pcom = AST()
             # self.pcom.start()
             # asyncio.set_event_loop(asyncio.new_event_loop())
             self.pcom.start()
             # assert False
-            return observation
+            return observation, {}
 
 def run_sc2():
     env = QueueEnv()
     s0, info = env.reset()
     # env.pcom.action_in.put("something")
     # £print("first state is", s0)
-    print("Stepping once")
-
-    sp, reward, done, _, info = env.step(0)
-
-    print("Next state was:", sp)
+    go = 0
+    while go < 100:
+        print("Step", go)
+        sp, reward, done, info = env.step(go%2)
+        print("Next state was:", go)
+        go+=1
+    print("done ya grease")
 
     
 
