@@ -20,6 +20,8 @@ class Sc2Env(gym.Env):
 	def step(self, action):
 		wait_for_action = True
 		# waits for action.
+		# Add timer
+		starttime = time.time()
 		while wait_for_action:
 			#print("waiting for action")
 			try:
@@ -70,6 +72,8 @@ class Sc2Env(gym.Env):
 				reward = 0
 				done = False
 				action = 3
+		steptime = round(time.time() - starttime, 2)
+		print("this step took", steptime, "seconds.")
 
 		info ={}
 		observation = state
