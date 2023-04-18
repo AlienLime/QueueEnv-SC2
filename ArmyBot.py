@@ -26,10 +26,7 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
 
     async def on_step(self, iteration): # on_step is a method that is called every step of the game.
         self.action = self.action_in.get()
-        '''
-        0: Force Move
-        1: Attack Move        
-        '''
+
         print("armybot at...", iteration)
         # if self.bot_in_box is not None:
         #     action = self.bot_in_box.get()
@@ -43,6 +40,8 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         if self.action is None:
             # print("no action returning.")
             return None
+        
+        await self.distribute_workers() # put idle workers back to work
         
         '''
         0: expand (ie: move to next spot, or build to 16 (minerals)+3 assemblers+3)
