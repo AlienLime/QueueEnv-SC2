@@ -116,12 +116,15 @@ class QueueEnv(gym.Env):
             self.observation_space = spaces.Box(low=0, high=255, shape=(152, 168, 3), dtype=np.uint8)
         
         def step(self, action):
-            # assert self.pcom.action_in.empty
-            # assert action > 0 
+            #start a timer
+            starttime = time.time()
             print("SC2.step()> putting action.")
             self.pcom.action_in.put(action)
             # print("step, waiting..")
             out = self.pcom.result_out.get()
+            #Get the time taken
+            steptime = round(time.time() - starttime, 2)
+            print("This step took", steptime, "seconds")
             observation = out["observation"]
             reward = out["reward"]
             done = out["done"]
