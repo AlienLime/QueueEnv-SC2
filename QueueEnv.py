@@ -112,19 +112,29 @@ class QueueEnv(gym.Env):
             # Define action and observation space
             # They must be gym.spaces objects
             # Example when using discrete actions:
+            self.iteration = -1
+            self.starttime = 0
             self.action_space = spaces.Discrete(6)
             self.observation_space = spaces.Box(low=0, high=255, shape=(152, 168, 3), dtype=np.uint8)
         
         def step(self, action):
+            #increment iteration
+            self.iteration += 1
+
             #start a timer
-            starttime = time.time()
+            if self.iteration % 100 == 1:
+                self.starttime = time.time()
+
             print("SC2.step()> putting action.")
             self.pcom.action_in.put(action)
             # print("step, waiting..")
             out = self.pcom.result_out.get()
+
             #Get the time taken
-            steptime = round(time.time() - starttime, 2)
-            print("This step took", steptime, "seconds")
+            if self.iteration % 100 == 0 and self.iteration > 0:
+                steptime = round(time.time() - self.starttime, 2)
+                print("These 100 steps took", steptime, "seconds")
+
             observation = out["observation"]
             reward = out["reward"]
             done = out["done"]
