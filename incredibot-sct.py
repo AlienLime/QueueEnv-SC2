@@ -284,7 +284,7 @@ class IncrediBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         # show map with opencv, resized to be larger:
         # horizontal flip:
 
-        cv2.imshow('map',cv2.flip(cv2.resize(map, None, fx=4, fy=4, interpolation=cv2.INTER_NEAREST), 0))
+        # cv2.imshow('map',cv2.flip(cv2.resize(map, None, fx=4, fy=4, interpolation=cv2.INTER_NEAREST), 0))
         cv2.waitKey(1)
 
         if SAVE_REPLAY:
@@ -324,7 +324,7 @@ class IncrediBot(BotAI): # inhereits from BotAI (part of BurnySC2)
 
 
 result = run_game(  # run_game is a function that runs the game.
-    maps.get("WaterfallAIE"), # the map we are playing on
+    maps.get("BerlingradAIE"), # the map we are playing on
     [Bot(Race.Protoss, IncrediBot()), # runs our coded bot, protoss race, and we pass our bot object 
      Computer(Race.Zerg, Difficulty.Hard)], # runs a pre-made computer agent, zerg race, with a hard difficulty.
     realtime=False, # When set to True, the agent is limited in how long each step can take to process.
@@ -340,7 +340,7 @@ with open("results.txt","a") as f:
     f.write(f"{result}\n")
 
 
-map = np.zeros((144, 160, 3), dtype=np.uint8)
+map = np.zeros((152, 168, 3), dtype=np.uint8)
 observation = map
 data = {"state": map, "reward": rwd, "action": None, "done": True}  # empty action waiting for the next one!
 with open('state_rwd_action.pkl', 'wb') as f:
