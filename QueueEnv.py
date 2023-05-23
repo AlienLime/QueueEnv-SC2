@@ -74,7 +74,7 @@ class AST(Thread):
         # print("starting game.")
         self.bot = ArmyBot(action_in=self.action_in, result_out=self.result_out)
         print("starting game.")
-        run_game(  # run_game is a function that runs the game.
+        result = run_game(  # run_game is a function that runs the game.
             maps.get("BerlingradAIE"), # the map we are playing on
             [Bot(Race.Protoss, self.bot), # runs our coded bot, Terran race, and we pass our bot object 
             Computer(Race.Zerg, Difficulty.Hard)], # runs a pre-made computer agent, zerg race, with a hard difficulty.
@@ -128,7 +128,7 @@ class QueueEnv(gym.Env):
             if self.iteration % 100 == 1:
                 self.starttime = time.time()
 
-            print("SC2.step()> putting action.")
+            # print("SC2.step()> putting action.")
             self.pcom.action_in.put(action)
             # print("step, waiting..")
             out = self.pcom.result_out.get()

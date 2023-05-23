@@ -27,12 +27,12 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
     async def on_step(self, iteration): # on_step is a method that is called every step of the game.
         self.action = self.action_in.get()
 
-        print("armybot at...", iteration)
+        # print("armybot at...", iteration)
         # if self.bot_in_box is not None:
         #     action = self.bot_in_box.get()
         #     print("action,", action)
         #     action = asyncio.run(action)
-        print("Got action from outside", self.action, "I will now execute that action.")
+        # print("Got action from outside", self.action, "I will now execute that action.")
         # print("<updating...")
         # This gets an action and returns a state. You probably need to put logic here such as waiting a certain amount of in-game time before retuning etc. (you
         # don't want the states to be 'too close' if that makes sense)
@@ -192,7 +192,7 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
                 for vr in self.units(UnitTypeId.VOIDRAY):
                     vr.attack(self.start_location)
         
-        print("returning a resultfrom army bot..")
+        # print("returning a result from army bot..")
 
         map = np.zeros((self.game_info.map_size[0], self.game_info.map_size[1], 3), dtype=np.uint8)
 
