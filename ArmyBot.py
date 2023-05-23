@@ -289,7 +289,7 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         # show map with opencv, resized to be larger:
         # horizontal flip:
 
-        cv2.imshow('map',cv2.flip(cv2.resize(map, None, fx=4, fy=4, interpolation=cv2.INTER_NEAREST), 0))
+        ##cv2.imshow('map',cv2.flip(cv2.resize(map, None, fx=4, fy=4, interpolation=cv2.INTER_NEAREST), 0))
         cv2.waitKey(1)
 
         reward = 0
