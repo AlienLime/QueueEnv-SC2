@@ -115,7 +115,8 @@ class QueueEnv(gym.Env):
             # Example when using discrete actions:
             self.iteration = -1
             self.starttime = 0
-            self.timeData = [0]
+            self.timeData = []
+            self.stepList = []
             self.action_space = spaces.Discrete(6)
             self.observation_space = spaces.Box(low=0, high=255, shape=(152, 168, 3), dtype=np.uint8)
         
@@ -135,12 +136,13 @@ class QueueEnv(gym.Env):
             #Get the time taken
             if self.iteration % 100 == 0 and self.iteration > 0:
                 steptime = round(time.time() - self.starttime, 2)
-                self.timeData.append(steptime)
+                if not(self.iteration == 2100 or self.iteration == 4100 or self.iteration == 6200 or self.iteration == 8200):
+                    self.timeData.append(steptime)
+                    self.stepList.append(self.iteration)
                 print("These 100 steps took", steptime, "seconds")
-                if self.iteration == 1000:
-                    plt.plot(self.timeData)
+                if self.iteration == 6500:
+                    plt.plot(self.stepList, self.timeData)
                     plt.ylim(0, max(self.timeData) + 1)
-                    plt.xlim(0, len(self.timeData))
                     plt.show()
                     
 
