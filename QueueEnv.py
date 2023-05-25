@@ -12,6 +12,7 @@ from matplotlib import pyplot as plt
 import wandb
 
 # Ray imports
+from ray.rllib.algorithms.ppo import PPOConfig
 from ray.rllib.agents.ppo import PPOTrainer
 from ray.rllib.models import ModelCatalog
 from ray.rllib.models.tf.tf_modelv2 import TFModelV2
@@ -34,7 +35,7 @@ from sc2.ids.unit_typeid import UnitTypeId
 #from ray.rllib.algorithms import ppo
 
 #Custom imports
-from ArmyBot import ArmyBot
+from ArmyBotTerran import ArmyBot
 
 # async def main(action_in, result_out):
 #     for action in [1,0]:
@@ -82,10 +83,10 @@ class AST(Thread):
         self.bot = ArmyBot(action_in=self.action_in, result_out=self.result_out)
         print("starting game.")
         result = run_game(  # run_game is a function that runs the game.
-            maps.get("BerlingradAIE"), # the map we are playing on
-            [Bot(Race.Protoss, self.bot), # runs our coded bot, Terran race, and we pass our bot object 
+            maps.get("TestMap1"), # the map we are playing on
+            [Bot(Race.Terran, self.bot), # runs our coded bot, Terran race, and we pass our bot object 
             Computer(Race.Zerg, Difficulty.Hard)], # runs a pre-made computer agent, zerg race, with a hard difficulty.
-            realtime=False, # When set to True, the agent is limited in how long each step can take to process.
+            realtime=True, # When set to True, the agent is limited in how long each step can take to process.
         )
         # print("stopping game.")
         # while True:
@@ -118,8 +119,8 @@ class QueueEnv(gym.Env):
         def __init__(self, config=None, render_mode=None): # None, "human", "rgb_array"
             super(QueueEnv, self).__init__()
             # Define action and observation space
-            self.action_space = Discrete(6)
-            self.observation_space = Box(low=0, high=255, shape=(152, 168, 3), dtype=np.uint8)
+            self.action_space = Discrete(2)
+            self.observation_space = Box(low=0, high=255, shape=(42, 42, 3), dtype=np.uint8)
 
             # Helper variables for time data
             self.iteration = -1
@@ -162,7 +163,7 @@ class QueueEnv(gym.Env):
         
         def reset(self, *, seed=None, options=None):
             print("RESETTING ENVIRONMENT!!!!!!!!!!!!!")
-            map = np.zeros((152, 168, 3), dtype=np.uint8)
+            map = np.zeros((42, 42, 3), dtype=np.uint8)
             observation = map
             info = {}
             self.pcom = AST()
@@ -185,44 +186,8 @@ def run_sc2():
         go+=1
     print("done ya grease")
 
-# Custom model class
-class CustomModel(TFModelV2):
-    def __init__(self, obs_space, action_space, model_config, name):
-        super(CustomModel, self).__init__(obs_space, action_space, model_config, name)
-        
-        # Define the convolutional layers
-        self.conv1 = tf.keras.layers.Conv2D(16, [3, 3], strides=(1, 1), activation=tf.nn.relu, padding="same",
-                                            kernel_initializer=normc_initializer(1.0))
-        self.conv2 = tf.keras.layers.Conv2D(32, [3, 3], strides=(1, 1), activation=tf.nn.relu, padding="same",
-                                            kernel_initializer=normc_initializer(1.0))
-        self.conv3 = tf.keras.layers.Conv2D(64, [3, 3], strides=(1, 1), activation=tf.nn.relu, padding="same",
-                                            kernel_initializer=normc_initializer(1.0))
-        
-        # Define the fully connected layer
-        self.fc = tf.keras.layers.Dense(action_space.n, activation=None,
-                                        kernel_initializer=normc_initializer(0.01))
-
-    def forward(self, input_dict, state, seq_lens):
-        # Get the input observations
-        obs = input_dict["obs"]
-        
-        # Apply the convolutional layers
-        conv_out = self.conv1(obs)
-        conv_out = self.conv2(conv_out)
-        conv_out = self.conv3(conv_out)
-        
-        # Flatten the convolutional output
-        flattened = tf.keras.layers.Flatten()(conv_out)
-        
-        # Apply the fully connected layer
-        logits = self.fc(flattened)
-        
-        return logits, state
-
 def train_ppo():
-    # Register the custom model class
-    ModelCatalog.register_custom_model("custom_model", CustomModel)
-
+    """
     # Create an instance of your custom environment
     env = QueueEnv()
 
@@ -231,12 +196,6 @@ def train_ppo():
         "env": QueueEnv,
         "framework": "tf",  # Use "tf" for TensorFlow
         "num_workers": 1,
-        "model": {
-            "custom_model": "custom_model",
-            "custom_model_config": {
-                "conv_filters": [[16, [3, 3], 1], [32, [3, 3], 1], [64, [3, 3], 1]],
-            },
-        },
     }
     trainer = PPOTrainer(config)
 
@@ -257,7 +216,28 @@ def train_ppo():
         obs, reward, done, info = env.step(action)
         total_reward += reward
 
-    print("Total reward:", total_reward)
+    print("Total reward:", total_reward)"""
+
+    # Create an instance of your custom environment
+    #env = QueueEnv()
+
+    # Create an algo and configure it with your custom environment
+    algo = (
+        PPOConfig()
+        .rollouts(num_rollout_workers=1)
+        .resources(num_gpus=0)
+        .environment(env=QueueEnv)
+        .build()
+    )
+
+    # Train the PPO agent
+    for i in range(5):  # Number of training iterations
+        result = algo.train()
+        print(result)
+        
+        if i % 5 == 0:
+            checkpoint_dir = algo.save()
+            print(f"Checkpoint saved in directory {checkpoint_dir}")
 
 
 

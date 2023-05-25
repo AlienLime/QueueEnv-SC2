@@ -194,7 +194,7 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         
         # print("returning a result from army bot..")
 
-        map = np.zeros((self.game_info.map_size[0], self.game_info.map_size[1], 3), dtype=np.uint8)
+        map = np.zeros((42, 42, 3), dtype=np.uint8)
 
         # self.result_out.put({"observation" : map, "reward" : 0, "action" : self.action, "done" : False})
         # return
