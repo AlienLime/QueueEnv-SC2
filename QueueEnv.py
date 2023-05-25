@@ -1,6 +1,6 @@
 #General Python packages
 import gymnasium as gym
-from gym import spaces
+from gymnasium.spaces import Box, Discrete
 import numpy as np
 import os
 import asyncio
@@ -10,7 +10,14 @@ from queue import Queue
 from wandb.integration.sb3 import WandbCallback
 from matplotlib import pyplot as plt
 import wandb
-from stable_baselines3 import PPO
+
+# Ray imports
+from ray.rllib.agents.ppo import PPOTrainer
+from ray.rllib.models import ModelCatalog
+from ray.rllib.models.tf.tf_modelv2 import TFModelV2
+from ray.rllib.models.tf.misc import normc_initializer
+from ray.rllib.utils import try_import_tf
+tf = try_import_tf()
 
 
 #API imports
@@ -111,14 +118,14 @@ class QueueEnv(gym.Env):
         def __init__(self, config=None, render_mode=None): # None, "human", "rgb_array"
             super(QueueEnv, self).__init__()
             # Define action and observation space
-            # They must be gym.spaces objects
-            # Example when using discrete actions:
+            self.action_space = Discrete(6)
+            self.observation_space = Box(low=0, high=255, shape=(152, 168, 3), dtype=np.uint8)
+
+            # Helper variables for time data
             self.iteration = -1
             self.starttime = 0
             self.timeData = []
             self.stepList = []
-            self.action_space = spaces.Discrete(6)
-            self.observation_space = spaces.Box(low=0, high=255, shape=(152, 168, 3), dtype=np.uint8)
         
         def step(self, action):
             #increment iteration
@@ -149,19 +156,21 @@ class QueueEnv(gym.Env):
             observation = out["observation"]
             reward = out["reward"]
             done = out["done"]
+            truncated = False
             info = {}
-            return observation, reward, done, info
+            return observation, reward, done, truncated, info
         
-        def reset(self):
+        def reset(self, *, seed=None, options=None):
             print("RESETTING ENVIRONMENT!!!!!!!!!!!!!")
             map = np.zeros((152, 168, 3), dtype=np.uint8)
             observation = map
+            info = {}
             self.pcom = AST()
             # self.pcom.start()
             # asyncio.set_event_loop(asyncio.new_event_loop())
             self.pcom.start()
             # assert False
-            return observation
+            return observation, info
 
 def run_sc2():
     env = QueueEnv()
@@ -176,45 +185,81 @@ def run_sc2():
         go+=1
     print("done ya grease")
 
+# Custom model class
+class CustomModel(TFModelV2):
+    def __init__(self, obs_space, action_space, model_config, name):
+        super(CustomModel, self).__init__(obs_space, action_space, model_config, name)
+        
+        # Define the convolutional layers
+        self.conv1 = tf.keras.layers.Conv2D(16, [3, 3], strides=(1, 1), activation=tf.nn.relu, padding="same",
+                                            kernel_initializer=normc_initializer(1.0))
+        self.conv2 = tf.keras.layers.Conv2D(32, [3, 3], strides=(1, 1), activation=tf.nn.relu, padding="same",
+                                            kernel_initializer=normc_initializer(1.0))
+        self.conv3 = tf.keras.layers.Conv2D(64, [3, 3], strides=(1, 1), activation=tf.nn.relu, padding="same",
+                                            kernel_initializer=normc_initializer(1.0))
+        
+        # Define the fully connected layer
+        self.fc = tf.keras.layers.Dense(action_space.n, activation=None,
+                                        kernel_initializer=normc_initializer(0.01))
+
+    def forward(self, input_dict, state, seq_lens):
+        # Get the input observations
+        obs = input_dict["obs"]
+        
+        # Apply the convolutional layers
+        conv_out = self.conv1(obs)
+        conv_out = self.conv2(conv_out)
+        conv_out = self.conv3(conv_out)
+        
+        # Flatten the convolutional output
+        flattened = tf.keras.layers.Flatten()(conv_out)
+        
+        # Apply the fully connected layer
+        logits = self.fc(flattened)
+        
+        return logits, state
+
 def train_ppo():
-    model_name = f"{int(time.time())}"
+    # Register the custom model class
+    ModelCatalog.register_custom_model("custom_model", CustomModel)
 
-    models_dir = f"models/{model_name}/"
-    logdir = f"logs/{model_name}/"
-
-
-    conf_dict = {"Model": "v19",
-                "Machine": "Main",
-                "policy":"MlpPolicy",
-                "model_save_name": model_name}
-
-    '''
-    run = wandb.init(
-        project=f'SC2RLv6',
-        entity="KrisEmil",
-        config=conf_dict,
-        sync_tensorboard=True,  # auto-upload sb3's tensorboard metrics
-        save_code=True,  # optional
-    )
-    '''
-
-    if not os.path.exists(models_dir):
-        os.makedirs(models_dir)
-
-    if not os.path.exists(logdir):
-        os.makedirs(logdir)
-
+    # Create an instance of your custom environment
     env = QueueEnv()
 
-    model = PPO('MlpPolicy', env, verbose=1, tensorboard_log=logdir)
+    # Create a PPOTrainer and configure it with your custom environment
+    config = {
+        "env": QueueEnv,
+        "framework": "tf",  # Use "tf" for TensorFlow
+        "num_workers": 1,
+        "model": {
+            "custom_model": "custom_model",
+            "custom_model_config": {
+                "conv_filters": [[16, [3, 3], 1], [32, [3, 3], 1], [64, [3, 3], 1]],
+            },
+        },
+    }
+    trainer = PPOTrainer(config)
 
-    TIMESTEPS = 10000
-    iters = 0
-    while True:
-        print("On iteration: ", iters)
-        iters += 1
-        model.learn(total_timesteps=TIMESTEPS, reset_num_timesteps=False, tb_log_name=f"PPO")
-        model.save(f"{models_dir}/{TIMESTEPS*iters}")
+    # Train the PPO agent
+    result = trainer.train()
+    print(result)
+
+    # Get the best trained agent
+    best_agent = trainer.get_policy().model
+
+    # Use the trained agent to interact with the environment
+    obs = env.reset()
+    done = False
+    total_reward = 0
+
+    while not done:
+        action = best_agent.action(obs)
+        obs, reward, done, info = env.step(action)
+        total_reward += reward
+
+    print("Total reward:", total_reward)
+
+
 
 if __name__ == "__main__":
 
