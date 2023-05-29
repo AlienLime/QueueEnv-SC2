@@ -10,6 +10,7 @@ from queue import Queue
 from wandb.integration.sb3 import WandbCallback
 from matplotlib import pyplot as plt
 import wandb
+import sys
 
 # Ray imports
 from ray.rllib.algorithms.ppo import PPOConfig
@@ -86,105 +87,61 @@ class AST(Thread):
             maps.get("TestMap1"), # the map we are playing on
             [Bot(Race.Terran, self.bot), # runs our coded bot, Terran race, and we pass our bot object 
             Computer(Race.Zerg, Difficulty.Hard)], # runs a pre-made computer agent, zerg race, with a hard difficulty.
-            realtime=True, # When set to True, the agent is limited in how long each step can take to process.
+            realtime=False, # When set to True, the agent is limited in how long each step can take to process.
         )
-        # print("stopping game.")
-        # while True:
-        #     break
-        #     action = self.action_in.get()
-        #     print("got an action", action)
-        #
-        #     # print()
-        #     self.bot.action = action
-        #     # out_cr = self.bot.on_step(action)
-        #     # print(f">>> out coroutine {out_cr=}")
-        #     # out = asyncio.run(out_cr)
-        #     if self.bot.output is None:
-        #         print("Waiting for response")
-        #     else:
-        #         print("I got", self.bot.output)
-        #         output = self.bot.output
-        #         self.bot.output = None
-        #
-        #     # print(f">>> {out=}, putting in out queuue.")
-        #     self.result_out.put(output)
-        #     print(">>> all done laila tov.")
-        #     time.sleep(0.2)
 
 
-    # def join() -> None:
-    #     pass
 
 class QueueEnv(gym.Env):
-        def __init__(self, config=None, render_mode=None): # None, "human", "rgb_array"
-            super(QueueEnv, self).__init__()
-            # Define action and observation space
-            self.action_space = Discrete(2)
-            self.observation_space = Box(low=0, high=255, shape=(42, 42, 3), dtype=np.uint8)
+    def __init__(self, config=None, render_mode=None): # None, "human", "rgb_array"
+        super(QueueEnv, self).__init__()
+        # Define action and observation space
+        self.action_space = Discrete(2)
+        self.observation_space = Box(low=0, high=255, shape=(42, 42, 3), dtype=np.uint8)
+    
+    def step(self, action):
+        # Send an action to the Bot
+        self.pcom.action_in.put(action)
 
-            # Helper variables for time data
-            self.iteration = -1
-            self.starttime = 0
-            self.timeData = []
-            self.stepList = []
-        
-        def step(self, action):
-            #increment iteration
-            self.iteration += 1
+        # Get the result
+        out = self.pcom.result_out.get()               
+        observation = out["observation"]
+        reward = out["reward"]
+        done = out["done"]
+        truncated = False
+        info = {}
+        print(reward)
+        return observation, reward, done, truncated, info
+    
+    def reset(self, *, seed=None, options=None):
+        print("RESETTING ENVIRONMENT!!!!!!!!!!!!!")
+        time.sleep(3)
+        map = np.zeros((42, 42, 3), dtype=np.uint8)
+        observation = map
+        info = {}
+        self.pcom = AST()
+        self.pcom.start()
+        # assert False
+        return observation, info
 
-            #start a timer
-            if self.iteration % 100 == 1:
-                self.starttime = time.time()
-
-            # print("SC2.step()> putting action.")
-            self.pcom.action_in.put(action)
-            # print("step, waiting..")
-            out = self.pcom.result_out.get()
-
-            #Get the time taken
-            if self.iteration % 100 == 0 and self.iteration > 0:
-                steptime = round(time.time() - self.starttime, 2)
-                if not(self.iteration == 2100 or self.iteration == 4100 or self.iteration == 6200 or self.iteration == 8200):
-                    self.timeData.append(steptime)
-                    self.stepList.append(self.iteration)
-                print("These 100 steps took", steptime, "seconds")
-                if self.iteration == 6500:
-                    plt.plot(self.stepList, self.timeData)
-                    plt.ylim(0, max(self.timeData) + 1)
-                    plt.show()
-                    
-
-            observation = out["observation"]
-            reward = out["reward"]
-            done = out["done"]
-            truncated = False
-            info = {}
-            return observation, reward, done, truncated, info
-        
-        def reset(self, *, seed=None, options=None):
-            print("RESETTING ENVIRONMENT!!!!!!!!!!!!!")
-            map = np.zeros((42, 42, 3), dtype=np.uint8)
-            observation = map
-            info = {}
-            self.pcom = AST()
-            # self.pcom.start()
-            # asyncio.set_event_loop(asyncio.new_event_loop())
-            self.pcom.start()
-            # assert False
-            return observation, info
+    def close():
+        print("CLOSING DOWN SC2 ENVIRONMENT!")
 
 def run_sc2():
     env = QueueEnv()
-    s0, info = env.reset()
-    # env.pcom.action_in.put("something")
-    # £print("first state is", s0)
-    go = 0
-    while go < 100:
-        print("Step", go)
-        sp, reward, done, info = env.step(go%2)
-        print("Next state was:", go)
-        go+=1
-    print("done ya grease")
+    
+    for _ in range(3):
+        print("iteration", _)
+        s, info = env.reset()
+        while True:
+            a = env.action_space.sample()
+            if np.random.rand() < 0.6: 
+                a = 1
+            s, r, done, truncated, info = env.step(a)
+            if done or truncated:
+                time.sleep(3)
+                print("ran one episode")
+                break
 
 def train_ppo():
     """
@@ -227,12 +184,15 @@ def train_ppo():
         .rollouts(num_rollout_workers=1)
         .resources(num_gpus=0)
         .environment(env=QueueEnv)
+        #.training(sgd_minibatch_size = 2)
         .build()
     )
 
     # Train the PPO agent
     for i in range(5):  # Number of training iterations
+        print("training")
         result = algo.train()
+        print("done with iteration", i)
         print(result)
         
         if i % 5 == 0:
@@ -241,6 +201,9 @@ def train_ppo():
 
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":    
+    #test
+    #run_sc2()
 
+    #train
     train_ppo()

@@ -24,6 +24,19 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         self.action_in = action_in
         self.result_out = result_out
 
+    async def on_end(self,game_result):
+        print ("Game over!")
+        reward = 0
+        map = np.zeros((42, 42, 3), dtype=np.uint8)
+        cv2.destroyAllWindows()
+        #cv2.waitKey(1)
+        if str(game_result) == "Result.Victory":
+            reward = 10
+        else:
+            reward = -10
+        self.result_out.put({"observation" : map, "reward" : reward, "action" : None, "done" : True})
+        
+    
     async def on_step(self, iteration): # on_step is a method that is called every step of the game.
         self.action = self.action_in.get()
         '''
@@ -43,27 +56,22 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         if self.action is None:
             # print("no action returning.")
             return None
-        time.sleep(1)
+        time.sleep(0.05)
         # 0: Force Move
-        print("Action is", self.action)
+        #print("Action is", self.action)
         if self.action == 0:
-            print("Action is", self.action)
             try:
                 for marine in self.units(UnitTypeId.MARINE):
                     for sd in self.structures(UnitTypeId.SUPPLYDEPOT):
-                        print(sd)
                         marine.move(sd)
-                print("action", self.action, "performed")
             except Exception as e:
                 print(e)
 
         #1: Attack Move
         elif self.action == 1:
-            print("Action is", self.action)
             try:
                 for marine in self.units(UnitTypeId.MARINE):
                     marine.attack(random.choice(self.enemy_units))
-                print("action", self.action, "performed")
             except Exception as e:
                 print(e)
 
@@ -164,33 +172,37 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         # show map with opencv, resized to be larger:
         # horizontal flip:
 
-        #cv2.imshow('map',cv2.flip(cv2.resize(map, None, fx=4, fy=4, interpolation=cv2.INTER_NEAREST), 0))
-        cv2.waitKey(1)
+        if iteration != 0:
+            cv2.imshow('map',cv2.flip(cv2.resize(map, None, fx=4, fy=4, interpolation=cv2.INTER_NEAREST), 0))
+            cv2.waitKey(1)
 
         reward = 0
 
         try:
-            attack_count = 0
-            # iterate through our void rays:
+            # iterate through our marines:
             for marine in self.units(UnitTypeId.MARINE):
                 # if voidray is attacking and is in range of enemy unit:
                 if marine.is_attacking and marine.target_in_range:
-                    if self.enemy_units.closer_than(8, marine) or self.enemy_structures.closer_than(8, marine):
-                        # reward += 0.005 # original was 0.005, decent results, but let's 3x it. 
-                        reward += 0.015  
-                        attack_count += 1
+                    reward += 0.1
+                    if self.enemy_units.closer_than(5, marine) and not self.enemy_units.closer_than(2, marine):
+                        reward += 1
+                else:
+                    if self.enemy_units.closer_than(2, marine):
+                        reward += 0.5
+                    else:
+                        reward += -1
 
         except Exception as e:
             print("reward",e)
             reward = 0
 
         if iteration % 100 == 0:
-            print(f"Iter: {iteration}. RWD: {reward}. VR: {self.units(UnitTypeId.VOIDRAY).amount}")
+            print(f"Iter: {iteration}. RWD: {reward}.")
+        print(reward)
 
         self.result_out.put({"observation" : map, "reward" : reward, "action" : None, "done" : False})
         
 
-#cv2.destroyAllWindows()
-#cv2.waitKey(1)
+
 #time.sleep(3)
 #sys.exit()
