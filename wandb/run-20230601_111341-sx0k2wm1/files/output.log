@@ -1,0 +1,36 @@
+
+2023-06-01 11:13:47,350	INFO worker.py:1553 -- Started a local Ray instance.
+[36m(RolloutWorker pid=12312)[39m RESETTING ENVIRONMENT!!!!!!!!!!!!!
+[36m(RolloutWorker pid=12312)[39m starting game.
+[36m(RolloutWorker pid=12312)[39m RESETTING ENVIRONMENT!!!!!!!!!!!!!
+[36m(RolloutWorker pid=12312)[39m 2023-06-01 11:14:05,551	WARNING env.py:156 -- Your env doesn't have a .spec.max_episode_steps attribute. Your horizon will default to infinity, and your environment will not be reset.
+[36m(RolloutWorker pid=12312)[39m 2023-06-01 11:14:05,551	WARNING env.py:166 -- Your env reset() method appears to take 'seed' or 'return_info' arguments. Note that these are not yet supported in RLlib. Seeding will take place using 'env.seed()' and the info dict will not be returned from reset.
+[36m(RolloutWorker pid=12312)[39m starting game.
+[36m(RolloutWorker pid=12312)[39m RESETTING ENVIRONMENT!!!!!!!!!!!!!
+[36m(RolloutWorker pid=12312)[39m starting game.
+[36m(RolloutWorker pid=12312)[39m 2023-06-01 11:14:18.487 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.launched (was None)
+[36m(RolloutWorker pid=12312)[39m 2023-06-01 11:14:18.487 | INFO     | sc2.controller:create_game:37 - Creating new game
+[36m(RolloutWorker pid=12312)[39m 2023-06-01 11:14:18.487 | INFO     | sc2.controller:create_game:38 - Map:     TestMap1
+[36m(RolloutWorker pid=12312)[39m 2023-06-01 11:14:18.489 | INFO     | sc2.controller:create_game:39 - Players: Bot ArmyBot(Terran), Computer Hard(Zerg, RandomBuild)
+[36m(RolloutWorker pid=12312)[39m 2023-06-01 11:14:18.489 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.init_game (was Status.launched)
+[36m(RolloutWorker pid=12312)[39m 2023-06-01 11:14:28.322 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.launched (was None)
+[36m(RolloutWorker pid=12312)[39m 2023-06-01 11:14:28.322 | INFO     | sc2.controller:create_game:37 - Creating new game
+[36m(RolloutWorker pid=12312)[39m 2023-06-01 11:14:28.323 | INFO     | sc2.controller:create_game:38 - Map:     TestMap1
+[36m(RolloutWorker pid=12312)[39m 2023-06-01 11:14:28.323 | INFO     | sc2.controller:create_game:39 - Players: Bot ArmyBot(Terran), Computer Hard(Zerg, RandomBuild)
+[36m(RolloutWorker pid=12312)[39m 2023-06-01 11:14:28.325 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.init_game (was Status.launched)
+[36m(RolloutWorker pid=12312)[39m 2023-06-01 11:14:30.331 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.in_game (was None)
+[36m(RolloutWorker pid=12312)[39m 2023-06-01 11:14:30.331 | INFO     | sc2.main:_play_game:221 - Player 1 - Bot ArmyBot(Terran)
+[36m(RolloutWorker pid=12312)[39m 2023-06-01 11:14:31.447 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.launched (was None)
+[36m(RolloutWorker pid=12312)[39m 2023-06-01 11:14:31.449 | INFO     | sc2.controller:create_game:37 - Creating new game
+[36m(RolloutWorker pid=12312)[39m 2023-06-01 11:14:31.449 | INFO     | sc2.controller:create_game:38 - Map:     TestMap1
+[36m(RolloutWorker pid=12312)[39m 2023-06-01 11:14:31.449 | INFO     | sc2.controller:create_game:39 - Players: Bot ArmyBot(Terran), Computer Hard(Zerg, RandomBuild)
+[36m(RolloutWorker pid=12312)[39m 2023-06-01 11:14:31.523 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.init_game (was Status.launched)
+[36m(RolloutWorker pid=12312)[39m 2023-06-01 11:14:39.253 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.in_game (was None)
+[36m(RolloutWorker pid=12312)[39m 2023-06-01 11:14:39.254 | INFO     | sc2.main:_play_game:221 - Player 1 - Bot ArmyBot(Terran)
+[36m(RolloutWorker pid=12312)[39m 2023-06-01 11:14:41.409 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.in_game (was None)
+[36m(RolloutWorker pid=12312)[39m 2023-06-01 11:14:41.410 | INFO     | sc2.main:_play_game:221 - Player 1 - Bot ArmyBot(Terran)
+[36m(RolloutWorker pid=12312)[39m armybot at... 0
+[36m(RolloutWorker pid=12312)[39m Got action from outside 0 I will now execute that action.
+2023-06-01 11:14:47,197	INFO trainable.py:172 -- Trainable.setup took 62.943 seconds. If your trainable is slow to initialize, consider setting reuse_actors=True to reduce actor creation overheads.
+2023-06-01 11:14:47,208	WARNING util.py:67 -- Install gputil for GPU system monitoring.
+[36m(RolloutWorker pid=12312)[39m RESETTING ENVIRONMENT!!!!!!!!!!!!!

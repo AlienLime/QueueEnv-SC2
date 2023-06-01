@@ -7,7 +7,7 @@ import asyncio
 from threading import Thread
 import time
 from queue import Queue
-from wandb.integration.sb3 import WandbCallback
+from wandb.keras import WandbCallback
 from matplotlib import pyplot as plt
 import wandb
 import sys
@@ -108,14 +108,13 @@ class QueueEnv(gym.Env):
         observation = out["observation"]
         reward = out["reward"]
         done = out["done"]
-        truncated = False
+        truncated = out["truncated"]
         info = {}
-        print(reward)
         return observation, reward, done, truncated, info
     
     def reset(self, *, seed=None, options=None):
         print("RESETTING ENVIRONMENT!!!!!!!!!!!!!")
-        time.sleep(3)
+        time.sleep(5)
         map = np.zeros((42, 42, 3), dtype=np.uint8)
         observation = map
         info = {}
@@ -139,44 +138,15 @@ def run_sc2():
                 a = 1
             s, r, done, truncated, info = env.step(a)
             if done or truncated:
-                time.sleep(3)
                 print("ran one episode")
                 break
 
 def train_ppo():
-    """
-    # Create an instance of your custom environment
-    env = QueueEnv()
+    # Initialize WandB
+    wandb.init(project="ArmyBot1")
 
-    # Create a PPOTrainer and configure it with your custom environment
-    config = {
-        "env": QueueEnv,
-        "framework": "tf",  # Use "tf" for TensorFlow
-        "num_workers": 1,
-    }
-    trainer = PPOTrainer(config)
-
-    # Train the PPO agent
-    result = trainer.train()
-    print(result)
-
-    # Get the best trained agent
-    best_agent = trainer.get_policy().model
-
-    # Use the trained agent to interact with the environment
-    obs = env.reset()
-    done = False
-    total_reward = 0
-
-    while not done:
-        action = best_agent.action(obs)
-        obs, reward, done, info = env.step(action)
-        total_reward += reward
-
-    print("Total reward:", total_reward)"""
-
-    # Create an instance of your custom environment
-    #env = QueueEnv()
+    # Make a list
+    rewards = []
 
     # Create an algo and configure it with your custom environment
     algo = (
@@ -190,15 +160,27 @@ def train_ppo():
 
     # Train the PPO agent
     for i in range(5):  # Number of training iterations
-        print("training")
         result = algo.train()
-        print("done with iteration", i)
-        print(result)
+        #print(result)
+        print(result["hist_stats"]["episode_reward"])
+        episode_reward = result["hist_stats"]["episode_reward"]
+        rewards.append(episode_reward)
         
-        if i % 5 == 0:
+        data = []
+
+        for i in range(len(rewards)):
+            data.append([i, rewards[i]])
+
+        table = wandb.Table(data = data, columns = ["Episodes", "Rewards"])
+
+        wandb.log({"episode_rewards" : wandb.plot.line(table, "Episodes", "Rewards", title="Custom Episode Rewards Line Plot")})
+
+        if i == 4:
             checkpoint_dir = algo.save()
+            wandb.run.dir = checkpoint_dir
             print(f"Checkpoint saved in directory {checkpoint_dir}")
 
+    wandb.finish()
 
 
 if __name__ == "__main__":    

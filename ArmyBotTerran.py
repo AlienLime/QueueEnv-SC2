@@ -34,7 +34,7 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
             reward = 10
         else:
             reward = -10
-        self.result_out.put({"observation" : map, "reward" : reward, "action" : None, "done" : True})
+        self.result_out.put({"observation" : map, "reward" : reward, "action" : None, "done" : True, "truncated" : False})
         
     
     async def on_step(self, iteration): # on_step is a method that is called every step of the game.
@@ -195,12 +195,11 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         except Exception as e:
             print("reward",e)
             reward = 0
+        truncated = False
+        if iteration == 1000:
+            truncated = True
 
-        if iteration % 100 == 0:
-            print(f"Iter: {iteration}. RWD: {reward}.")
-        print(reward)
-
-        self.result_out.put({"observation" : map, "reward" : reward, "action" : None, "done" : False})
+        self.result_out.put({"observation" : map, "reward" : reward, "action" : None, "done" : False, "truncated" : truncated})
         
 
 
