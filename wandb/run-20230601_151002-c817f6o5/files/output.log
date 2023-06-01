@@ -1,0 +1,90 @@
+Traceback (most recent call last):
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\_private\node.py", line 292, in __init__
+    ray._private.services.wait_for_node(
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\_private\services.py", line 460, in wait_for_node
+    raise TimeoutError(
+TimeoutError: Timed out after 60 seconds while waiting for node to startup. Did not find socket name tcp://127.0.0.1:65386 in the list of object store socket names.
+The above exception was the direct cause of the following exception:
+Traceback (most recent call last):
+  File "c:\Users\Emil WC\Bachelor\RL-SC2-bot\QueueEnv.py", line 191, in <module>
+    train_ppo()
+  File "c:\Users\Emil WC\Bachelor\RL-SC2-bot\QueueEnv.py", line 157, in train_ppo
+    .build()
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\rllib\algorithms\algorithm_config.py", line 1071, in build
+    return algo_class(
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\rllib\algorithms\algorithm.py", line 466, in __init__
+    super().__init__(
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\tune\trainable\trainable.py", line 169, in __init__
+    self.setup(copy.deepcopy(self.config))
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\rllib\algorithms\algorithm.py", line 592, in setup
+    self.workers = WorkerSet(
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\rllib\evaluation\worker_set.py", line 172, in __init__
+    self._setup(
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\rllib\evaluation\worker_set.py", line 242, in _setup
+    self.add_workers(
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\rllib\evaluation\worker_set.py", line 613, in add_workers
+    new_workers = [
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\rllib\evaluation\worker_set.py", line 614, in <listcomp>
+    self._make_worker(
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\rllib\evaluation\worker_set.py", line 967, in _make_worker
+    worker = cls(
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\actor.py", line 529, in remote
+    return self._remote(args=args, kwargs=kwargs, **self._default_options)
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\util\tracing\tracing_helper.py", line 381, in _invocation_actor_class_remote_span
+    return method(self, args, kwargs, *_args, **_kwargs)
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\actor.py", line 766, in _remote
+    if client_mode_should_convert(auto_init=True):
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\_private\client_mode_hook.py", line 124, in client_mode_should_convert
+    ray.init()
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\_private\client_mode_hook.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\_private\worker.py", line 1523, in init
+    _global_node = ray._private.node.Node(
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\_private\node.py", line 297, in __init__
+    raise Exception(
+Exception: The current node timed out during startup. This could happen because some of the Ray processes failed to startup.
+Traceback (most recent call last):
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\_private\node.py", line 292, in __init__
+    ray._private.services.wait_for_node(
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\_private\services.py", line 460, in wait_for_node
+    raise TimeoutError(
+TimeoutError: Timed out after 60 seconds while waiting for node to startup. Did not find socket name tcp://127.0.0.1:65386 in the list of object store socket names.
+The above exception was the direct cause of the following exception:
+Traceback (most recent call last):
+  File "c:\Users\Emil WC\Bachelor\RL-SC2-bot\QueueEnv.py", line 191, in <module>
+    train_ppo()
+  File "c:\Users\Emil WC\Bachelor\RL-SC2-bot\QueueEnv.py", line 157, in train_ppo
+    .build()
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\rllib\algorithms\algorithm_config.py", line 1071, in build
+    return algo_class(
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\rllib\algorithms\algorithm.py", line 466, in __init__
+    super().__init__(
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\tune\trainable\trainable.py", line 169, in __init__
+    self.setup(copy.deepcopy(self.config))
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\rllib\algorithms\algorithm.py", line 592, in setup
+    self.workers = WorkerSet(
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\rllib\evaluation\worker_set.py", line 172, in __init__
+    self._setup(
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\rllib\evaluation\worker_set.py", line 242, in _setup
+    self.add_workers(
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\rllib\evaluation\worker_set.py", line 613, in add_workers
+    new_workers = [
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\rllib\evaluation\worker_set.py", line 614, in <listcomp>
+    self._make_worker(
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\rllib\evaluation\worker_set.py", line 967, in _make_worker
+    worker = cls(
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\actor.py", line 529, in remote
+    return self._remote(args=args, kwargs=kwargs, **self._default_options)
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\util\tracing\tracing_helper.py", line 381, in _invocation_actor_class_remote_span
+    return method(self, args, kwargs, *_args, **_kwargs)
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\actor.py", line 766, in _remote
+    if client_mode_should_convert(auto_init=True):
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\_private\client_mode_hook.py", line 124, in client_mode_should_convert
+    ray.init()
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\_private\client_mode_hook.py", line 105, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\_private\worker.py", line 1523, in init
+    _global_node = ray._private.node.Node(
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\_private\node.py", line 297, in __init__
+    raise Exception(
+Exception: The current node timed out during startup. This could happen because some of the Ray processes failed to startup.

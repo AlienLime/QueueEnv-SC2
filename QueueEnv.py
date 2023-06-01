@@ -14,12 +14,11 @@ import sys
 
 # Ray imports
 from ray.rllib.algorithms.ppo import PPOConfig
-from ray.rllib.agents.ppo import PPOTrainer
 from ray.rllib.models import ModelCatalog
 from ray.rllib.models.tf.tf_modelv2 import TFModelV2
 from ray.rllib.models.tf.misc import normc_initializer
-from ray.rllib.utils import try_import_tf
-tf = try_import_tf()
+#from ray.rllib.utils import try_import_tf
+#tf = try_import_tf()
 
 
 #API imports
@@ -110,6 +109,10 @@ class QueueEnv(gym.Env):
         done = out["done"]
         truncated = out["truncated"]
         info = {}
+
+        if truncated:
+            self.close()
+
         return observation, reward, done, truncated, info
     
     def reset(self, *, seed=None, options=None):
@@ -123,8 +126,9 @@ class QueueEnv(gym.Env):
         # assert False
         return observation, info
 
-    def close():
-        print("CLOSING DOWN SC2 ENVIRONMENT!")
+    def close(self):
+        self.pcom._stop()
+        print("Truncated.")
 
 def run_sc2():
     env = QueueEnv()
@@ -159,25 +163,26 @@ def train_ppo():
     )
 
     # Train the PPO agent
-    for i in range(5):  # Number of training iterations
+    iterations = 3
+    for i in range(iterations):  # Number of training iterations
         result = algo.train()
         #print(result)
-        print(result["hist_stats"]["episode_reward"])
         episode_reward = result["hist_stats"]["episode_reward"]
-        rewards.append(episode_reward)
+
+        for rwd in episode_reward:
+            rewards.append(rwd)
         
         data = []
 
-        for i in range(len(rewards)):
-            data.append([i, rewards[i]])
+        for ep in range(len(rewards)):
+            data.append([ep, rewards[ep]])
 
         table = wandb.Table(data = data, columns = ["Episodes", "Rewards"])
 
         wandb.log({"episode_rewards" : wandb.plot.line(table, "Episodes", "Rewards", title="Custom Episode Rewards Line Plot")})
 
-        if i == 4:
+        if i == iterations - 1:
             checkpoint_dir = algo.save()
-            wandb.run.dir = checkpoint_dir
             print(f"Checkpoint saved in directory {checkpoint_dir}")
 
     wandb.finish()
