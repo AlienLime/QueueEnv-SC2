@@ -156,7 +156,7 @@ def train_ppo():
     )
 
     # Train the PPO agent
-    iterations = 1
+    iterations = 5
     for i in range(iterations):  # Number of training iterations
         result = algo.train()
         #print(result)

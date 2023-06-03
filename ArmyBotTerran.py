@@ -35,10 +35,10 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         if str(game_result) == "Result.Victory":
             for marine in self.units(UnitTypeId.MARINE):
                 if marine.health_percentage < 1:
-                    reward += marine.health*10
+                    reward += marine.health
                     info["hp"] = marine.health
         else:
-            reward = -100
+            reward = -10
 
 
         self.result_out.put({"observation" : map, "reward" : reward, "action" : None, "done" : True, "truncated" : False, "info" : info})
@@ -184,7 +184,7 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
             cv2.imshow('map',cv2.flip(cv2.resize(map, None, fx=4, fy=4, interpolation=cv2.INTER_NEAREST), 0))
             cv2.waitKey(1)
 
-        reward = 0
+        reward = -1
 
         try:
             # iterate through our marines:
@@ -197,19 +197,17 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
                 else:
                     if marine.weapon_cooldown > 0:
                         reward += 1
-                    else:
-                        reward += -10
 
         except Exception as e:
             print("reward",e)
             reward = 0
 
-        done = False
-        if iteration == 300:
+        truncated = False
+        if iteration == 500:
 
-            done = True
+            truncated = True
 
-        self.result_out.put({"observation" : map, "reward" : reward, "action" : None, "done" : done, "truncated" : False})
+        self.result_out.put({"observation" : map, "reward" : reward, "action" : None, "done" : False, "truncated" : truncated, "info" : {}})
         
 
 
