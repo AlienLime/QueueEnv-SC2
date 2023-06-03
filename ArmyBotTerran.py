@@ -27,18 +27,21 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
     async def on_end(self,game_result):
         print ("Game over!")
         reward = 0
+        info = {"hp" : None}
         map = np.zeros((42, 42, 3), dtype=np.uint8)
         cv2.destroyAllWindows()
         #cv2.waitKey(1)
         
         if str(game_result) == "Result.Victory":
             for marine in self.units(UnitTypeId.MARINE):
-                print(marine.health_percentage, marine.health)
                 if marine.health_percentage < 1:
-                    reward += marine.health
+                    reward += marine.health*10
+                    info["hp"] = marine.health
         else:
-            reward = -10
-        self.result_out.put({"observation" : map, "reward" : reward, "action" : None, "done" : True, "truncated" : False})
+            reward = -100
+
+
+        self.result_out.put({"observation" : map, "reward" : reward, "action" : None, "done" : True, "truncated" : False, "info" : info})
         
     
     async def on_step(self, iteration): # on_step is a method that is called every step of the game.
@@ -61,7 +64,7 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         if self.action is None:
             # print("no action returning.")
             return None
-        #time.sleep(0.05)
+        time.sleep(0.05)
         # 0: Force Move
         #print("Action is", self.action)
         if self.action == 0:
@@ -186,23 +189,23 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         try:
             # iterate through our marines:
             for marine in self.units(UnitTypeId.MARINE):
-                # if voidray is attacking and is in range of enemy unit:
+                # if marine is attacking and is in range of enemy unit:
                 if marine.is_attacking:
-                    reward += 0
-                    if self.enemy_units.closer_than(5, marine):
-                        reward += 0.5
+                    reward += 0.1
+                    if self.enemy_units.closer_than(5, marine) and marine.weapon_cooldown == 0:
+                        reward += 0.9
                 else:
-                    if marine.weapon_cooldown < 0:
-                        reward += 2
+                    if marine.weapon_cooldown > 0:
+                        reward += 1
                     else:
-                        reward += -1
+                        reward += -10
 
         except Exception as e:
             print("reward",e)
             reward = 0
 
         done = False
-        if iteration == 1000:
+        if iteration == 300:
 
             done = True
 

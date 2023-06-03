@@ -86,7 +86,7 @@ class AST(Thread):
             maps.get("TestMap3"), # the map we are playing on
             [Bot(Race.Terran, self.bot), # runs our coded bot, Terran race, and we pass our bot object 
             Computer(Race.Zerg, Difficulty.Hard)], # runs a pre-made computer agent, zerg race, with a hard difficulty.
-            realtime=True, # When set to True, the agent is limited in how long each step can take to process.
+            realtime=False, # When set to True, the agent is limited in how long each step can take to process.
         )
 
 
@@ -108,7 +108,7 @@ class QueueEnv(gym.Env):
         reward = out["reward"]
         done = out["done"]
         truncated = out["truncated"]
-        info = {}
+        info = out["info"]
 
         return observation, reward, done, truncated, info
     
@@ -156,7 +156,7 @@ def train_ppo():
     )
 
     # Train the PPO agent
-    iterations = 2
+    iterations = 1
     for i in range(iterations):  # Number of training iterations
         result = algo.train()
         #print(result)
