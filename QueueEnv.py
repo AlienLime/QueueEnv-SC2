@@ -83,10 +83,10 @@ class AST(Thread):
         self.bot = ArmyBot(action_in=self.action_in, result_out=self.result_out)
         print("starting game.")
         result = run_game(  # run_game is a function that runs the game.
-            maps.get("TestMap1"), # the map we are playing on
+            maps.get("TestMap3"), # the map we are playing on
             [Bot(Race.Terran, self.bot), # runs our coded bot, Terran race, and we pass our bot object 
             Computer(Race.Zerg, Difficulty.Hard)], # runs a pre-made computer agent, zerg race, with a hard difficulty.
-            realtime=False, # When set to True, the agent is limited in how long each step can take to process.
+            realtime=True, # When set to True, the agent is limited in how long each step can take to process.
         )
 
 
@@ -110,9 +110,6 @@ class QueueEnv(gym.Env):
         truncated = out["truncated"]
         info = {}
 
-        if truncated:
-            self.close()
-
         return observation, reward, done, truncated, info
     
     def reset(self, *, seed=None, options=None):
@@ -125,10 +122,7 @@ class QueueEnv(gym.Env):
         self.pcom.start()
         # assert False
         return observation, info
-
-    def close(self):
-        self.pcom._stop()
-        print("Truncated.")
+    
 
 def run_sc2():
     env = QueueEnv()
@@ -158,12 +152,11 @@ def train_ppo():
         .rollouts(num_rollout_workers=1)
         .resources(num_gpus=0)
         .environment(env=QueueEnv)
-        #.training(sgd_minibatch_size = 2)
         .build()
     )
 
     # Train the PPO agent
-    iterations = 3
+    iterations = 2
     for i in range(iterations):  # Number of training iterations
         result = algo.train()
         #print(result)
@@ -172,18 +165,19 @@ def train_ppo():
         for rwd in episode_reward:
             rewards.append(rwd)
         
-        data = []
-
-        for ep in range(len(rewards)):
-            data.append([ep, rewards[ep]])
-
-        table = wandb.Table(data = data, columns = ["Episodes", "Rewards"])
-
-        wandb.log({"episode_rewards" : wandb.plot.line(table, "Episodes", "Rewards", title="Custom Episode Rewards Line Plot")})
+        
 
         if i == iterations - 1:
             checkpoint_dir = algo.save()
             print(f"Checkpoint saved in directory {checkpoint_dir}")
+            data = []
+
+            for ep in range(len(rewards)):
+                data.append([ep, rewards[ep]])
+
+            table = wandb.Table(data = data, columns = ["Episodes", "Rewards"])
+
+            wandb.log({"episode_rewards" : wandb.plot.line(table, "Episodes", "Rewards", title="Custom Episode Rewards Line Plot")})
 
     wandb.finish()
 

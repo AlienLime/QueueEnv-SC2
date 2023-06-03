@@ -30,8 +30,12 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         map = np.zeros((42, 42, 3), dtype=np.uint8)
         cv2.destroyAllWindows()
         #cv2.waitKey(1)
+        
         if str(game_result) == "Result.Victory":
-            reward = 10
+            for marine in self.units(UnitTypeId.MARINE):
+                print(marine.health_percentage, marine.health)
+                if marine.health_percentage < 1:
+                    reward += marine.health
         else:
             reward = -10
         self.result_out.put({"observation" : map, "reward" : reward, "action" : None, "done" : True, "truncated" : False})
@@ -57,7 +61,7 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         if self.action is None:
             # print("no action returning.")
             return None
-        time.sleep(0.05)
+        #time.sleep(0.05)
         # 0: Force Move
         #print("Action is", self.action)
         if self.action == 0:
@@ -183,24 +187,26 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
             # iterate through our marines:
             for marine in self.units(UnitTypeId.MARINE):
                 # if voidray is attacking and is in range of enemy unit:
-                if marine.is_attacking and marine.target_in_range:
-                    reward += 0.1
-                    if self.enemy_units.closer_than(5, marine) and not self.enemy_units.closer_than(2, marine):
-                        reward += 1
-                else:
-                    if self.enemy_units.closer_than(2, marine):
+                if marine.is_attacking:
+                    reward += 0
+                    if self.enemy_units.closer_than(5, marine):
                         reward += 0.5
+                else:
+                    if marine.weapon_cooldown < 0:
+                        reward += 2
                     else:
                         reward += -1
 
         except Exception as e:
             print("reward",e)
             reward = 0
-        truncated = False
-        if iteration == 1000:
-            truncated = True
 
-        self.result_out.put({"observation" : map, "reward" : reward, "action" : None, "done" : False, "truncated" : truncated})
+        done = False
+        if iteration == 1000:
+
+            done = True
+
+        self.result_out.put({"observation" : map, "reward" : reward, "action" : None, "done" : done, "truncated" : False})
         
 
 

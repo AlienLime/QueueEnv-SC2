@@ -1,0 +1,41 @@
+2023-06-03 11:04:42,514 INFO    StreamThr :44972 [internal.py:wandb_internal():86] W&B internal server running at pid: 44972, started at: 2023-06-03 11:04:42.513805
+2023-06-03 11:04:42,515 DEBUG   HandlerThread:44972 [handler.py:handle_request():144] handle_request: status
+2023-06-03 11:04:42,518 INFO    WriterThread:44972 [datastore.py:open_for_write():85] open: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230603_110442-a4hul0bo\run-a4hul0bo.wandb
+2023-06-03 11:04:42,518 DEBUG   SenderThread:44972 [sender.py:send():375] send: header
+2023-06-03 11:04:42,549 DEBUG   SenderThread:44972 [sender.py:send():375] send: run
+2023-06-03 11:04:43,090 DEBUG   HandlerThread:44972 [handler.py:handle_request():144] handle_request: check_version
+2023-06-03 11:04:43,091 INFO    SenderThread:44972 [dir_watcher.py:__init__():219] watching files in: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230603_110442-a4hul0bo\files
+2023-06-03 11:04:43,091 INFO    SenderThread:44972 [sender.py:_start_run_threads():1124] run started: a4hul0bo with start time 1685783082.514802
+2023-06-03 11:04:43,091 DEBUG   SenderThread:44972 [sender.py:send_request():402] send_request: summary_record
+2023-06-03 11:04:43,092 INFO    SenderThread:44972 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-03 11:04:43,092 DEBUG   SenderThread:44972 [sender.py:send_request():402] send_request: check_version
+2023-06-03 11:04:43,326 DEBUG   HandlerThread:44972 [handler.py:handle_request():144] handle_request: run_start
+2023-06-03 11:04:43,343 DEBUG   HandlerThread:44972 [system_info.py:__init__():31] System info init
+2023-06-03 11:04:43,344 DEBUG   HandlerThread:44972 [system_info.py:__init__():46] System info init done
+2023-06-03 11:04:43,344 INFO    HandlerThread:44972 [system_monitor.py:start():181] Starting system monitor
+2023-06-03 11:04:43,344 INFO    SystemMonitor:44972 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2023-06-03 11:04:43,344 INFO    HandlerThread:44972 [system_monitor.py:probe():201] Collecting system info
+2023-06-03 11:04:43,347 INFO    SystemMonitor:44972 [interfaces.py:start():190] Started cpu monitoring
+2023-06-03 11:04:43,348 INFO    SystemMonitor:44972 [interfaces.py:start():190] Started disk monitoring
+2023-06-03 11:04:43,349 INFO    SystemMonitor:44972 [interfaces.py:start():190] Started gpu monitoring
+2023-06-03 11:04:43,354 INFO    SystemMonitor:44972 [interfaces.py:start():190] Started memory monitoring
+2023-06-03 11:04:43,362 INFO    SystemMonitor:44972 [interfaces.py:start():190] Started network monitoring
+2023-06-03 11:04:43,376 DEBUG   HandlerThread:44972 [system_info.py:probe():195] Probing system
+2023-06-03 11:04:43,377 DEBUG   HandlerThread:44972 [system_info.py:_probe_git():180] Probing git
+2023-06-03 11:04:43,437 DEBUG   HandlerThread:44972 [system_info.py:_probe_git():188] Probing git done
+2023-06-03 11:04:43,437 DEBUG   HandlerThread:44972 [system_info.py:probe():240] Probing system done
+2023-06-03 11:04:43,437 DEBUG   HandlerThread:44972 [system_monitor.py:probe():210] {'os': 'Windows-10-10.0.22621-SP0', 'python': '3.10.10', 'heartbeatAt': '2023-06-03T09:04:43.376744', 'startedAt': '2023-06-03T09:04:42.494783', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': 'c:\\Users\\Emil WC\\Bachelor\\RL-SC2-bot\\QueueEnv.py', 'codePath': 'QueueEnv.py', 'git': {'remote': 'https://github.com/AlienLime/RL-SC2-bot.git', 'commit': '09e00fd00aab1075949550d459f651b1f76aff50'}, 'email': 'emil@np12.dk', 'root': 'C:/Users/Emil WC/Bachelor/RL-SC2-bot', 'host': 'DESKTOP-C36C3C6', 'username': 'Emil WC', 'executable': 'C:\\Users\\Emil WC\\AppData\\Local\\Programs\\Python\\Python310\\python.exe', 'cpu_count': 8, 'cpu_count_logical': 16, 'cpu_freq': {'current': 2904.0, 'min': 0.0, 'max': 2904.0}, 'cpu_freq_per_core': [{'current': 2904.0, 'min': 0.0, 'max': 2904.0}], 'disk': {'total': 930.5849571228027, 'used': 669.3657569885254}, 'gpu': 'NVIDIA GeForce GTX 1660 SUPER', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce GTX 1660 SUPER', 'memory_total': 6442450944}], 'memory': {'total': 15.856761932373047}}
+2023-06-03 11:04:43,438 INFO    HandlerThread:44972 [system_monitor.py:probe():211] Finished collecting system info
+2023-06-03 11:04:43,438 INFO    HandlerThread:44972 [system_monitor.py:probe():214] Publishing system info
+2023-06-03 11:04:43,438 DEBUG   HandlerThread:44972 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-06-03 11:04:43,438 DEBUG   HandlerThread:44972 [system_info.py:_save_pip():67] Saving pip packages done
+2023-06-03 11:04:43,439 INFO    HandlerThread:44972 [system_monitor.py:probe():216] Finished publishing system info
+2023-06-03 11:04:43,446 DEBUG   SenderThread:44972 [sender.py:send():375] send: files
+2023-06-03 11:04:43,446 INFO    SenderThread:44972 [sender.py:_save_file():1378] saving file wandb-metadata.json with policy now
+2023-06-03 11:04:43,451 DEBUG   HandlerThread:44972 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-03 11:04:43,451 DEBUG   SenderThread:44972 [sender.py:send_request():402] send_request: stop_status
+2023-06-03 11:04:43,774 DEBUG   SenderThread:44972 [sender.py:send():375] send: telemetry
+2023-06-03 11:04:44,104 INFO    Thread-16 :44972 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230603_110442-a4hul0bo\files\wandb-summary.json
+2023-06-03 11:04:44,104 INFO    Thread-16 :44972 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230603_110442-a4hul0bo\files\wandb-metadata.json
+2023-06-03 11:04:44,104 INFO    Thread-16 :44972 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230603_110442-a4hul0bo\files\requirements.txt
+2023-06-03 11:04:44,524 INFO    wandb-upload_0:44972 [upload_job.py:push():137] Uploaded file C:\Users\EMILWC~1\AppData\Local\Temp\tmpwama_2ziwandb\m565dzm2-wandb-metadata.json

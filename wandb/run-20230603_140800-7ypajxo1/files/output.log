@@ -1,0 +1,35 @@
+
+2023-06-03 14:08:03,662	INFO worker.py:1625 -- Started a local Ray instance.
+[36m(RolloutWorker pid=37580)[39m RESETTING ENVIRONMENT!!!!!!!!!!!!!
+[36m(RolloutWorker pid=37580)[39m 2023-06-03 14:08:15,277	WARNING env.py:155 -- Your env doesn't have a .spec.max_episode_steps attribute. Your horizon will default to infinity, and your environment will not be reset.
+[36m(RolloutWorker pid=37580)[39m starting game.
+[36m(RolloutWorker pid=37580)[39m RESETTING ENVIRONMENT!!!!!!!!!!!!!
+[36m(RolloutWorker pid=37580)[39m starting game.RESETTING ENVIRONMENT!!!!!!!!!!!!!
+[36m(RolloutWorker pid=37580)
+[36m(RolloutWorker pid=37580)[39m Exception in thread Thread-4:
+[36m(RolloutWorker pid=37580)[39m Traceback (most recent call last):
+[36m(RolloutWorker pid=37580)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\threading.py", line 1016, in _bootstrap_inner
+[36m(RolloutWorker pid=37580)[39m     self.run()
+[36m(RolloutWorker pid=37580)[39m   File "c:\Users\Emil WC\Bachelor\RL-SC2-bot\QueueEnv.py", line 85, in run
+[36m(RolloutWorker pid=37580)[39m     result = run_game(  # run_game is a function that runs the game.
+[36m(RolloutWorker pid=37580)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\main.py", line 496, in run_game
+[36m(RolloutWorker pid=37580)[39m     result: Result = asyncio.run(_host_game(map_settings, players, **kwargs))
+[36m(RolloutWorker pid=37580)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 44, in run
+[36m(RolloutWorker pid=37580)[39m     return loop.run_until_complete(main)
+[36m(RolloutWorker pid=37580)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 649, in run_until_complete
+[36m(RolloutWorker pid=37580)[39m     return future.result()
+[36m(RolloutWorker pid=37580)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\main.py", line 357, in _host_game
+[36m(RolloutWorker pid=37580)[39m     async with SC2Process(
+[36m(RolloutWorker pid=37580)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\sc2process.py", line 107, in __aenter__
+[36m(RolloutWorker pid=37580)[39m     self._process = self._launch()
+[36m(RolloutWorker pid=37580)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\sc2process.py", line 196, in _launch
+[36m(RolloutWorker pid=37580)[39m     return subprocess.Popen(
+[36m(RolloutWorker pid=37580)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\subprocess.py", line 971, in __init__
+[36m(RolloutWorker pid=37580)[39m     self._execute_child(args, executable, preexec_fn, close_fds,
+[36m(RolloutWorker pid=37580)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\subprocess.py", line 1440, in _execute_child
+[36m(RolloutWorker pid=37580)[39m     hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+[36m(RolloutWorker pid=37580)[39m OSError: [WinError 1455] Sidefilen er for lille til, at denne handling kan gennemføres
+[36m(RolloutWorker pid=37580)[39m starting game.
+[36m(RolloutWorker pid=37580)[39m 2023-06-03 14:08:25.288 | INFO     | sc2.sc2process:_close_connection:231 - Closing connection at 64125...
+[36m(RolloutWorker pid=37580)[39m 2023-06-03 14:08:25.288 | INFO     | sc2.sc2process:_clean:242 - Cleaning up...
+[36m(RolloutWorker pid=37580)[39m 2023-06-03 14:08:25.289 | INFO     | sc2.sc2process:_clean:274 - Cleanup complete

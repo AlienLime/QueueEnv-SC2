@@ -1,0 +1,177 @@
+
+2023-06-03 10:59:48,284	INFO worker.py:1625 -- Started a local Ray instance.
+[36m(RolloutWorker pid=44144)[39m RESETTING ENVIRONMENT!!!!!!!!!!!!!
+[36m(RolloutWorker pid=44144)[39m 2023-06-03 10:59:59,640	WARNING env.py:155 -- Your env doesn't have a .spec.max_episode_steps attribute. Your horizon will default to infinity, and your environment will not be reset.
+[36m(RolloutWorker pid=44144)[39m starting game.
+[36m(RolloutWorker pid=44144)[39m RESETTING ENVIRONMENT!!!!!!!!!!!!!
+[36m(RolloutWorker pid=44144)[39m starting game.
+[36m(RolloutWorker pid=44144)[39m RESETTING ENVIRONMENT!!!!!!!!!!!!!
+[36m(RolloutWorker pid=44144)[39m starting game.
+[36m(RolloutWorker pid=44144)[39m 2023-06-03 11:00:12.669 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.launched (was None)
+[36m(RolloutWorker pid=44144)[39m 2023-06-03 11:00:12.670 | INFO     | sc2.controller:create_game:37 - Creating new game
+[36m(RolloutWorker pid=44144)[39m 2023-06-03 11:00:12.670 | INFO     | sc2.controller:create_game:38 - Map:     TestMap1
+[36m(RolloutWorker pid=44144)[39m 2023-06-03 11:00:12.670 | INFO     | sc2.controller:create_game:39 - Players: Bot ArmyBot(Terran), Computer Hard(Zerg, RandomBuild)
+[36m(RolloutWorker pid=44144)[39m 2023-06-03 11:00:12.670 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.init_game (was Status.launched)
+[36m(RolloutWorker pid=44144)[39m 2023-06-03 11:00:16.969 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.in_game (was None)
+[36m(RolloutWorker pid=44144)[39m 2023-06-03 11:00:16.969 | INFO     | sc2.main:_play_game:221 - Player 1 - Bot ArmyBot(Terran)
+[36m(RolloutWorker pid=44144)[39m 2023-06-03 11:00:17.142 | ERROR    | sc2.main:initialize_first_step:140 - Caught unknown exception in AI on_start: y is 32, self.height is 32
+[36m(RolloutWorker pid=44144)[39m Traceback (most recent call last):
+[36m(RolloutWorker pid=44144)
+[36m(RolloutWorker pid=44144)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\threading.py", line 973, in _bootstrap
+[36m(RolloutWorker pid=44144)[39m     self._bootstrap_inner()
+[36m(RolloutWorker pid=44144)[39m     │    └ <function Thread._bootstrap_inner at 0x0000023BC0370820>
+[36m(RolloutWorker pid=44144)[39m     └ <AST(Thread-2, started 37912)>
+[36m(RolloutWorker pid=44144)
+[36m(RolloutWorker pid=44144)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\threading.py", line 1016, in _bootstrap_inner
+[36m(RolloutWorker pid=44144)[39m     self.run()
+[36m(RolloutWorker pid=44144)[39m     │    └ <function AST.run at 0x0000023C5924D3F0>
+[36m(RolloutWorker pid=44144)[39m     └ <AST(Thread-2, started 37912)>
+[36m(RolloutWorker pid=44144)
+[36m(RolloutWorker pid=44144)[39m   File "c:\Users\Emil WC\Bachelor\RL-SC2-bot\QueueEnv.py", line 85, in run
+[36m(RolloutWorker pid=44144)[39m     result = run_game(  # run_game is a function that runs the game.
+[36m(RolloutWorker pid=44144)[39m              └ <function run_game at 0x0000023C590923B0>
+[36m(RolloutWorker pid=44144)
+[36m(RolloutWorker pid=44144)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\main.py", line 496, in run_game
+[36m(RolloutWorker pid=44144)[39m     result: Result = asyncio.run(_host_game(map_settings, players, **kwargs))
+[36m(RolloutWorker pid=44144)[39m                      │       │   │          │             │          └ {'realtime': False}
+[36m(RolloutWorker pid=44144)[39m                      │       │   │          │             └ [<sc2.player.Bot object at 0x0000023C59225660>, <sc2.player.Computer object at 0x0000023C592246D0>]
+[36m(RolloutWorker pid=44144)[39m                      │       │   │          └ Map(C:\Program Files (x86)\StarCraft II\maps\TestMap1.SC2Map)
+[36m(RolloutWorker pid=44144)[39m                      │       │   └ <function _host_game at 0x0000023C59091FC0>
+[36m(RolloutWorker pid=44144)[39m                      │       └ <function run at 0x0000023BC03FCC10>
+[36m(RolloutWorker pid=44144)[39m                      └ <module 'asyncio' from 'C:\\Users\\Emil WC\\AppData\\Local\\Programs\\Python\\Python310\\lib\\asyncio\\__init__.py'>
+[36m(RolloutWorker pid=44144)
+[36m(RolloutWorker pid=44144)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 44, in run
+[36m(RolloutWorker pid=44144)[39m     return loop.run_until_complete(main)
+[36m(RolloutWorker pid=44144)[39m            │    │                  └ <coroutine object _host_game at 0x0000023C58A7E340>
+[36m(RolloutWorker pid=44144)[39m            │    └ <function BaseEventLoop.run_until_complete at 0x0000023BC1F94D30>
+[36m(RolloutWorker pid=44144)[39m            └ <ProactorEventLoop running=True closed=False debug=False>
+[36m(RolloutWorker pid=44144)
+[36m(RolloutWorker pid=44144)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 636, in run_until_complete
+[36m(RolloutWorker pid=44144)[39m     self.run_forever()
+[36m(RolloutWorker pid=44144)[39m     │    └ <function ProactorEventLoop.run_forever at 0x0000023BC205D510>
+[36m(RolloutWorker pid=44144)[39m     └ <ProactorEventLoop running=True closed=False debug=False>
+[36m(RolloutWorker pid=44144)
+[36m(RolloutWorker pid=44144)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 321, in run_forever
+[36m(RolloutWorker pid=44144)[39m     super().run_forever()
+[36m(RolloutWorker pid=44144)
+[36m(RolloutWorker pid=44144)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 603, in run_forever
+[36m(RolloutWorker pid=44144)[39m     self._run_once()
+[36m(RolloutWorker pid=44144)[39m     │    └ <function BaseEventLoop._run_once at 0x0000023BC1F967A0>
+[36m(RolloutWorker pid=44144)[39m     └ <ProactorEventLoop running=True closed=False debug=False>
+[36m(RolloutWorker pid=44144)
+[36m(RolloutWorker pid=44144)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 1909, in _run_once
+[36m(RolloutWorker pid=44144)[39m     handle._run()
+[36m(RolloutWorker pid=44144)[39m     │      └ <function Handle._run at 0x0000023BC1EF5990>
+[36m(RolloutWorker pid=44144)[39m     └ <Handle Task.task_wakeup(<Future finished result=None>)>
+[36m(RolloutWorker pid=44144)
+[36m(RolloutWorker pid=44144)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 80, in _run
+[36m(RolloutWorker pid=44144)[39m     self._context.run(self._callback, *self._args)
+[36m(RolloutWorker pid=44144)[39m     │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+[36m(RolloutWorker pid=44144)[39m     │    │            │    │           └ <Handle Task.task_wakeup(<Future finished result=None>)>
+[36m(RolloutWorker pid=44144)[39m     │    │            │    └ <member '_callback' of 'Handle' objects>
+[36m(RolloutWorker pid=44144)[39m     │    │            └ <Handle Task.task_wakeup(<Future finished result=None>)>
+[36m(RolloutWorker pid=44144)[39m     │    └ <member '_context' of 'Handle' objects>
+[36m(RolloutWorker pid=44144)[39m     └ <Handle Task.task_wakeup(<Future finished result=None>)>
+[36m(RolloutWorker pid=44144)
+[36m(RolloutWorker pid=44144)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\main.py", line 369, in _host_game
+[36m(RolloutWorker pid=44144)[39m     result = await _play_game(players[0], client, realtime, portconfig, game_time_limit, rgb_render_config)
+[36m(RolloutWorker pid=44144)[39m                    │          │           │       │         │           │                └ None
+[36m(RolloutWorker pid=44144)[39m                    │          │           │       │         │           └ None
+[36m(RolloutWorker pid=44144)[39m                    │          │           │       │         └ None
+[36m(RolloutWorker pid=44144)[39m                    │          │           │       └ False
+[36m(RolloutWorker pid=44144)[39m                    │          │           └ <sc2.client.Client object at 0x0000023C5926E3B0>
+[36m(RolloutWorker pid=44144)[39m                    │          └ [<sc2.player.Bot object at 0x0000023C59225660>, <sc2.player.Computer object at 0x0000023C592246D0>]
+[36m(RolloutWorker pid=44144)[39m                    └ <function _play_game at 0x0000023C59091E10>
+[36m(RolloutWorker pid=44144)
+[36m(RolloutWorker pid=44144)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\main.py", line 226, in _play_game
+[36m(RolloutWorker pid=44144)[39m     result = await _play_game_ai(client, player_id, player.ai, realtime, game_time_limit)
+[36m(RolloutWorker pid=44144)[39m                    │             │       │          │      │   │         └ None
+[36m(RolloutWorker pid=44144)[39m                    │             │       │          │      │   └ False
+[36m(RolloutWorker pid=44144)[39m                    │             │       │          │      └ <ArmyBotTerran.ArmyBot object at 0x0000023C59224E50>
+[36m(RolloutWorker pid=44144)[39m                    │             │       │          └ <sc2.player.Bot object at 0x0000023C59225660>
+[36m(RolloutWorker pid=44144)[39m                    │             │       └ 1
+[36m(RolloutWorker pid=44144)[39m                    │             └ <sc2.client.Client object at 0x0000023C5926E3B0>
+[36m(RolloutWorker pid=44144)[39m                    └ <function _play_game_ai at 0x0000023C59091B40>
+[36m(RolloutWorker pid=44144)
+[36m(RolloutWorker pid=44144)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\main.py", line 145, in _play_game_ai
+[36m(RolloutWorker pid=44144)[39m     result = await initialize_first_step()
+[36m(RolloutWorker pid=44144)[39m                    └ <function _play_game_ai.<locals>.initialize_first_step at 0x0000023C5924D5A0>
+[36m(RolloutWorker pid=44144)
+[36m(RolloutWorker pid=44144)[39m > File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\main.py", line 135, in initialize_first_step
+[36m(RolloutWorker pid=44144)[39m     ai._prepare_first_step()
+[36m(RolloutWorker pid=44144)[39m     │  └ <function BotAIInternal._prepare_first_step at 0x0000023C58D32DD0>
+[36m(RolloutWorker pid=44144)[39m     └ <ArmyBotTerran.ArmyBot object at 0x0000023C59224E50>
+[36m(RolloutWorker pid=44144)
+[36m(RolloutWorker pid=44144)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\bot_ai_internal.py", line 472, in _prepare_first_step
+[36m(RolloutWorker pid=44144)[39m     self._find_expansion_locations()
+[36m(RolloutWorker pid=44144)[39m     │    └ <function BotAIInternal._find_expansion_locations at 0x0000023C58D328C0>
+[36m(RolloutWorker pid=44144)[39m     └ <ArmyBotTerran.ArmyBot object at 0x0000023C59224E50>
+[36m(RolloutWorker pid=44144)
+[36m(RolloutWorker pid=44144)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\bot_ai_internal.py", line 232, in _find_expansion_locations
+[36m(RolloutWorker pid=44144)[39m     result: Point2 = min(
+[36m(RolloutWorker pid=44144)
+[36m(RolloutWorker pid=44144)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\bot_ai_internal.py", line 224, in <genexpr>
+[36m(RolloutWorker pid=44144)[39m     if self.game_info.placement_grid[point.rounded] == 1
+[36m(RolloutWorker pid=44144)[39m        │    │         │              │     └ <property object at 0x0000023C58CCA700>
+[36m(RolloutWorker pid=44144)[39m        │    │         │              └ (20.5, 32.5)
+[36m(RolloutWorker pid=44144)[39m        │    │         └ <sc2.pixel_map.PixelMap object at 0x0000023C593356F0>
+[36m(RolloutWorker pid=44144)[39m        │    └ <sc2.game_info.GameInfo object at 0x0000023C592F3E20>
+[36m(RolloutWorker pid=44144)[39m        └ <ArmyBotTerran.ArmyBot object at 0x0000023C59224E50>
+[36m(RolloutWorker pid=44144)
+[36m(RolloutWorker pid=44144)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\pixel_map.py", line 47, in __getitem__
+[36m(RolloutWorker pid=44144)[39m     assert 0 <= pos[1] < self.height, f"y is {pos[1]}, self.height is {self.height}"
+[36m(RolloutWorker pid=44144)[39m                 │        │    └ <property object at 0x0000023C58CDE200>
+[36m(RolloutWorker pid=44144)[39m                 │        └ <sc2.pixel_map.PixelMap object at 0x0000023C593356F0>
+[36m(RolloutWorker pid=44144)[39m                 └ (20, 32)
+[36m(RolloutWorker pid=44144)
+[36m(RolloutWorker pid=44144)[39m AssertionError: y is 32, self.height is 32
+[36m(RolloutWorker pid=44144)[39m 2023-06-03 11:00:17.147 | ERROR    | sc2.main:initialize_first_step:141 - Resigning due to previous error
+[36m(RolloutWorker pid=44144)[39m Game over!
+[36m(RolloutWorker pid=44144)[39m 2023-06-03 11:00:17.149 | INFO     | sc2.main:_play_game:228 - Result for player 1 - Bot ArmyBot(Terran): Defeat
+[36m(RolloutWorker pid=44144)[39m 2023-06-03 11:00:17.899 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.launched (was Status.in_game)
+[36m(RolloutWorker pid=44144)[39m 2023-06-03 11:00:17.901 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.quit (was Status.launched)
+[36m(RolloutWorker pid=44144)[39m 2023-06-03 11:00:17.901 | INFO     | sc2.sc2process:_close_connection:231 - Closing connection at 53262...
+[36m(RolloutWorker pid=44144)[39m 2023-06-03 11:00:17.901 | INFO     | sc2.sc2process:kill_all:33 - kill_switch: Process cleanup for 3 processes
+[36m(RolloutWorker pid=44144)[39m 2023-06-03 11:00:18.141 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.launched (was None)
+[36m(RolloutWorker pid=44144)[39m 2023-06-03 11:00:18.141 | INFO     | sc2.controller:create_game:37 - Creating new game
+[36m(RolloutWorker pid=44144)[39m 2023-06-03 11:00:18.141 | INFO     | sc2.controller:create_game:38 - Map:     TestMap1
+[36m(RolloutWorker pid=44144)[39m 2023-06-03 11:00:18.141 | INFO     | sc2.controller:create_game:39 - Players: Bot ArmyBot(Terran), Computer Hard(Zerg, RandomBuild)
+[36m(RolloutWorker pid=44144)[39m 2023-06-03 11:00:18.142 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.init_game (was Status.launched)
+[36m(RolloutWorker pid=44144)[39m Exception in thread Thread-3:
+[36m(RolloutWorker pid=44144)[39m Traceback (most recent call last):
+[36m(RolloutWorker pid=44144)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\protocol.py", line 45, in __request
+[36m(RolloutWorker pid=44144)[39m     response_bytes = await self._ws.receive_bytes()
+[36m(RolloutWorker pid=44144)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp\client_ws.py", line 281, in receive_bytes
+[36m(RolloutWorker pid=44144)[39m     raise TypeError(f"Received message {msg.type}:{msg.data!r} is not bytes")
+[36m(RolloutWorker pid=44144)[39m TypeError: Received message 257:None is not bytes
+[36m(RolloutWorker pid=44144)
+[36m(RolloutWorker pid=44144)[39m The above exception was the direct cause of the following exception:
+[36m(RolloutWorker pid=44144)
+[36m(RolloutWorker pid=44144)[39m Traceback (most recent call last):
+[36m(RolloutWorker pid=44144)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\threading.py", line 1016, in _bootstrap_inner
+[36m(RolloutWorker pid=44144)[39m     self.run()
+[36m(RolloutWorker pid=44144)[39m   File "c:\Users\Emil WC\Bachelor\RL-SC2-bot\QueueEnv.py", line 85, in run
+[36m(RolloutWorker pid=44144)[39m     result = run_game(  # run_game is a function that runs the game.
+[36m(RolloutWorker pid=44144)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\main.py", line 496, in run_game
+[36m(RolloutWorker pid=44144)[39m     result: Result = asyncio.run(_host_game(map_settings, players, **kwargs))
+[36m(RolloutWorker pid=44144)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 44, in run
+[36m(RolloutWorker pid=44144)[39m     return loop.run_until_complete(main)
+[36m(RolloutWorker pid=44144)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 649, in run_until_complete
+[36m(RolloutWorker pid=44144)[39m     return future.result()
+[36m(RolloutWorker pid=44144)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\main.py", line 369, in _host_game
+[36m(RolloutWorker pid=44144)[39m     result = await _play_game(players[0], client, realtime, portconfig, game_time_limit, rgb_render_config)
+[36m(RolloutWorker pid=44144)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\main.py", line 218, in _play_game
+[36m(RolloutWorker pid=44144)[39m     player_id = await client.join_game(
+[36m(RolloutWorker pid=44144)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\client.py", line 99, in join_game
+[36m(RolloutWorker pid=44144)[39m     result = await self._execute(join_game=req)
+[36m(RolloutWorker pid=44144)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\protocol.py", line 68, in _execute
+[36m(RolloutWorker pid=44144)[39m     response = await self.__request(sc_pb.Request(**kwargs))
+[36m(RolloutWorker pid=44144)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\protocol.py", line 51, in __request
+[36m(RolloutWorker pid=44144)[39m     raise ConnectionAlreadyClosed("Connection already closed.") from exc
+[36m(RolloutWorker pid=44144)[39m sc2.protocol.ConnectionAlreadyClosed: Connection already closed.
+[36m(RolloutWorker pid=44144)[39m 2023-06-03 11:00:18.460 | ERROR    | sc2.protocol:__request:50 - Cannot receive: Connection already closed.
+[36m(RolloutWorker pid=44144)[39m 2023-06-03 11:00:18.460 | INFO     | sc2.sc2process:_close_connection:231 - Closing connection at 53293...
+[36m(RolloutWorker pid=44144)[39m 2023-06-03 11:00:18.460 | INFO     | sc2.sc2process:kill_all:33 - kill_switch: Process cleanup for 3 processes
+[36m(RolloutWorker pid=44144)[39m 2023-06-03 11:00:18.961 | ERROR    | sc2.sc2process:_clean:257 - KILLED
+[36m(RolloutWorker pid=44144)[39m 2023-06-03 11:00:19.085 | INFO     | sc2.sc2process:_close_connection:231 - Closing connection at None...
+[36m(RolloutWorker pid=44144)[39m 2023-06-03 11:00:19.085 | INFO     | sc2.sc2process:_clean:242 - Cleaning up...

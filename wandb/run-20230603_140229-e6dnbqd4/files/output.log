@@ -1,0 +1,64 @@
+
+2023-06-03 14:02:32,388	INFO worker.py:1625 -- Started a local Ray instance.
+[36m(RolloutWorker pid=27336)[39m RESETTING ENVIRONMENT!!!!!!!!!!!!!
+[36m(RolloutWorker pid=27336)[39m 2023-06-03 14:02:43,882	WARNING env.py:155 -- Your env doesn't have a .spec.max_episode_steps attribute. Your horizon will default to infinity, and your environment will not be reset.
+[36m(RolloutWorker pid=27336)[39m starting game.
+[36m(RolloutWorker pid=27336)[39m RESETTING ENVIRONMENT!!!!!!!!!!!!!
+[36m(RolloutWorker pid=27336)[39m starting game.RESETTING ENVIRONMENT!!!!!!!!!!!!!
+[36m(RolloutWorker pid=27336)
+[36m(RolloutWorker pid=27336)[39m starting game.
+[36m(RolloutWorker pid=27336)[39m 2023-06-03 14:02:54.807 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.launched (was None)
+[36m(RolloutWorker pid=27336)[39m 2023-06-03 14:02:54.807 | INFO     | sc2.controller:create_game:37 - Creating new game
+[36m(RolloutWorker pid=27336)[39m 2023-06-03 14:02:54.807 | INFO     | sc2.controller:create_game:38 - Map:     TestMap3
+[36m(RolloutWorker pid=27336)[39m 2023-06-03 14:02:54.807 | INFO     | sc2.controller:create_game:39 - Players: Bot ArmyBot(Terran), Computer Hard(Zerg, RandomBuild)
+[36m(RolloutWorker pid=27336)[39m 2023-06-03 14:02:54.808 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.init_game (was Status.launched)
+[36m(RolloutWorker pid=27336)[39m 2023-06-03 14:02:59.227 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.in_game (was None)
+[36m(RolloutWorker pid=27336)[39m 2023-06-03 14:02:59.227 | INFO     | sc2.main:_play_game:221 - Player 1 - Bot ArmyBot(Terran)
+[36m(RolloutWorker pid=27336)[39m 2023-06-03 14:02:59.555 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.launched (was None)
+[36m(RolloutWorker pid=27336)[39m 2023-06-03 14:02:59.555 | INFO     | sc2.controller:create_game:37 - Creating new game
+[36m(RolloutWorker pid=27336)[39m 2023-06-03 14:02:59.555 | INFO     | sc2.controller:create_game:38 - Map:     TestMap3
+[36m(RolloutWorker pid=27336)[39m 2023-06-03 14:02:59.555 | INFO     | sc2.controller:create_game:39 - Players: Bot ArmyBot(Terran), Computer Hard(Zerg, RandomBuild)
+[36m(RolloutWorker pid=27336)[39m 2023-06-03 14:02:59.556 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.init_game (was Status.launched)
+[36m(RolloutWorker pid=27336)[39m 2023-06-03 14:03:04.280 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.in_game (was None)
+[36m(RolloutWorker pid=27336)[39m 2023-06-03 14:03:04.281 | INFO     | sc2.main:_play_game:221 - Player 1 - Bot ArmyBot(Terran)
+[36m(RolloutWorker pid=27336)[39m 2023-06-03 14:03:06.518 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.launched (was None)
+[36m(RolloutWorker pid=27336)[39m 2023-06-03 14:03:06.518 | INFO     | sc2.controller:create_game:37 - Creating new game
+[36m(RolloutWorker pid=27336)[39m 2023-06-03 14:03:06.518 | INFO     | sc2.controller:create_game:38 - Map:     TestMap3
+[36m(RolloutWorker pid=27336)[39m 2023-06-03 14:03:06.519 | INFO     | sc2.controller:create_game:39 - Players: Bot ArmyBot(Terran), Computer Hard(Zerg, RandomBuild)
+[36m(RolloutWorker pid=27336)[39m 2023-06-03 14:03:06.519 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.init_game (was Status.launched)
+[36m(RolloutWorker pid=27336)[39m 2023-06-03 14:03:11.379 | ERROR    | sc2.protocol:__request:50 - Cannot receive: Connection already closed.
+[36m(RolloutWorker pid=27336)[39m 2023-06-03 14:03:11.379 | INFO     | sc2.sc2process:_close_connection:231 - Closing connection at 63581...
+[36m(RolloutWorker pid=27336)[39m 2023-06-03 14:03:11.380 | INFO     | sc2.sc2process:kill_all:33 - kill_switch: Process cleanup for 3 processes
+[36m(RolloutWorker pid=27336)[39m 2023-06-03 14:03:12.391 | ERROR    | sc2.sc2process:_clean:257 - KILLED
+[36m(RolloutWorker pid=27336)[39m Exception in thread Thread-4:
+[36m(RolloutWorker pid=27336)[39m Traceback (most recent call last):
+[36m(RolloutWorker pid=27336)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\protocol.py", line 45, in __request
+[36m(RolloutWorker pid=27336)[39m     response_bytes = await self._ws.receive_bytes()
+[36m(RolloutWorker pid=27336)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp\client_ws.py", line 281, in receive_bytes
+[36m(RolloutWorker pid=27336)[39m     raise TypeError(f"Received message {msg.type}:{msg.data!r} is not bytes")
+[36m(RolloutWorker pid=27336)[39m TypeError: Received message 257:None is not bytes
+[36m(RolloutWorker pid=27336)
+[36m(RolloutWorker pid=27336)[39m The above exception was the direct cause of the following exception:
+[36m(RolloutWorker pid=27336)
+[36m(RolloutWorker pid=27336)[39m Traceback (most recent call last):
+[36m(RolloutWorker pid=27336)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\threading.py", line 1016, in _bootstrap_inner
+[36m(RolloutWorker pid=27336)[39m     self.run()
+[36m(RolloutWorker pid=27336)[39m   File "c:\Users\Emil WC\Bachelor\RL-SC2-bot\QueueEnv.py", line 85, in run
+[36m(RolloutWorker pid=27336)[39m     result = run_game(  # run_game is a function that runs the game.
+[36m(RolloutWorker pid=27336)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\main.py", line 496, in run_game
+[36m(RolloutWorker pid=27336)[39m     result: Result = asyncio.run(_host_game(map_settings, players, **kwargs))
+[36m(RolloutWorker pid=27336)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 44, in run
+[36m(RolloutWorker pid=27336)[39m     return loop.run_until_complete(main)
+[36m(RolloutWorker pid=27336)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 649, in run_until_complete
+[36m(RolloutWorker pid=27336)[39m     return future.result()
+[36m(RolloutWorker pid=27336)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\main.py", line 369, in _host_game
+[36m(RolloutWorker pid=27336)[39m     result = await _play_game(players[0], client, realtime, portconfig, game_time_limit, rgb_render_config)
+[36m(RolloutWorker pid=27336)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\main.py", line 218, in _play_game
+[36m(RolloutWorker pid=27336)[39m     player_id = await client.join_game(
+[36m(RolloutWorker pid=27336)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\client.py", line 99, in join_game
+[36m(RolloutWorker pid=27336)[39m     result = await self._execute(join_game=req)
+[36m(RolloutWorker pid=27336)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\protocol.py", line 68, in _execute
+[36m(RolloutWorker pid=27336)[39m     response = await self.__request(sc_pb.Request(**kwargs))
+[36m(RolloutWorker pid=27336)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\protocol.py", line 51, in __request
+[36m(RolloutWorker pid=27336)[39m     raise ConnectionAlreadyClosed("Connection already closed.") from exc
+[36m(RolloutWorker pid=27336)[39m sc2.protocol.ConnectionAlreadyClosed: Connection already closed.

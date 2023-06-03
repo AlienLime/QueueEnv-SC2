@@ -1,0 +1,50 @@
+{
+    "os": "Windows-10-10.0.22621-SP0",
+    "python": "3.10.10",
+    "heartbeatAt": "2023-06-02T08:32:41.210878",
+    "startedAt": "2023-06-02T08:32:31.681844",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "c:\\Users\\Emil WC\\Bachelor\\RL-SC2-bot\\QueueEnv.py",
+    "codePath": "QueueEnv.py",
+    "git": {
+        "remote": "https://github.com/AlienLime/RL-SC2-bot.git",
+        "commit": "09e00fd00aab1075949550d459f651b1f76aff50"
+    },
+    "email": "emil@np12.dk",
+    "root": "C:/Users/Emil WC/Bachelor/RL-SC2-bot",
+    "host": "DESKTOP-C36C3C6",
+    "username": "Emil WC",
+    "executable": "C:\\Users\\Emil WC\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+    "cpu_count": 8,
+    "cpu_count_logical": 16,
+    "cpu_freq": {
+        "current": 2904.0,
+        "min": 0.0,
+        "max": 2904.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2904.0,
+            "min": 0.0,
+            "max": 2904.0
+        }
+    ],
+    "disk": {
+        "total": 930.5849571228027,
+        "used": 662.5706367492676
+    },
+    "gpu": "NVIDIA GeForce GTX 1660 SUPER",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce GTX 1660 SUPER",
+            "memory_total": 6442450944
+        }
+    ],
+    "memory": {
+        "total": 15.856761932373047
+    }
+}
