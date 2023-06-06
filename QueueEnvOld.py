@@ -1,6 +1,6 @@
 #General Python packages
 import gymnasium as gym
-from gymnasium.spaces import MultiDiscrete, Discrete
+from gymnasium.spaces import Box, Discrete
 import numpy as np
 import os
 import asyncio
@@ -32,7 +32,7 @@ from sc2.ids.unit_typeid import UnitTypeId
 #Reinforcement learning packages
 
 #Custom imports
-from ArmyBot import ArmyBot
+from ArmyBotResourceOld import ArmyBot
 
 class AST(Thread):
     def __init__(self) -> None:
@@ -57,9 +57,7 @@ class QueueEnv(gym.Env):
         super(QueueEnv, self).__init__()
         # Define action and observation space
         self.action_space = Discrete(2)
-
-        # Values: [MarineHealth, ZergDist, WeaponCD, MarineNr, SCVNr, Minerals]
-        self.observation_space = MultiDiscrete([46,250,2,20,20,1000])
+        self.observation_space = Box(low=0, high=255, shape=(42, 42, 3), dtype=np.uint8)
     
     def step(self, action):
         # Send an action to the Bot
@@ -78,9 +76,8 @@ class QueueEnv(gym.Env):
     def reset(self, *, seed=None, options=None):
         print("RESETTING ENVIRONMENT!!!!!!!!!!!!!")
         time.sleep(5)
-
-        # Values: [MarineHealth, ZergDist, WeaponCD, MarineNr, SCVNr, Minerals]
-        observation = np.array([45, 210, 0, 1, 1, 50])
+        map = np.zeros((42, 42, 3), dtype=np.uint8)
+        observation = map
         info = {}
         self.pcom = AST()
         self.pcom.start()

@@ -1,38 +1,38 @@
 #General Python packages
 import gymnasium as gym
-from gymnasium.spaces import Box, Discrete
+from gymnasium.spaces import MultiDiscrete, Discrete
 import numpy as np
-import os
-import asyncio
 from threading import Thread
 import time
 from queue import Queue
-from wandb.keras import WandbCallback
-from matplotlib import pyplot as plt
 import wandb
-import sys
 
 # Ray imports
 from ray.rllib.algorithms.ppo import PPOConfig
-from ray.rllib.models import ModelCatalog
-from ray.rllib.models.tf.tf_modelv2 import TFModelV2
-from ray.rllib.models.tf.misc import normc_initializer
-#from ray.rllib.utils import try_import_tf
-#tf = try_import_tf()
-
 
 #API imports
 from sc2.data import Difficulty, Race  # difficulty for bots, race for the 1 of 3 races
 from sc2.main import run_game  # function that facilitates actually running the agents in games
 from sc2.player import Bot, Computer  #wrapper for whether or not the agent is one of your bots, or a "computer" player
 from sc2 import maps  # maps method for loading maps to play in.
-from sc2.ids.unit_typeid import UnitTypeId
 
-
-#Reinforcement learning packages
+# Global variables to pick the right experiment and WandB project.
+projectName = "ArmyBot2"
+mapName = "TrainingMapResource"
 
 #Custom imports
-from ArmyBotResource import ArmyBot
+match mapName:
+    case "TrainingMapMarine":
+        from ArmyBotMarine import ArmyBot
+
+    case "TrainingMapResource":
+        from ArmyBotResource import ArmyBot
+
+    case "TrainingMapBoth":
+        from ArmyBotBoth import ArmyBot
+
+
+
 
 class AST(Thread):
     def __init__(self) -> None:
@@ -44,21 +44,36 @@ class AST(Thread):
         self.bot = ArmyBot(action_in=self.action_in, result_out=self.result_out)
         print("starting game.")
         result = run_game(  # run_game is a function that runs the game.
-            maps.get("TestMap3"), # the map we are playing on
+            maps.get(mapName), # the map we are playing on
             [Bot(Race.Terran, self.bot), # runs our coded bot, Terran race, and we pass our bot object 
             Computer(Race.Zerg, Difficulty.Hard)], # runs a pre-made computer agent, zerg race, with a hard difficulty.
             realtime=False, # When set to True, the agent is limited in how long each step can take to process.
         )
 
-
-
 class QueueEnv(gym.Env):
     def __init__(self, config=None, render_mode=None): # None, "human", "rgb_array"
         super(QueueEnv, self).__init__()
+
         # Define action and observation space
-        self.action_space = Discrete(2)
-        self.observation_space = Box(low=0, high=255, shape=(42, 42, 3), dtype=np.uint8)
-    
+        match mapName:
+            case "TrainingMapMarine":
+                self.action_space = Discrete(2)
+                # Values: [MarineHealth, ZergDist, WeaponCD]
+                self.observation_space = MultiDiscrete([46,250,2])
+
+            case "TrainingMapResource":
+                self.action_space = Discrete(3)
+                # Values: [MarineNr, SCVNr, Minerals, CCAvailable, BarAvailable]
+                self.observation_space = MultiDiscrete([20,20,1000, 2, 3])
+
+            case "TrainingMapBoth":
+                self.action_space = Discrete(5)
+                # Values: [MarineHealth, ZergDist, WeaponCD, MarineNr, SCVNr, Minerals, CCAvailable, BarAvailable]
+                self.observation_space = MultiDiscrete([46,250,2,20,20,1000, 2, 3])
+
+            case _:
+                print("You must choose a valid experiment")
+
     def step(self, action):
         # Send an action to the Bot
         self.pcom.action_in.put(action)
@@ -74,34 +89,33 @@ class QueueEnv(gym.Env):
         return observation, reward, done, truncated, info
     
     def reset(self, *, seed=None, options=None):
-        print("RESETTING ENVIRONMENT!!!!!!!!!!!!!")
+        print("!RESETTING ENVIRONMENT!")
         time.sleep(5)
-        map = np.zeros((42, 42, 3), dtype=np.uint8)
-        observation = map
+        
+        match mapName:
+            case "TrainingMapMarine":
+                # Values: [MarineHealth, ZergDist, WeaponCD]
+                observation = np.array([45, 210, 0])
+
+            case "TrainingMapResource":
+                # Values: [MarineNr, SCVNr, Minerals, CCAvailable, BarAvailable]
+                observation = np.array([1, 1, 50, 1, 2])
+
+            case "TrainingMapBoth":
+                # Values: [MarineHealth, ZergDist, WeaponCD, MarineNr, SCVNr, Minerals, CCAvailable, BarAvailable]
+                observation = np.array([45, 210, 0, 1, 1, 50, 1, 2])
+
+            case _:
+                print("You must choose a valid experiment")
+
         info = {}
         self.pcom = AST()
         self.pcom.start()
         return observation, info
-    
-
-def run_sc2():
-    env = QueueEnv()
-    
-    for _ in range(3):
-        print("iteration", _)
-        s, info = env.reset()
-        while True:
-            a = env.action_space.sample()
-            if np.random.rand() < 0.6: 
-                a = 1
-            s, r, done, truncated, info = env.step(a)
-            if done or truncated:
-                print("ran one episode")
-                break
 
 def train_ppo():
     # Initialize WandB
-    wandb.init(project="ArmyBot1")
+    wandb.init(project = projectName)
 
     # Make a list
     rewards = []
@@ -124,8 +138,6 @@ def train_ppo():
         for rwd in episode_reward:
             rewards.append(rwd)
         
-        
-
         if i == iterations - 1:
             checkpoint_dir = algo.save()
             print(f"Checkpoint saved in directory {checkpoint_dir}")
@@ -142,8 +154,4 @@ def train_ppo():
 
 
 if __name__ == "__main__":    
-    #test
-    #run_sc2()
-
-    #train
     train_ppo()

@@ -1,0 +1,5 @@
+2023-06-06 18:13:57,497 INFO    StreamThr :36692 [internal.py:wandb_internal():86] W&B internal server running at pid: 36692, started at: 2023-06-06 18:13:57.497677
+2023-06-06 18:13:57,498 DEBUG   HandlerThread:36692 [handler.py:handle_request():144] handle_request: status
+2023-06-06 18:13:57,502 INFO    WriterThread:36692 [datastore.py:open_for_write():85] open: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181357-pyrby2n9\run-pyrby2n9.wandb
+2023-06-06 18:13:57,502 DEBUG   SenderThread:36692 [sender.py:send():375] send: header
+2023-06-06 18:13:57,564 DEBUG   SenderThread:36692 [sender.py:send():375] send: run

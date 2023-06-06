@@ -1,0 +1,35 @@
+
+2023-06-06 16:00:18,376	INFO worker.py:1625 -- Started a local Ray instance.
+[36m(RolloutWorker pid=29652)[39m !RESETTING ENVIRONMENT!
+[36m(RolloutWorker pid=29652)[39m 2023-06-06 16:00:30,097	WARNING env.py:155 -- Your env doesn't have a .spec.max_episode_steps attribute. Your horizon will default to infinity, and your environment will not be reset.
+[36m(RolloutWorker pid=29652)[39m starting game.
+[36m(RolloutWorker pid=29652)[39m !RESETTING ENVIRONMENT!
+[36m(RolloutWorker pid=29652)[39m starting game.
+[36m(RolloutWorker pid=29652)[39m !RESETTING ENVIRONMENT!
+[36m(RolloutWorker pid=29652)[39m starting game.
+[36m(RolloutWorker pid=29652)[39m 2023-06-06 16:00:41.569 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.launched (was None)
+[36m(RolloutWorker pid=29652)[39m 2023-06-06 16:00:41.570 | INFO     | sc2.controller:create_game:37 - Creating new game
+[36m(RolloutWorker pid=29652)[39m 2023-06-06 16:00:41.570 | INFO     | sc2.controller:create_game:38 - Map:     ArmyBotTrainingMap
+[36m(RolloutWorker pid=29652)[39m 2023-06-06 16:00:41.570 | INFO     | sc2.controller:create_game:39 - Players: Bot ArmyBot(Terran), Computer Hard(Zerg, RandomBuild)
+[36m(RolloutWorker pid=29652)[39m 2023-06-06 16:00:41.571 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.init_game (was Status.launched)
+[36m(RolloutWorker pid=29652)[39m 2023-06-06 16:00:46.205 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.in_game (was None)
+[36m(RolloutWorker pid=29652)[39m 2023-06-06 16:00:46.205 | INFO     | sc2.main:_play_game:221 - Player 1 - Bot ArmyBot(Terran)
+[36m(RolloutWorker pid=29652)[39m 2023-06-06 16:00:47.672 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.launched (was None)
+[36m(RolloutWorker pid=29652)[39m 2023-06-06 16:00:47.672 | INFO     | sc2.controller:create_game:37 - Creating new game
+[36m(RolloutWorker pid=29652)[39m 2023-06-06 16:00:47.672 | INFO     | sc2.controller:create_game:38 - Map:     ArmyBotTrainingMap
+[36m(RolloutWorker pid=29652)[39m 2023-06-06 16:00:47.674 | INFO     | sc2.controller:create_game:39 - Players: Bot ArmyBot(Terran), Computer Hard(Zerg, RandomBuild)
+[36m(RolloutWorker pid=29652)[39m 2023-06-06 16:00:47.674 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.init_game (was Status.launched)
+[36m(RolloutWorker pid=29652)[39m 2023-06-06 16:00:51.240 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.launched (was None)
+[36m(RolloutWorker pid=29652)[39m 2023-06-06 16:00:51.241 | INFO     | sc2.controller:create_game:37 - Creating new game
+[36m(RolloutWorker pid=29652)[39m 2023-06-06 16:00:51.241 | INFO     | sc2.controller:create_game:38 - Map:     ArmyBotTrainingMap
+[36m(RolloutWorker pid=29652)[39m 2023-06-06 16:00:51.241 | INFO     | sc2.controller:create_game:39 - Players: Bot ArmyBot(Terran), Computer Hard(Zerg, RandomBuild)
+[36m(RolloutWorker pid=29652)[39m 2023-06-06 16:00:51.242 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.init_game (was Status.launched)
+[36m(RolloutWorker pid=29652)[39m 2023-06-06 16:00:52.450 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.in_game (was None)
+[36m(RolloutWorker pid=29652)[39m 2023-06-06 16:00:52.450 | INFO     | sc2.main:_play_game:221 - Player 1 - Bot ArmyBot(Terran)
+[36m(RolloutWorker pid=29652)[39m 2023-06-06 16:00:56.030 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.in_game (was None)
+[36m(RolloutWorker pid=29652)[39m 2023-06-06 16:00:56.031 | INFO     | sc2.main:_play_game:221 - Player 1 - Bot ArmyBot(Terran)
+[36m(RolloutWorker pid=29652)[39m armybot at... 0
+[36m(RolloutWorker pid=29652)[39m list index out of range
+[36m(RolloutWorker pid=29652)[39m reward list index out of range
+[36m(RolloutWorker pid=29652)[39m !RESETTING ENVIRONMENT!
+2023-06-06 16:00:56,505	INFO trainable.py:172 -- Trainable.setup took 40.374 seconds. If your trainable is slow to initialize, consider setting reuse_actors=True to reduce actor creation overheads.

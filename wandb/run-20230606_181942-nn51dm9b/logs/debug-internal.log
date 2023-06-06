@@ -1,0 +1,304 @@
+2023-06-06 18:19:42,226 INFO    StreamThr :6876 [internal.py:wandb_internal():86] W&B internal server running at pid: 6876, started at: 2023-06-06 18:19:42.226988
+2023-06-06 18:19:42,228 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status
+2023-06-06 18:19:42,231 INFO    WriterThread:6876 [datastore.py:open_for_write():85] open: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\run-nn51dm9b.wandb
+2023-06-06 18:19:42,232 DEBUG   SenderThread:6876 [sender.py:send():375] send: header
+2023-06-06 18:19:42,262 DEBUG   SenderThread:6876 [sender.py:send():375] send: run
+2023-06-06 18:19:43,805 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: check_version
+2023-06-06 18:19:43,806 INFO    SenderThread:6876 [dir_watcher.py:__init__():219] watching files in: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files
+2023-06-06 18:19:43,806 INFO    SenderThread:6876 [sender.py:_start_run_threads():1124] run started: nn51dm9b with start time 1686068382.228981
+2023-06-06 18:19:43,806 DEBUG   SenderThread:6876 [sender.py:send_request():402] send_request: summary_record
+2023-06-06 18:19:43,806 INFO    SenderThread:6876 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-06 18:19:43,806 DEBUG   SenderThread:6876 [sender.py:send_request():402] send_request: check_version
+2023-06-06 18:19:44,170 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: run_start
+2023-06-06 18:19:44,186 DEBUG   HandlerThread:6876 [system_info.py:__init__():31] System info init
+2023-06-06 18:19:44,186 DEBUG   HandlerThread:6876 [system_info.py:__init__():46] System info init done
+2023-06-06 18:19:44,187 INFO    HandlerThread:6876 [system_monitor.py:start():181] Starting system monitor
+2023-06-06 18:19:44,187 INFO    SystemMonitor:6876 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2023-06-06 18:19:44,187 INFO    HandlerThread:6876 [system_monitor.py:probe():201] Collecting system info
+2023-06-06 18:19:44,191 INFO    SystemMonitor:6876 [interfaces.py:start():190] Started cpu monitoring
+2023-06-06 18:19:44,192 INFO    SystemMonitor:6876 [interfaces.py:start():190] Started disk monitoring
+2023-06-06 18:19:44,192 INFO    SystemMonitor:6876 [interfaces.py:start():190] Started gpu monitoring
+2023-06-06 18:19:44,199 INFO    SystemMonitor:6876 [interfaces.py:start():190] Started memory monitoring
+2023-06-06 18:19:44,208 INFO    SystemMonitor:6876 [interfaces.py:start():190] Started network monitoring
+2023-06-06 18:19:44,215 DEBUG   HandlerThread:6876 [system_info.py:probe():195] Probing system
+2023-06-06 18:19:44,216 DEBUG   HandlerThread:6876 [system_info.py:_probe_git():180] Probing git
+2023-06-06 18:19:44,273 DEBUG   HandlerThread:6876 [system_info.py:_probe_git():188] Probing git done
+2023-06-06 18:19:44,274 DEBUG   HandlerThread:6876 [system_info.py:probe():240] Probing system done
+2023-06-06 18:19:44,274 DEBUG   HandlerThread:6876 [system_monitor.py:probe():210] {'os': 'Windows-10-10.0.22621-SP0', 'python': '3.10.10', 'heartbeatAt': '2023-06-06T16:19:44.215998', 'startedAt': '2023-06-06T16:19:42.217014', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': 'c:\\Users\\Emil WC\\Bachelor\\RL-SC2-bot\\QueueEnv.py', 'codePath': 'QueueEnv.py', 'git': {'remote': 'https://github.com/AlienLime/RL-SC2-bot.git', 'commit': '124926afff6f6a506bd1dc5ff310a27dd1cbff9d'}, 'email': 'emil@np12.dk', 'root': 'C:/Users/Emil WC/Bachelor/RL-SC2-bot', 'host': 'DESKTOP-C36C3C6', 'username': 'Emil WC', 'executable': 'C:\\Users\\Emil WC\\AppData\\Local\\Programs\\Python\\Python310\\python.exe', 'cpu_count': 8, 'cpu_count_logical': 16, 'cpu_freq': {'current': 2904.0, 'min': 0.0, 'max': 2904.0}, 'cpu_freq_per_core': [{'current': 2904.0, 'min': 0.0, 'max': 2904.0}], 'disk': {'total': 930.5849571228027, 'used': 668.3840827941895}, 'gpu': 'NVIDIA GeForce GTX 1660 SUPER', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce GTX 1660 SUPER', 'memory_total': 6442450944}], 'memory': {'total': 15.856761932373047}}
+2023-06-06 18:19:44,274 INFO    HandlerThread:6876 [system_monitor.py:probe():211] Finished collecting system info
+2023-06-06 18:19:44,274 INFO    HandlerThread:6876 [system_monitor.py:probe():214] Publishing system info
+2023-06-06 18:19:44,274 DEBUG   HandlerThread:6876 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-06-06 18:19:44,274 DEBUG   HandlerThread:6876 [system_info.py:_save_pip():67] Saving pip packages done
+2023-06-06 18:19:44,276 INFO    HandlerThread:6876 [system_monitor.py:probe():216] Finished publishing system info
+2023-06-06 18:19:44,283 DEBUG   SenderThread:6876 [sender.py:send():375] send: files
+2023-06-06 18:19:44,283 INFO    SenderThread:6876 [sender.py:_save_file():1378] saving file wandb-metadata.json with policy now
+2023-06-06 18:19:44,289 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-06 18:19:44,290 DEBUG   SenderThread:6876 [sender.py:send_request():402] send_request: stop_status
+2023-06-06 18:19:44,649 DEBUG   SenderThread:6876 [sender.py:send():375] send: telemetry
+2023-06-06 18:19:44,812 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\wandb-summary.json
+2023-06-06 18:19:44,812 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\requirements.txt
+2023-06-06 18:19:44,812 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\wandb-metadata.json
+2023-06-06 18:19:45,864 INFO    wandb-upload_0:6876 [upload_job.py:push():137] Uploaded file C:\Users\EMILWC~1\AppData\Local\Temp\tmpt923k486wandb\kewyjvqu-wandb-metadata.json
+2023-06-06 18:19:46,834 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:19:47,364 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:19:48,846 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:19:52,405 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:19:54,898 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:19:57,536 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:19:58,926 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:19:59,286 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-06 18:19:59,288 DEBUG   SenderThread:6876 [sender.py:send_request():402] send_request: stop_status
+2023-06-06 18:20:02,600 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:20:04,976 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:20:07,624 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:20:09,019 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:20:13,064 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:20:13,597 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:20:14,078 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\config.yaml
+2023-06-06 18:20:14,281 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-06 18:20:14,281 DEBUG   SenderThread:6876 [sender.py:send_request():402] send_request: stop_status
+2023-06-06 18:20:17,114 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:20:18,971 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:20:21,160 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:20:24,058 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:20:25,204 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:20:27,219 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:20:29,279 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-06 18:20:29,281 DEBUG   SenderThread:6876 [sender.py:send_request():402] send_request: stop_status
+2023-06-06 18:20:29,474 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:20:31,247 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:20:34,517 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:20:39,551 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:20:43,366 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:20:44,220 DEBUG   SystemMonitor:6876 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2023-06-06 18:20:44,221 DEBUG   SenderThread:6876 [sender.py:send():375] send: stats
+2023-06-06 18:20:44,298 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-06 18:20:44,299 DEBUG   SenderThread:6876 [sender.py:send_request():402] send_request: stop_status
+2023-06-06 18:20:45,525 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:20:47,398 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:20:49,421 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:20:50,612 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:20:51,429 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:20:53,446 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:20:55,458 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:20:55,619 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:20:57,488 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:20:59,305 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-06 18:20:59,306 DEBUG   SenderThread:6876 [sender.py:send_request():402] send_request: stop_status
+2023-06-06 18:20:59,507 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:00,677 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:21:01,524 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:03,534 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:05,547 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:05,724 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:21:07,558 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:09,571 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:10,787 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:21:11,584 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:13,594 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:14,232 DEBUG   SenderThread:6876 [sender.py:send():375] send: stats
+2023-06-06 18:21:14,309 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-06 18:21:14,309 DEBUG   SenderThread:6876 [sender.py:send_request():402] send_request: stop_status
+2023-06-06 18:21:15,611 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:15,862 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:21:17,627 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:19,644 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:20,952 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:21:21,659 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:23,673 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:25,696 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:26,029 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:21:27,712 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:29,320 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-06 18:21:29,321 DEBUG   SenderThread:6876 [sender.py:send_request():402] send_request: stop_status
+2023-06-06 18:21:29,722 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:31,104 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:21:31,731 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:33,740 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:35,749 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:36,173 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:21:37,766 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:39,781 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:41,261 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:21:41,802 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:43,816 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:44,234 DEBUG   SenderThread:6876 [sender.py:send():375] send: stats
+2023-06-06 18:21:44,311 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-06 18:21:44,311 DEBUG   SenderThread:6876 [sender.py:send_request():402] send_request: stop_status
+2023-06-06 18:21:45,832 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:46,348 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:21:47,847 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:49,854 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:51,410 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:21:51,867 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:53,880 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:55,889 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:56,485 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:21:57,909 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:21:59,330 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-06 18:21:59,330 DEBUG   SenderThread:6876 [sender.py:send_request():402] send_request: stop_status
+2023-06-06 18:21:59,916 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:22:01,541 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:22:01,921 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:22:03,941 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:22:05,956 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:22:06,594 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:22:07,985 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:22:10,014 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:22:11,636 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:22:12,044 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:22:14,060 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:22:14,246 DEBUG   SenderThread:6876 [sender.py:send():375] send: stats
+2023-06-06 18:22:14,339 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-06 18:22:14,339 DEBUG   SenderThread:6876 [sender.py:send_request():402] send_request: stop_status
+2023-06-06 18:22:16,078 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:22:17,903 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:22:20,112 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:22:22,130 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:22:23,653 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:22:28,685 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:22:29,331 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-06 18:22:29,332 DEBUG   SenderThread:6876 [sender.py:send_request():402] send_request: stop_status
+2023-06-06 18:22:33,910 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:22:39,763 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:22:40,296 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:22:44,253 DEBUG   SenderThread:6876 [sender.py:send():375] send: stats
+2023-06-06 18:22:44,331 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:22:44,345 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-06 18:22:44,346 DEBUG   SenderThread:6876 [sender.py:send_request():402] send_request: stop_status
+2023-06-06 18:22:44,784 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:22:46,339 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:22:48,353 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:22:49,847 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:22:50,364 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:22:52,379 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:22:54,398 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:22:54,903 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:22:56,416 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:22:58,430 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:22:59,358 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-06 18:22:59,359 DEBUG   SenderThread:6876 [sender.py:send_request():402] send_request: stop_status
+2023-06-06 18:22:59,974 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:23:00,445 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:02,461 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:04,476 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:05,025 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:23:06,484 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:08,496 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:10,102 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:23:10,514 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:12,526 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:14,265 DEBUG   SenderThread:6876 [sender.py:send():375] send: stats
+2023-06-06 18:23:14,372 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-06 18:23:14,373 DEBUG   SenderThread:6876 [sender.py:send_request():402] send_request: stop_status
+2023-06-06 18:23:14,542 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:15,137 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:23:16,554 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:18,568 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:20,217 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:23:20,584 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:22,598 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:24,614 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:25,306 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:23:26,634 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:28,650 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:29,380 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-06 18:23:29,381 DEBUG   SenderThread:6876 [sender.py:send_request():402] send_request: stop_status
+2023-06-06 18:23:30,393 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:23:30,664 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:32,678 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:34,694 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:35,475 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:23:36,709 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:38,728 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:40,569 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:23:40,749 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:42,764 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:44,272 DEBUG   SenderThread:6876 [sender.py:send():375] send: stats
+2023-06-06 18:23:44,381 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-06 18:23:44,382 DEBUG   SenderThread:6876 [sender.py:send_request():402] send_request: stop_status
+2023-06-06 18:23:44,785 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:45,651 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:23:46,806 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:48,829 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:50,744 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:23:50,843 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:52,854 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:54,868 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:55,820 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:23:56,883 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:58,896 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:23:59,378 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-06 18:23:59,379 DEBUG   SenderThread:6876 [sender.py:send_request():402] send_request: stop_status
+2023-06-06 18:24:00,902 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:24:00,913 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:24:02,918 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:24:04,939 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:24:05,951 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:24:05,983 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:24:07,964 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:24:09,979 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:24:11,651 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:24:14,020 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:24:14,286 DEBUG   SenderThread:6876 [sender.py:send():375] send: stats
+2023-06-06 18:24:14,382 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-06 18:24:14,383 DEBUG   SenderThread:6876 [sender.py:send_request():402] send_request: stop_status
+2023-06-06 18:24:17,601 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:24:22,645 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:24:26,120 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:24:28,485 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:24:29,400 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-06 18:24:29,401 DEBUG   SenderThread:6876 [sender.py:send_request():402] send_request: stop_status
+2023-06-06 18:24:32,176 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:24:33,576 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:24:34,189 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:24:36,204 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:24:38,213 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:24:38,650 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:24:40,232 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:24:42,248 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:24:43,717 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:24:44,266 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:24:44,297 DEBUG   SenderThread:6876 [sender.py:send():375] send: stats
+2023-06-06 18:24:44,405 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-06 18:24:44,405 DEBUG   SenderThread:6876 [sender.py:send_request():402] send_request: stop_status
+2023-06-06 18:24:46,279 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:24:48,295 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:24:48,798 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:24:50,310 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:24:52,328 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:24:53,887 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:24:54,340 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:24:56,347 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:24:58,362 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:24:58,960 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:24:59,418 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-06 18:24:59,418 DEBUG   SenderThread:6876 [sender.py:send_request():402] send_request: stop_status
+2023-06-06 18:25:00,374 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:25:02,390 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:25:04,044 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:25:04,406 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:25:06,423 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:25:08,439 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:25:09,127 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:25:10,450 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:25:12,468 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:25:14,204 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:25:14,307 DEBUG   SenderThread:6876 [sender.py:send():375] send: stats
+2023-06-06 18:25:14,429 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-06 18:25:14,430 DEBUG   SenderThread:6876 [sender.py:send_request():402] send_request: stop_status
+2023-06-06 18:25:14,477 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:25:16,496 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:25:18,514 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:25:19,295 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:25:20,528 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:25:22,543 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:25:24,379 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:25:24,558 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:25:26,571 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:25:28,587 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:25:29,429 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: status_report
+2023-06-06 18:25:29,446 DEBUG   HandlerThread:6876 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-06 18:25:29,446 DEBUG   SenderThread:6876 [sender.py:send_request():402] send_request: stop_status
+2023-06-06 18:25:30,597 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
+2023-06-06 18:25:32,620 INFO    Thread-16 :6876 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230606_181942-nn51dm9b\files\output.log
