@@ -18,12 +18,16 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         print ("Game over!")
         reward = 0
         
-        # Values: [MarineHealth, ZergDist, WeaponCD, MarineNr, SCVNr, Minerals]
-        obs = np.zeros(6, dtype=np.uint16)
+        # Values: [MarineHealth, ZergDist, WeaponCD, MarineNr, SCVNr, Minerals, CCAvailable, BarAvailable]
+        obs = np.zeros(8, dtype=np.uint16)
         obs[1] = 0
         obs[3] = self.army_count
         obs[4] = self.supply_workers
         obs[5] = self.minerals
+        for cc in self.structures(UnitTypeId.COMMANDCENTER).idle:
+            obs[6] += 1
+        for bar in self.structures(UnitTypeId.BARRACKS).idle:
+            obs[7] += 1
         
         if str(game_result) == "Result.Victory":
             for marine in self.units(UnitTypeId.MARINE):
@@ -34,7 +38,6 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
                     
         else:
             reward = -100
-
 
         self.result_out.put({"observation" : obs, "reward" : reward, "action" : None, "done" : True, "truncated" : False, "info" : {}})
         
@@ -50,59 +53,110 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
             return None
         
         time.sleep(self.tickRate)
+
+        #Base reward
+        reward = -1
         '''
         0: Force Move
         1: Attack Move
+        2: Train SCV
+        3: Train marine
+        4: Distribute workers
         '''
         # 0: Force Move
         if self.action == 0:
             try:
-                for marine in self.units(UnitTypeId.MARINE):
-                    for sd in self.structures(UnitTypeId.SUPPLYDEPOT):
-                        marine.move(sd)
+                bar = (random.choice(self.structures(UnitTypeId.BARRACKS)))
+                marine = self.units(UnitTypeId.MARINE)
+                marine.furthest_to(bar).move(random.choice(self.structures(UnitTypeId.MISSILETURRET)))
             except Exception as e:
                 print(e)
 
         #1: Attack Move
         elif self.action == 1:
             try:
-                for marine in self.units(UnitTypeId.MARINE):
-                    marine.attack(random.choice(self.enemy_units))
+                if self.enemy_units:
+                    zergling = random.choice(self.enemy_units)
+                    bar = (random.choice(self.structures(UnitTypeId.BARRACKS)))
+                    marine = self.units(UnitTypeId.MARINE)
+                    marine.furthest_to(bar).attack(zergling)
             except Exception as e:
                 print(e)
 
-        # Values: [MarineHealth, ZergDist, WeaponCD, MarineNr, SCVNr, Minerals]
-        obs = np.zeros(6, dtype=np.uint16)
+        # 2: Train SCV
+        if self.action == 2:
+            try:
+                if self.can_afford(UnitTypeId.SCV):
+                    for cc in self.structures(UnitTypeId.COMMANDCENTER).idle:
+                        cc.train(UnitTypeId.SCV)
+                        reward += 2
+            except Exception as e:
+                print(e)
+
+        #3: Train marine
+        elif self.action == 3:
+            try:
+                if self.can_afford(UnitTypeId.MARINE):
+                    for bar in self.structures(UnitTypeId.BARRACKS).idle:
+                        if self.can_afford(UnitTypeId.MARINE):
+                            bar.train(UnitTypeId.MARINE)
+                            reward += 2
+            except Exception as e:
+                print(e)
+        
+        #4: Distribute workers
+        elif self.action == 4:
+            for scv in self.units(UnitTypeId.SCV).idle:
+                reward += 2
+            await self.distribute_workers()    
+
+        # Values: [MarineHealth, ZergDist, WeaponCD, MarineNr, SCVNr, Minerals, CCAvailable, BarAvailable]
+        obs = np.zeros(8, dtype=np.uint16)
         obs[3] = self.army_count
         obs[4] = self.supply_workers
         obs[5] = self.minerals
-
-        # Compute reward
-        reward = -1
+        for cc in self.structures(UnitTypeId.COMMANDCENTER).idle:
+            obs[6] += 1
+        for bar in self.structures(UnitTypeId.BARRACKS).idle:
+            obs[7] += 1
 
         try:
-            # iterate through our marines:
-            for marine in self.units(UnitTypeId.MARINE):
-                obs[0] = marine.health
-                obs[1] = int(marine.distance_to(random.choice(self.enemy_units)) * 10)
-                if marine.weapon_cooldown > 0:
-                    obs[2] = 1
+            for scv in self.units(UnitTypeId.SCV).idle:
+                reward -= 2
+            if obs[2] > 50:
+                reward -= (self.minerals - 50) / 100
 
-                # if marine is attacking and is in range of enemy unit:
-                if marine.is_attacking:
+
+            # iterate through our marines:
+            bar = (random.choice(self.structures(UnitTypeId.BARRACKS)))
+            marine = self.units(UnitTypeId.MARINE)
+            furthest_marine = marine.furthest_to(bar)
+
+            obs[0] = furthest_marine.health
+            if self.enemy_units:
+                zergling = random.choice(self.enemy_units)
+                obs[1] = int(furthest_marine.distance_to(zergling) * 10)
+            else:
+                obs[1] = 0
+
+            if furthest_marine.weapon_cooldown > 0:
+                obs[2] = 1
+
+            # if marine is attacking and is in range of enemy unit:
+            if furthest_marine.is_attacking:
+                reward += 1
+                if self.enemy_units.closer_than(5, furthest_marine) and furthest_marine.weapon_cooldown == 0:
                     reward += 1
-                    if self.enemy_units.closer_than(5, marine) and marine.weapon_cooldown == 0:
-                        reward += 1
-                else:
-                    if marine.weapon_cooldown > 0:
-                        reward += 2
+            else:
+                if furthest_marine.weapon_cooldown > 0:
+                    reward += 2
 
         except Exception as e:
             print("reward",e)
             reward = 0
 
         truncated = False
-        if iteration == 500:
+        if iteration == 2000:
             truncated = True
 
         self.result_out.put({"observation" : obs, "reward" : reward, "action" : None, "done" : False, "truncated" : truncated, "info" : {}})

@@ -1,0 +1,182 @@
+
+2023-06-06 23:54:50,727	INFO worker.py:1625 -- Started a local Ray instance.
+[36m(RolloutWorker pid=30424)[39m !RESETTING ENVIRONMENT!
+[36m(RolloutWorker pid=30424)[39m starting game.
+[36m(RolloutWorker pid=30424)[39m !RESETTING ENVIRONMENT!
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:03,513	WARNING env.py:155 -- Your env doesn't have a .spec.max_episode_steps attribute. Your horizon will default to infinity, and your environment will not be reset.
+[36m(RolloutWorker pid=30424)[39m starting game.!RESETTING ENVIRONMENT!
+[36m(RolloutWorker pid=30424)
+[36m(RolloutWorker pid=30424)[39m starting game.
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:17.220 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.launched (was None)
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:17.220 | INFO     | sc2.controller:create_game:37 - Creating new game
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:17.220 | INFO     | sc2.controller:create_game:38 - Map:     TrainingMapBoth
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:17.221 | INFO     | sc2.controller:create_game:39 - Players: Bot ArmyBot(Terran), Computer Hard(Zerg, RandomBuild)
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:17.221 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.init_game (was Status.launched)
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:19.213 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.launched (was None)
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:19.214 | INFO     | sc2.controller:create_game:37 - Creating new game
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:19.214 | INFO     | sc2.controller:create_game:38 - Map:     TrainingMapBoth
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:19.214 | INFO     | sc2.controller:create_game:39 - Players: Bot ArmyBot(Terran), Computer Hard(Zerg, RandomBuild)
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:19.215 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.init_game (was Status.launched)
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:23.091 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.in_game (was None)
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:23.091 | INFO     | sc2.main:_play_game:221 - Player 1 - Bot ArmyBot(Terran)
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:24.991 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.in_game (was None)
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:24.991 | INFO     | sc2.main:_play_game:221 - Player 1 - Bot ArmyBot(Terran)
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:25.803 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.launched (was None)
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:25.804 | INFO     | sc2.controller:create_game:37 - Creating new game
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:25.804 | INFO     | sc2.controller:create_game:38 - Map:     TrainingMapBoth
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:25.805 | INFO     | sc2.controller:create_game:39 - Players: Bot ArmyBot(Terran), Computer Hard(Zerg, RandomBuild)
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:25.806 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.init_game (was Status.launched)
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:31.792 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.in_game (was None)
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:31.793 | INFO     | sc2.main:_play_game:221 - Player 1 - Bot ArmyBot(Terran)
+[36m(RolloutWorker pid=30424)[39m armybot at... 0
+[36m(RolloutWorker pid=30424)[39m !RESETTING ENVIRONMENT!
+2023-06-06 23:55:32,138	INFO trainable.py:172 -- Trainable.setup took 43.614 seconds. If your trainable is slow to initialize, consider setting reuse_actors=True to reduce actor creation overheads.
+2023-06-06 23:55:32,139	WARNING util.py:67 -- Install gputil for GPU system monitoring.
+[36m(RolloutWorker pid=30424)[39m starting game.
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:47.871 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.launched (was None)
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:47.871 | INFO     | sc2.controller:create_game:37 - Creating new game
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:47.873 | INFO     | sc2.controller:create_game:38 - Map:     TrainingMapBoth
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:47.873 | INFO     | sc2.controller:create_game:39 - Players: Bot ArmyBot(Terran), Computer Hard(Zerg, RandomBuild)
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:47.874 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.init_game (was Status.launched)
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:52.665 | INFO     | sc2.protocol:_execute:72 - Client status changed to Status.in_game (was None)
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:52.666 | INFO     | sc2.main:_play_game:221 - Player 1 - Bot ArmyBot(Terran)
+[36m(RolloutWorker pid=30424)[39m armybot at... 0
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:52.936 | INFO     | sc2.sc2process:_close_connection:231 - Closing connection at 62784...
+[36m(RolloutWorker pid=30424)[39m 2023-06-06 23:55:52.939 | INFO     | sc2.sc2process:kill_all:33 - kill_switch: Process cleanup for 4 processes
+[36m(RolloutWorker pid=30424)[39m Exception in thread Thread-5:
+[36m(RolloutWorker pid=30424)[39m Traceback (most recent call last):
+[36m(RolloutWorker pid=30424)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\threading.py", line 1016, in _bootstrap_inner
+[36m(RolloutWorker pid=30424)[39m     self.run()
+[36m(RolloutWorker pid=30424)[39m   File "c:\Users\Emil WC\Bachelor\RL-SC2-bot\QueueEnv.py", line 46, in run
+[36m(RolloutWorker pid=30424)[39m     result = run_game(  # run_game is a function that runs the game.
+[36m(RolloutWorker pid=30424)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\main.py", line 496, in run_game
+[36m(RolloutWorker pid=30424)[39m     result: Result = asyncio.run(_host_game(map_settings, players, **kwargs))
+[36m(RolloutWorker pid=30424)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\asyncio\runners.py", line 44, in run
+[36m(RolloutWorker pid=30424)[39m     return loop.run_until_complete(main)
+[36m(RolloutWorker pid=30424)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 649, in run_until_complete
+[36m(RolloutWorker pid=30424)[39m     return future.result()
+[36m(RolloutWorker pid=30424)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\main.py", line 369, in _host_game
+[36m(RolloutWorker pid=30424)[39m     result = await _play_game(players[0], client, realtime, portconfig, game_time_limit, rgb_render_config)
+[36m(RolloutWorker pid=30424)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\main.py", line 226, in _play_game
+[36m(RolloutWorker pid=30424)[39m     result = await _play_game_ai(client, player_id, player.ai, realtime, game_time_limit)
+[36m(RolloutWorker pid=30424)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\main.py", line 196, in _play_game_ai
+[36m(RolloutWorker pid=30424)[39m     await run_bot_iteration(iteration)  # Main bot loop
+[36m(RolloutWorker pid=30424)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\main.py", line 163, in run_bot_iteration
+[36m(RolloutWorker pid=30424)[39m     await ai._after_step()
+[36m(RolloutWorker pid=30424)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\bot_ai_internal.py", line 635, in _after_step
+[36m(RolloutWorker pid=30424)[39m     await self._do_actions(self.actions)
+[36m(RolloutWorker pid=30424)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\bot_ai_internal.py", line 411, in _do_actions
+[36m(RolloutWorker pid=30424)[39m     result = await self.client.actions(actions)
+[36m(RolloutWorker pid=30424)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\client.py", line 197, in actions
+[36m(RolloutWorker pid=30424)[39m     action=sc_pb.RequestAction(actions=(sc_pb.Action(action_raw=a) for a in combine_actions(actions)))
+[36m(RolloutWorker pid=30424)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\client.py", line 197, in <genexpr>
+[36m(RolloutWorker pid=30424)[39m     action=sc_pb.RequestAction(actions=(sc_pb.Action(action_raw=a) for a in combine_actions(actions)))
+[36m(RolloutWorker pid=30424)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\action.py", line 88, in combine_actions
+[36m(RolloutWorker pid=30424)[39m     raise RuntimeError(f"Must target a unit, point or None, found '{target !r}'")
+[36m(RolloutWorker pid=30424)[39m RuntimeError: Must target a unit, point or None, found '[Unit(name='MissileTurret', tag=4297326593)]'
+[33m(raylet)[39m [libprotobuf ERROR external/com_google_protobuf/src/google/protobuf/wire_format_lite.cc:581] String field 'ray.rpc.WorkerTableData.exit_detail' contains invalid UTF-8 data when serializing a protocol buffer. Use the 'bytes' type if you intend to send raw bytes.
+[33m(raylet)[39m [2023-06-06 23:56:44,905 E 21036 13680] (raylet.exe) logging.cc:97: Unhandled exception: class nlohmann::detail::type_error. what(): [json.exception.type_error.316] invalid UTF-8 byte at index 584: 0x72
+[33m(raylet)[39m [2023-06-06 23:56:44,922 E 21036 13680] (raylet.exe) logging.cc:104: Stack trace:
+[33m(raylet)[39m  unknown
+[33m(raylet)[39m unknown
+[33m(raylet)[39m terminate
+[33m(raylet)[39m _NLG_Return2
+[33m(raylet)[39m _NLG_Return2
+[33m(raylet)[39m _CxxFrameHandler4
+[33m(raylet)[39m unknown
+[33m(raylet)[39m _chkstk
+[33m(raylet)[39m RtlFindCharInUnicodeString
+[33m(raylet)[39m RtlRaiseException
+[33m(raylet)[39m RaiseException
+[33m(raylet)[39m CxxThrowException
+[33m(raylet)[39m unknown
+[33m(raylet)[39m unknown
+[33m(raylet)[39m unknown
+[33m(raylet)[39m unknown
+[33m(raylet)[39m unknown
+[33m(raylet)[39m unknown
+[33m(raylet)[39m unknown
+[33m(raylet)[39m unknown
+[33m(raylet)[39m unknown
+[33m(raylet)[39m unknown
+[33m(raylet)[39m unknown
+[33m(raylet)[39m unknown
+[33m(raylet)[39m unknown
+[33m(raylet)[39m unknown
+[33m(raylet)[39m unknown
+[33m(raylet)[39m unknown
+[33m(raylet)[39m unknown
+[33m(raylet)[39m unknown
+[33m(raylet)[39m unknown
+[33m(raylet)[39m unknown
+[33m(raylet)[39m unknown
+[33m(raylet)[39m unknown
+[33m(raylet)[39m unknown
+[33m(raylet)[39m BaseThreadInitThunk
+[33m(raylet)[39m RtlUserThreadStart
+[33m(raylet)
+[33m(raylet)[39m *** SIGABRT received at time=1686088604 ***
+[33m(raylet)[39m     @   00007FFE10F6F601  (unknown)  abort
+[33m(raylet)[39m     @   00007FF773C07F36  (unknown)  (unknown)
+[33m(raylet)[39m     @   00007FFE10F6ED32  (unknown)  terminate
+[33m(raylet)[39m     @   00007FFDDA051AAB  (unknown)  _NLG_Return2
+[33m(raylet)[39m     @   00007FFDDA052317  (unknown)  _NLG_Return2
+[33m(raylet)[39m     @   00007FFDDA0540D9  (unknown)  _CxxFrameHandler4
+[33m(raylet)[39m     @   00007FF77409AAFC  (unknown)  (unknown)
+[33m(raylet)[39m     @   00007FFE136D3CFF  (unknown)  _chkstk
+[33m(raylet)[39m     @   00007FFE1364E456  (unknown)  RtlFindCharInUnicodeString
+[33m(raylet)[39m     @   00007FFE13684455  (unknown)  RtlRaiseException
+[33m(raylet)[39m     @   00007FFE10AB536C  (unknown)  RaiseException
+[33m(raylet)[39m     @   00007FFDDA876480  (unknown)  CxxThrowException
+[33m(raylet)[39m     @   00007FF773BAA325  (unknown)  (unknown)
+[33m(raylet)[39m     @   00007FF773BA9A53  (unknown)  (unknown)
+[33m(raylet)[39m     @   00007FF773BA975E  (unknown)  (unknown)
+[33m(raylet)[39m     @   00007FF773C1BC61  (unknown)  (unknown)
+[33m(raylet)[39m     @   00007FF773C1946D  (unknown)  (unknown)
+[33m(raylet)[39m     @   00007FF773C19AF2  (unknown)  (unknown)
+[33m(raylet)[39m     @   00007FF773C1AA32  (unknown)  (unknown)
+[33m(raylet)[39m     @   00007FF773C183E7  (unknown)  (unknown)
+[33m(raylet)[39m     @   00007FF7739D6745  (unknown)  (unknown)
+[33m(raylet)[39m     @   00007FF7739F7C41  (unknown)  (unknown)
+[33m(raylet)[39m     @   00007FF7739F7694  (unknown)  (unknown)
+[33m(raylet)[39m     @   00007FF773982679  (unknown)  (unknown)
+[33m(raylet)[39m     @   00007FF773BD0056  (unknown)  (unknown)
+[33m(raylet)[39m     @   00007FF773BD0547  (unknown)  (unknown)
+[33m(raylet)[39m     @   00007FF773BDDC0B  (unknown)  (unknown)
+[33m(raylet)[39m     @   00007FF773BCD535  (unknown)  (unknown)
+[33m(raylet)[39m     @   00007FF773BC914E  (unknown)  (unknown)
+[33m(raylet)[39m     @   00007FF773BD272E  (unknown)  (unknown)
+[33m(raylet)[39m     @   00007FF77405311C  (unknown)  (unknown)
+[33m(raylet)[39m     @   00007FF774056904  (unknown)  (unknown)
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361: *** SIGABRT received at time=1686088604 ***
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FFE10F6F601  (unknown)  abort
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FF773C07F36  (unknown)  (unknown)
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FFE10F6ED32  (unknown)  terminate
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FFDDA051AAB  (unknown)  _NLG_Return2
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FFDDA052317  (unknown)  _NLG_Return2
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FFDDA0540D9  (unknown)  _CxxFrameHandler4
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FF77409AAFC  (unknown)  (unknown)
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FFE136D3CFF  (unknown)  _chkstk
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FFE1364E456  (unknown)  RtlFindCharInUnicodeString
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FFE13684455  (unknown)  RtlRaiseException
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FFE10AB536C  (unknown)  RaiseException
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FFDDA876480  (unknown)  CxxThrowException
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FF773BAA325  (unknown)  (unknown)
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FF773BA9A53  (unknown)  (unknown)
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FF773BA975E  (unknown)  (unknown)
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FF773C1BC61  (unknown)  (unknown)
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FF773C1946D  (unknown)  (unknown)
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FF773C19AF2  (unknown)  (unknown)
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FF773C1AA32  (unknown)  (unknown)
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FF773C183E7  (unknown)  (unknown)
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FF7739D6745  (unknown)  (unknown)
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FF7739F7C41  (unknown)  (unknown)
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FF7739F7694  (unknown)  (unknown)
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FF773982679  (unknown)  (unknown)
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FF773BD0056  (unknown)  (unknown)
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FF773BD0547  (unknown)  (unknown)
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FF773BDDC0B  (unknown)  (unknown)
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FF773BCD535  (unknown)  (unknown)
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FF773BC914E  (unknown)  (unknown)
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FF773BD272E  (unknown)  (unknown)
+[33m(raylet)[39m [2023-06-06 23:56:44,924 E 21036 13680] (raylet.exe) logging.cc:361:     @   00007FF77405311C  (unknown)  (unknown)

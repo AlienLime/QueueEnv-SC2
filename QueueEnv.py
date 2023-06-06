@@ -17,8 +17,8 @@ from sc2.player import Bot, Computer  #wrapper for whether or not the agent is o
 from sc2 import maps  # maps method for loading maps to play in.
 
 # Global variables to pick the right experiment and WandB project.
-projectName = "ArmyBot2"
-mapName = "TrainingMapResource"
+projectName = "ArmyBot3"
+mapName = "TrainingMapBoth"
 
 #Custom imports
 match mapName:

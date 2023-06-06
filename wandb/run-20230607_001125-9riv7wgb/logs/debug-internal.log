@@ -1,0 +1,104 @@
+2023-06-07 00:11:25,178 INFO    StreamThr :7072 [internal.py:wandb_internal():86] W&B internal server running at pid: 7072, started at: 2023-06-07 00:11:25.177383
+2023-06-07 00:11:25,179 DEBUG   HandlerThread:7072 [handler.py:handle_request():144] handle_request: status
+2023-06-07 00:11:25,182 INFO    WriterThread:7072 [datastore.py:open_for_write():85] open: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\run-9riv7wgb.wandb
+2023-06-07 00:11:25,182 DEBUG   SenderThread:7072 [sender.py:send():375] send: header
+2023-06-07 00:11:25,218 DEBUG   SenderThread:7072 [sender.py:send():375] send: run
+2023-06-07 00:11:26,078 DEBUG   HandlerThread:7072 [handler.py:handle_request():144] handle_request: check_version
+2023-06-07 00:11:26,078 INFO    SenderThread:7072 [dir_watcher.py:__init__():219] watching files in: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files
+2023-06-07 00:11:26,078 INFO    SenderThread:7072 [sender.py:_start_run_threads():1124] run started: 9riv7wgb with start time 1686089485.179382
+2023-06-07 00:11:26,078 DEBUG   SenderThread:7072 [sender.py:send_request():402] send_request: summary_record
+2023-06-07 00:11:26,078 INFO    SenderThread:7072 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-07 00:11:26,078 DEBUG   SenderThread:7072 [sender.py:send_request():402] send_request: check_version
+2023-06-07 00:11:26,397 DEBUG   HandlerThread:7072 [handler.py:handle_request():144] handle_request: run_start
+2023-06-07 00:11:26,415 DEBUG   HandlerThread:7072 [system_info.py:__init__():31] System info init
+2023-06-07 00:11:26,415 DEBUG   HandlerThread:7072 [system_info.py:__init__():46] System info init done
+2023-06-07 00:11:26,415 INFO    HandlerThread:7072 [system_monitor.py:start():181] Starting system monitor
+2023-06-07 00:11:26,415 INFO    SystemMonitor:7072 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2023-06-07 00:11:26,416 INFO    HandlerThread:7072 [system_monitor.py:probe():201] Collecting system info
+2023-06-07 00:11:26,419 INFO    SystemMonitor:7072 [interfaces.py:start():190] Started cpu monitoring
+2023-06-07 00:11:26,420 INFO    SystemMonitor:7072 [interfaces.py:start():190] Started disk monitoring
+2023-06-07 00:11:26,420 INFO    SystemMonitor:7072 [interfaces.py:start():190] Started gpu monitoring
+2023-06-07 00:11:26,428 INFO    SystemMonitor:7072 [interfaces.py:start():190] Started memory monitoring
+2023-06-07 00:11:26,436 INFO    SystemMonitor:7072 [interfaces.py:start():190] Started network monitoring
+2023-06-07 00:11:26,447 DEBUG   HandlerThread:7072 [system_info.py:probe():195] Probing system
+2023-06-07 00:11:26,448 DEBUG   HandlerThread:7072 [system_info.py:_probe_git():180] Probing git
+2023-06-07 00:11:26,510 DEBUG   HandlerThread:7072 [system_info.py:_probe_git():188] Probing git done
+2023-06-07 00:11:26,510 DEBUG   HandlerThread:7072 [system_info.py:probe():240] Probing system done
+2023-06-07 00:11:26,510 DEBUG   HandlerThread:7072 [system_monitor.py:probe():210] {'os': 'Windows-10-10.0.22621-SP0', 'python': '3.10.10', 'heartbeatAt': '2023-06-06T22:11:26.447589', 'startedAt': '2023-06-06T22:11:25.167826', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': 'c:\\Users\\Emil WC\\Bachelor\\RL-SC2-bot\\QueueEnv.py', 'codePath': 'QueueEnv.py', 'git': {'remote': 'https://github.com/AlienLime/RL-SC2-bot.git', 'commit': '353a155af0cf7fcc940d93bcadff87e8abf94602'}, 'email': 'emil@np12.dk', 'root': 'C:/Users/Emil WC/Bachelor/RL-SC2-bot', 'host': 'DESKTOP-C36C3C6', 'username': 'Emil WC', 'executable': 'C:\\Users\\Emil WC\\AppData\\Local\\Programs\\Python\\Python310\\python.exe', 'cpu_count': 8, 'cpu_count_logical': 16, 'cpu_freq': {'current': 2904.0, 'min': 0.0, 'max': 2904.0}, 'cpu_freq_per_core': [{'current': 2904.0, 'min': 0.0, 'max': 2904.0}], 'disk': {'total': 930.5849571228027, 'used': 668.4970359802246}, 'gpu': 'NVIDIA GeForce GTX 1660 SUPER', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce GTX 1660 SUPER', 'memory_total': 6442450944}], 'memory': {'total': 15.856761932373047}}
+2023-06-07 00:11:26,511 INFO    HandlerThread:7072 [system_monitor.py:probe():211] Finished collecting system info
+2023-06-07 00:11:26,511 INFO    HandlerThread:7072 [system_monitor.py:probe():214] Publishing system info
+2023-06-07 00:11:26,511 DEBUG   HandlerThread:7072 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-06-07 00:11:26,512 DEBUG   HandlerThread:7072 [system_info.py:_save_pip():67] Saving pip packages done
+2023-06-07 00:11:26,512 INFO    HandlerThread:7072 [system_monitor.py:probe():216] Finished publishing system info
+2023-06-07 00:11:26,519 DEBUG   SenderThread:7072 [sender.py:send():375] send: files
+2023-06-07 00:11:26,519 INFO    SenderThread:7072 [sender.py:_save_file():1378] saving file wandb-metadata.json with policy now
+2023-06-07 00:11:26,525 DEBUG   HandlerThread:7072 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-07 00:11:26,525 DEBUG   SenderThread:7072 [sender.py:send_request():402] send_request: stop_status
+2023-06-07 00:11:26,833 DEBUG   SenderThread:7072 [sender.py:send():375] send: telemetry
+2023-06-07 00:11:27,081 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\wandb-metadata.json
+2023-06-07 00:11:27,081 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\requirements.txt
+2023-06-07 00:11:27,083 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\wandb-summary.json
+2023-06-07 00:11:27,580 INFO    wandb-upload_0:7072 [upload_job.py:push():137] Uploaded file C:\Users\EMILWC~1\AppData\Local\Temp\tmpb2vjwx2iwandb\warff8ih-wandb-metadata.json
+2023-06-07 00:11:29,102 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\output.log
+2023-06-07 00:11:30,730 DEBUG   HandlerThread:7072 [handler.py:handle_request():144] handle_request: status_report
+2023-06-07 00:11:31,123 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\output.log
+2023-06-07 00:11:36,704 DEBUG   HandlerThread:7072 [handler.py:handle_request():144] handle_request: status_report
+2023-06-07 00:11:38,206 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\output.log
+2023-06-07 00:11:41,526 DEBUG   HandlerThread:7072 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-07 00:11:41,527 DEBUG   SenderThread:7072 [sender.py:send_request():402] send_request: stop_status
+2023-06-07 00:11:41,731 DEBUG   HandlerThread:7072 [handler.py:handle_request():144] handle_request: status_report
+2023-06-07 00:11:42,234 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\output.log
+2023-06-07 00:11:43,249 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\output.log
+2023-06-07 00:11:47,726 DEBUG   HandlerThread:7072 [handler.py:handle_request():144] handle_request: status_report
+2023-06-07 00:11:48,301 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\output.log
+2023-06-07 00:11:52,335 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\output.log
+2023-06-07 00:11:53,255 DEBUG   HandlerThread:7072 [handler.py:handle_request():144] handle_request: status_report
+2023-06-07 00:11:54,361 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\output.log
+2023-06-07 00:11:56,530 DEBUG   HandlerThread:7072 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-07 00:11:56,531 DEBUG   SenderThread:7072 [sender.py:send_request():402] send_request: stop_status
+2023-06-07 00:11:58,370 DEBUG   HandlerThread:7072 [handler.py:handle_request():144] handle_request: status_report
+2023-06-07 00:11:58,383 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\output.log
+2023-06-07 00:11:59,394 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\config.yaml
+2023-06-07 00:12:04,266 DEBUG   HandlerThread:7072 [handler.py:handle_request():144] handle_request: status_report
+2023-06-07 00:12:04,439 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\output.log
+2023-06-07 00:12:08,484 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\output.log
+2023-06-07 00:12:09,498 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\output.log
+2023-06-07 00:12:09,700 DEBUG   HandlerThread:7072 [handler.py:handle_request():144] handle_request: status_report
+2023-06-07 00:12:11,550 DEBUG   HandlerThread:7072 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-07 00:12:11,551 DEBUG   SenderThread:7072 [sender.py:send_request():402] send_request: stop_status
+2023-06-07 00:12:14,556 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\output.log
+2023-06-07 00:12:14,741 DEBUG   HandlerThread:7072 [handler.py:handle_request():144] handle_request: status_report
+2023-06-07 00:12:19,804 DEBUG   HandlerThread:7072 [handler.py:handle_request():144] handle_request: status_report
+2023-06-07 00:12:24,856 DEBUG   HandlerThread:7072 [handler.py:handle_request():144] handle_request: status_report
+2023-06-07 00:12:26,444 DEBUG   SystemMonitor:7072 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2023-06-07 00:12:26,445 DEBUG   SenderThread:7072 [sender.py:send():375] send: stats
+2023-06-07 00:12:26,572 DEBUG   HandlerThread:7072 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-07 00:12:26,572 DEBUG   SenderThread:7072 [sender.py:send_request():402] send_request: stop_status
+2023-06-07 00:12:28,717 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\output.log
+2023-06-07 00:12:30,850 DEBUG   HandlerThread:7072 [handler.py:handle_request():144] handle_request: status_report
+2023-06-07 00:12:32,764 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\output.log
+2023-06-07 00:12:34,791 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\output.log
+2023-06-07 00:12:35,857 DEBUG   HandlerThread:7072 [handler.py:handle_request():144] handle_request: status_report
+2023-06-07 00:12:36,815 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\output.log
+2023-06-07 00:12:38,837 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\output.log
+2023-06-07 00:12:40,864 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\output.log
+2023-06-07 00:12:40,886 DEBUG   HandlerThread:7072 [handler.py:handle_request():144] handle_request: status_report
+2023-06-07 00:12:41,578 DEBUG   HandlerThread:7072 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-07 00:12:41,578 DEBUG   SenderThread:7072 [sender.py:send_request():402] send_request: stop_status
+2023-06-07 00:12:42,874 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\output.log
+2023-06-07 00:12:44,888 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\output.log
+2023-06-07 00:12:45,950 DEBUG   HandlerThread:7072 [handler.py:handle_request():144] handle_request: status_report
+2023-06-07 00:12:46,910 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\output.log
+2023-06-07 00:12:48,936 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\output.log
+2023-06-07 00:12:50,958 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\output.log
+2023-06-07 00:12:50,981 DEBUG   HandlerThread:7072 [handler.py:handle_request():144] handle_request: status_report
+2023-06-07 00:12:52,974 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\output.log
+2023-06-07 00:12:54,998 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\output.log
+2023-06-07 00:12:56,063 DEBUG   HandlerThread:7072 [handler.py:handle_request():144] handle_request: status_report
+2023-06-07 00:12:56,460 DEBUG   SenderThread:7072 [sender.py:send():375] send: stats
+2023-06-07 00:12:56,600 DEBUG   HandlerThread:7072 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-07 00:12:56,600 DEBUG   SenderThread:7072 [sender.py:send_request():402] send_request: stop_status
+2023-06-07 00:12:57,020 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\output.log
+2023-06-07 00:12:59,045 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\output.log
+2023-06-07 00:13:01,066 INFO    Thread-16 :7072 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_001125-9riv7wgb\files\output.log
+2023-06-07 00:13:01,119 DEBUG   HandlerThread:7072 [handler.py:handle_request():144] handle_request: status_report

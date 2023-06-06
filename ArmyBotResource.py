@@ -36,10 +36,9 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         else:
             reward = -100
 
-
         self.result_out.put({"observation" : obs, "reward" : reward, "action" : None, "done" : True, "truncated" : False, "info" : {}})
         
-    
+
     async def on_step(self, iteration): # on_step is a method that is called every step of the game.
         self.action = self.action_in.get()
 
@@ -85,8 +84,6 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
             for scv in self.units(UnitTypeId.SCV).idle:
                 reward += 2
             await self.distribute_workers()    
-            reward += 1
-            print(reward)
 
         # Values: [MarineNr, SCVNr, Minerals, CCAvailable, BarAvailable]
         obs = np.zeros(5, dtype=np.uint16)
@@ -100,6 +97,8 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
 
         #Compute reward
         try:
+            for scv in self.units(UnitTypeId.SCV).idle:
+                reward -= 2
             if obs[2] > 50:
                 reward -= (self.minerals - 50) / 100
         except Exception as e:
