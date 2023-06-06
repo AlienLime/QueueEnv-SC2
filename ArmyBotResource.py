@@ -65,30 +65,23 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
             # print("no action returning.")
             return None
         time.sleep(0.05)
-        # 0: Force Move
-        #print("Action is", self.action)
+        # 0: Train SCV
         if self.action == 0:
             try:
-                for marine in self.units(UnitTypeId.MARINE):
-                    for sd in self.structures(UnitTypeId.SUPPLYDEPOT):
-                        marine.move(sd)
+                for cc in self.structures(UnitTypeId.COMMANDCENTER):
+                    cc.train(UnitTypeId.SCV)
             except Exception as e:
                 print(e)
 
-        #1: Attack Move
+        #1: Train marine
         elif self.action == 1:
             try:
-                for marine in self.units(UnitTypeId.MARINE):
-                    marine.attack(random.choice(self.enemy_units))
+                for bar in self.units(UnitTypeId.BARRACKS):
+                    bar.train(UnitTypeId.MARINE)
             except Exception as e:
                 print(e)
-
-        #print("returning a result from army bot..")
         
         map = np.zeros((42, 42, 3), dtype=np.uint8)
-
-        # self.result_out.put({"observation" : map, "reward" : 0, "action" : self.action, "done" : False})
-        # return
 
         # draw the minerals:
         for mineral in self.mineral_field:
@@ -101,13 +94,6 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
             else:
                 map[math.ceil(pos.y)][math.ceil(pos.x)] = [20,75,50]  
 
-
-        # draw the enemy start location:
-        for enemy_start_location in self.enemy_start_locations:
-            pos = enemy_start_location
-            c = [0, 0, 255]
-            map[math.ceil(pos.y)][math.ceil(pos.x)] = c
-
         # draw the enemy units:
         for enemy_unit in self.enemy_units:
             pos = enemy_unit.position
@@ -116,48 +102,25 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
             fraction = enemy_unit.health / enemy_unit.health_max if enemy_unit.health_max > 0 else 0.0001
             map[math.ceil(pos.y)][math.ceil(pos.x)] = [int(fraction*i) for i in c]
 
-
-        # draw the enemy structures:
-        for enemy_structure in self.enemy_structures:
-            pos = enemy_structure.position
-            c = [0, 100, 255]
-            # get structure health fraction:
-            fraction = enemy_structure.health / enemy_structure.health_max if enemy_structure.health_max > 0 else 0.0001
-            map[math.ceil(pos.y)][math.ceil(pos.x)] = [int(fraction*i) for i in c]
-
         # draw our structures:
         for our_structure in self.structures:
-            # if it's a nexus:
-            if our_structure.type_id == UnitTypeId.NEXUS:
+            # if it's a commandcenter:
+            if our_structure.type_id == UnitTypeId.COMMANDCENTER:
                 pos = our_structure.position
                 c = [255, 255, 175]
                 # get structure health fraction:
                 fraction = our_structure.health / our_structure.health_max if our_structure.health_max > 0 else 0.0001
-                map[math.ceil(pos.y)][math.ceil(pos.x)] = [int(fraction*i) for i in c]
-            
+                map[math.ceil(pos.y)][math.ceil(pos.x)] = c
+            # if it's a barracks
+            elif our_structure.type_id == UnitTypeId.BARRACKS:
+                pos = our_structure.position
+                c = [125, 255, 175]
+                map[math.ceil(pos.y)][math.ceil(pos.x)] = c
+
             else:
                 pos = our_structure.position
                 c = [0, 255, 175]
-                # get structure health fraction:
-                fraction = our_structure.health / our_structure.health_max if our_structure.health_max > 0 else 0.0001
-                map[math.ceil(pos.y)][math.ceil(pos.x)] = [int(fraction*i) for i in c]
-
-
-        # draw the vespene geysers:
-        for vespene in self.vespene_geyser:
-            # draw these after buildings, since assimilators go over them. 
-            # tried to denote some way that assimilator was on top, couldnt 
-            # come up with anything. Tried by positions, but the positions arent identical. ie:
-            # vesp position: (50.5, 63.5) 
-            # bldg positions: [(64.369873046875, 58.982421875), (52.85693359375, 51.593505859375),...]
-            pos = vespene.position
-            c = [255, 175, 255]
-            fraction = vespene.vespene_contents / 2250
-
-            if vespene.is_visible:
-                map[math.ceil(pos.y)][math.ceil(pos.x)] = [int(fraction*i) for i in c]
-            else:
-                map[math.ceil(pos.y)][math.ceil(pos.x)] = [50,20,75]
+                map[math.ceil(pos.y)][math.ceil(pos.x)] = c
 
         # draw our units:
         for our_unit in self.units:
@@ -173,9 +136,7 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
             else:
                 pos = our_unit.position
                 c = [175, 255, 0]
-                # get health:
-                fraction = our_unit.health / our_unit.health_max if our_unit.health_max > 0 else 0.0001
-                map[math.ceil(pos.y)][math.ceil(pos.x)] = [int(fraction*i) for i in c]
+                map[math.ceil(pos.y)][math.ceil(pos.x)] = c
 
         # show map with opencv, resized to be larger:
         # horizontal flip:
@@ -184,6 +145,7 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
             cv2.imshow('map',cv2.flip(cv2.resize(map, None, fx=4, fy=4, interpolation=cv2.INTER_NEAREST), 0))
             cv2.waitKey(1)
 
+        # Compute the reward
         reward = -1
 
         try:
@@ -191,12 +153,12 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
             for marine in self.units(UnitTypeId.MARINE):
                 # if marine is attacking and is in range of enemy unit:
                 if marine.is_attacking:
-                    reward += 0.1
+                    reward += 1
                     if self.enemy_units.closer_than(5, marine) and marine.weapon_cooldown == 0:
-                        reward += 0.9
+                        reward += 1
                 else:
                     if marine.weapon_cooldown > 0:
-                        reward += 1
+                        reward += 2
 
         except Exception as e:
             print("reward",e)
