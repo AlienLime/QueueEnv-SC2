@@ -58,6 +58,8 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         
         if str(game_result) == "Result.Victory":
             reward += (furthest_marine.health * furthest_marine.health) / 5
+        else:
+            reward = 0
 
         self.result_out.put({"observation" : obs, "reward" : reward, "action" : None, "done" : True, "truncated" : False, "info" : {}})
         

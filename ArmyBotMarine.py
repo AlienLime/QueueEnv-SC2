@@ -30,7 +30,7 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
                     obs[2] = int(marine.weapon_cooldown * 100)
                     
         else:
-            reward = -100
+            reward = 0
 
 
         self.result_out.put({"observation" : obs, "reward" : reward, "action" : None, "done" : True, "truncated" : False, "info" : {}})
