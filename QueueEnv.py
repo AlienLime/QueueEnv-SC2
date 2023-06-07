@@ -17,8 +17,8 @@ from sc2.player import Bot, Computer  #wrapper for whether or not the agent is o
 from sc2 import maps  # maps method for loading maps to play in.
 
 # Global variables to pick the right experiment and WandB project.
-projectName = "ArmyBot3"
-mapName = "TrainingMapBoth"
+projectName = "ArmyBot2"
+mapName = "TrainingMapResource"
 
 #Custom imports
 match mapName:
@@ -30,8 +30,6 @@ match mapName:
 
     case "TrainingMapBoth":
         from ArmyBotBoth import ArmyBot
-
-
 
 
 class AST(Thread):
@@ -50,6 +48,7 @@ class AST(Thread):
             realtime=False, # When set to True, the agent is limited in how long each step can take to process.
         )
 
+
 class QueueEnv(gym.Env):
     def __init__(self, config=None, render_mode=None): # None, "human", "rgb_array"
         super(QueueEnv, self).__init__()
@@ -59,17 +58,17 @@ class QueueEnv(gym.Env):
             case "TrainingMapMarine":
                 self.action_space = Discrete(2)
                 # Values: [MarineHealth, ZergDist, WeaponCD]
-                self.observation_space = MultiDiscrete([46,250,2])
+                self.observation_space = MultiDiscrete([46, 250, 2])
 
             case "TrainingMapResource":
                 self.action_space = Discrete(3)
-                # Values: [MarineNr, SCVNr, Minerals, CCAvailable, BarAvailable]
-                self.observation_space = MultiDiscrete([20,20,1000, 2, 3])
+                # Values: [MarineNr, SCVNr, IdleSCVs, Minerals, CCAvailable, BarAvailable]
+                self.observation_space = MultiDiscrete([20, 20, 20,1000, 2, 3])
 
             case "TrainingMapBoth":
                 self.action_space = Discrete(5)
-                # Values: [MarineHealth, ZergDist, WeaponCD, MarineNr, SCVNr, Minerals, CCAvailable, BarAvailable]
-                self.observation_space = MultiDiscrete([46,250,2,20,20,1000, 2, 3])
+                # Values: [MarineHealth, ZergDist, WeaponCD, MarineNr, SCVNr, IdleSCVs, Minerals, CCAvailable, BarAvailable]
+                self.observation_space = MultiDiscrete([46, 250, 2, 25, 20, 20, 1000, 2, 3])
 
             case _:
                 print("You must choose a valid experiment")
@@ -98,12 +97,12 @@ class QueueEnv(gym.Env):
                 observation = np.array([45, 210, 0])
 
             case "TrainingMapResource":
-                # Values: [MarineNr, SCVNr, Minerals, CCAvailable, BarAvailable]
-                observation = np.array([1, 1, 50, 1, 2])
+                # Values: [MarineNr, SCVNr, IdleSCVs, Minerals, CCAvailable, BarAvailable]
+                observation = np.array([1, 1, 1, 50, 1, 2])
 
             case "TrainingMapBoth":
-                # Values: [MarineHealth, ZergDist, WeaponCD, MarineNr, SCVNr, Minerals, CCAvailable, BarAvailable]
-                observation = np.array([45, 210, 0, 1, 1, 50, 1, 2])
+                # Values: [MarineHealth, ZergDist, WeaponCD, MarineNr, SCVNr, IdleSCVs, Minerals, CCAvailable, BarAvailable]
+                observation = np.array([45, 210, 0, 1, 1, 1, 50, 1, 2])
 
             case _:
                 print("You must choose a valid experiment")
@@ -112,6 +111,7 @@ class QueueEnv(gym.Env):
         self.pcom = AST()
         self.pcom.start()
         return observation, info
+
 
 def train_ppo():
     # Initialize WandB
@@ -122,7 +122,7 @@ def train_ppo():
 
     # Create a configuration for training
     config = PPOConfig()
-    config = config.training(entropy_coeff = 0.01) # Entropy coeff determines how likeliy the algorithm is to explore new options
+    #config = config.training(entropy_coeff = 0.01) # Entropy coeff determines how likeliy the algorithm is to explore new options
     config = config.resources(num_gpus=0)
     config = config.rollouts(num_rollout_workers=1)
 
@@ -130,7 +130,7 @@ def train_ppo():
     algo = config.build(env=QueueEnv)
 
     # Train the PPO agent
-    iterations = 10
+    iterations = 20
     for i in range(iterations):  # Number of training iterations
         result = algo.train()
         episode_reward = result["hist_stats"]["episode_reward"]

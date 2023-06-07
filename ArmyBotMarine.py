@@ -95,8 +95,4 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
             print("reward",e)
             reward = 0
 
-        truncated = False
-        if iteration == 500:
-            truncated = True
-
-        self.result_out.put({"observation" : obs, "reward" : reward, "action" : None, "done" : False, "truncated" : truncated, "info" : {}})
+        self.result_out.put({"observation" : obs, "reward" : reward, "action" : None, "done" : False, "truncated" : False, "info" : {}})

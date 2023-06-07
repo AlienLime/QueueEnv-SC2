@@ -18,26 +18,46 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         print ("Game over!")
         reward = 0
         
-        # Values: [MarineHealth, ZergDist, WeaponCD, MarineNr, SCVNr, Minerals, CCAvailable, BarAvailable]
-        obs = np.zeros(8, dtype=np.uint16)
+        # Values: [MarineHealth, ZergDist, WeaponCD, MarineNr, SCVNr, IdleSCVs, Minerals, CCAvailable, BarAvailable]
+        obs = np.zeros(9, dtype=np.uint16)
+
+        # Get the marine in the lower half of the map
+        bar = (random.choice(self.structures(UnitTypeId.BARRACKS)))
+        marine = self.units(UnitTypeId.MARINE)
+        furthest_marine = marine.furthest_to(bar)
+
+        # Set obs[0]
+        obs[0] = furthest_marine.health
+
+        # Set obs[1]
         obs[1] = 0
+
+        # Set obs[2]            
+        obs[2] = int(furthest_marine.weapon_cooldown * 100)
+
+        # Set obs[3]
         obs[3] = self.army_count
+
+        # Set obs[4]
         obs[4] = self.supply_workers
-        obs[5] = self.minerals
+
+        # Set obs[5]
+        for scv in self.units(UnitTypeId.SCV).idle:
+            obs[5] += 1
+
+        # Set obs[6]
+        obs[6] = min(self.minerals, 999)
+
+        # Set obs[7]
         for cc in self.structures(UnitTypeId.COMMANDCENTER).idle:
-            obs[6] += 1
-        for bar in self.structures(UnitTypeId.BARRACKS).idle:
             obs[7] += 1
+
+        # Set obs[8]
+        for bar in self.structures(UnitTypeId.BARRACKS).idle:
+            obs[8] += 1
         
         if str(game_result) == "Result.Victory":
-            for marine in self.units(UnitTypeId.MARINE):
-                if marine.health_percentage < 1:
-                    reward += marine.health
-                    obs[0] = marine.health
-                    obs[2] = int(marine.weapon_cooldown * 100)
-                    
-        else:
-            reward = -100
+            reward += (furthest_marine.health * furthest_marine.health) / 5
 
         self.result_out.put({"observation" : obs, "reward" : reward, "action" : None, "done" : True, "truncated" : False, "info" : {}})
         
@@ -55,7 +75,7 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         time.sleep(self.tickRate)
 
         #Base reward
-        reward = -1
+        reward = -0.01
         '''
         0: Force Move
         1: Attack Move
@@ -68,7 +88,10 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
             try:
                 bar = (random.choice(self.structures(UnitTypeId.BARRACKS)))
                 marine = self.units(UnitTypeId.MARINE)
-                marine.furthest_to(bar).move(random.choice(self.structures(UnitTypeId.MISSILETURRET)))
+                furthest_marine = marine.furthest_to(bar)
+                furthest_marine.move(random.choice(self.structures(UnitTypeId.MISSILETURRET)))
+                if furthest_marine.weapon_cooldown > 0:
+                    reward += 1
             except Exception as e:
                 print(e)
 
@@ -79,7 +102,11 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
                     zergling = random.choice(self.enemy_units)
                     bar = (random.choice(self.structures(UnitTypeId.BARRACKS)))
                     marine = self.units(UnitTypeId.MARINE)
-                    marine.furthest_to(bar).attack(zergling)
+                    furthest_marine = marine.furthest_to(bar)
+                    furthest_marine.attack(zergling)
+                    reward += 0.1
+                    if self.enemy_units.closer_than(5, furthest_marine) and furthest_marine.weapon_cooldown == 0:
+                        reward += 1
             except Exception as e:
                 print(e)
 
@@ -89,7 +116,6 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
                 if self.can_afford(UnitTypeId.SCV):
                     for cc in self.structures(UnitTypeId.COMMANDCENTER).idle:
                         cc.train(UnitTypeId.SCV)
-                        reward += 2
             except Exception as e:
                 print(e)
 
@@ -106,57 +132,66 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         
         #4: Distribute workers
         elif self.action == 4:
-            for scv in self.units(UnitTypeId.SCV).idle:
-                reward += 2
-            await self.distribute_workers()    
+            await self.distribute_workers()
+            reward += 0.01
 
-        # Values: [MarineHealth, ZergDist, WeaponCD, MarineNr, SCVNr, Minerals, CCAvailable, BarAvailable]
-        obs = np.zeros(8, dtype=np.uint16)
+        # Values: [MarineHealth, ZergDist, WeaponCD, MarineNr, SCVNr, IdleSCVs, Minerals, CCAvailable, BarAvailable]
+        obs = np.zeros(9, dtype=np.uint16)
+
+        # Get the marine in the lower half of the map
+        bar = (random.choice(self.structures(UnitTypeId.BARRACKS)))
+        marine = self.units(UnitTypeId.MARINE)
+        furthest_marine = marine.furthest_to(bar)
+
+        # Set obs[0]
+        obs[0] = furthest_marine.health
+        
+        # Set obs[1]
+        if self.enemy_units:
+            zergling = random.choice(self.enemy_units)
+            obs[1] = int(furthest_marine.distance_to(zergling) * 10)
+        else:
+            obs[1] = 0
+
+        # Set obs[2]
+        if furthest_marine.weapon_cooldown > 0:
+            obs[2] = 1
+
+        # Set obs[3]
         obs[3] = self.army_count
+
+        # Set obs[4]
         obs[4] = self.supply_workers
-        obs[5] = self.minerals
+
+        # Set obs[5]
+        for scv in self.units(UnitTypeId.SCV).idle:
+            obs[5] += 1
+
+        # Set obs[6]
+        obs[6] = min(self.minerals, 999)
+
+        # Set obs[7]
         for cc in self.structures(UnitTypeId.COMMANDCENTER).idle:
-            obs[6] += 1
-        for bar in self.structures(UnitTypeId.BARRACKS).idle:
             obs[7] += 1
 
+        # Set obs[8]
+        for bar in self.structures(UnitTypeId.BARRACKS).idle:
+            obs[8] += 1
+
+        # Punish bad management
         try:
-            for scv in self.units(UnitTypeId.SCV).idle:
-                reward -= 2
-            if obs[2] > 50:
-                reward -= (self.minerals - 50) / 100
-
-
-            # iterate through our marines:
-            bar = (random.choice(self.structures(UnitTypeId.BARRACKS)))
-            marine = self.units(UnitTypeId.MARINE)
-            furthest_marine = marine.furthest_to(bar)
-
-            obs[0] = furthest_marine.health
+            # Idle SCVs
+            reward -= obs[5] * 0.2
+            # Excess minerals
+            if obs[6] > 50:
+                reward -= (self.minerals) / 200
+            # Bad micro
             if self.enemy_units:
-                zergling = random.choice(self.enemy_units)
-                obs[1] = int(furthest_marine.distance_to(zergling) * 10)
-            else:
-                obs[1] = 0
-
-            if furthest_marine.weapon_cooldown > 0:
-                obs[2] = 1
-
-            # if marine is attacking and is in range of enemy unit:
-            if furthest_marine.is_attacking:
-                reward += 1
-                if self.enemy_units.closer_than(5, furthest_marine) and furthest_marine.weapon_cooldown == 0:
-                    reward += 1
-            else:
-                if furthest_marine.weapon_cooldown > 0:
-                    reward += 2
+                if self.action <= 1 and self.enemy_units.closer_than(5, furthest_marine):
+                    reward -= 2
 
         except Exception as e:
             print("reward",e)
             reward = 0
 
-        truncated = False
-        if iteration == 2000:
-            truncated = True
-
-        self.result_out.put({"observation" : obs, "reward" : reward, "action" : None, "done" : False, "truncated" : truncated, "info" : {}})
+        self.result_out.put({"observation" : obs, "reward" : reward, "action" : None, "done" : False, "truncated" : False, "info" : {}})

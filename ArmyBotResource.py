@@ -20,21 +20,31 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
     async def on_end(self,game_result):
         print ("Game over!")
         
-        # Values: [MarineNr, SCVNr, Minerals, CCAvailable, BarAvailable]
-        obs = np.zeros(5, dtype=np.uint16)
+        # Values: [MarineNr, SCVNr, IdleSCVs, Minerals, CCAvailable, BarAvailable]
+        obs = np.zeros(6, dtype=np.uint16)
+        # Set obs[0]
         obs[0] = self.army_count
+
+        # Set obs[1]
         obs[1] = self.supply_workers
-        obs[2] = self.minerals
+
+        # Set obs[2]
+        for scv in self.units(UnitTypeId.SCV).idle:
+            obs[2] += 1
+
+        # Set obs[3]
+        obs[3] = min(self.minerals, 999)
+
+        # Set obs[4]
         for cc in self.structures(UnitTypeId.COMMANDCENTER).idle:
-            obs[3] += 1
-        for bar in self.structures(UnitTypeId.BARRACKS).idle:
             obs[4] += 1
+
+        # Set obs[5]
+        for bar in self.structures(UnitTypeId.BARRACKS).idle:
+            obs[5] += 1
         
         if str(game_result) == "Result.Victory":
             reward = 100
-                    
-        else:
-            reward = -100
 
         self.result_out.put({"observation" : obs, "reward" : reward, "action" : None, "done" : True, "truncated" : False, "info" : {}})
         
@@ -52,7 +62,7 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         time.sleep(self.tickRate)
 
         #Base reward
-        reward = -1
+        reward = -0.01
         '''
         0: Train SCV
         1: Train marine
@@ -64,7 +74,6 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
                 if self.can_afford(UnitTypeId.SCV):
                     for cc in self.structures(UnitTypeId.COMMANDCENTER).idle:
                         cc.train(UnitTypeId.SCV)
-                        reward += 2
             except Exception as e:
                 print(e)
 
@@ -81,33 +90,40 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         
         #2: Distribute workers
         elif self.action == 2:
-            for scv in self.units(UnitTypeId.SCV).idle:
-                reward += 2
-            await self.distribute_workers()    
+            await self.distribute_workers()
+            reward += 0.01    
 
-        # Values: [MarineNr, SCVNr, Minerals, CCAvailable, BarAvailable]
-        obs = np.zeros(5, dtype=np.uint16)
+        # Values: [MarineNr, SCVNr, IdleSCVs, Minerals, CCAvailable, BarAvailable]
+        obs = np.zeros(6, dtype=np.uint16)
+        # Set obs[0]
         obs[0] = self.army_count
+
+        # Set obs[1]
         obs[1] = self.supply_workers
-        obs[2] = min(self.minerals, 999)
+
+        # Set obs[2]
+        for scv in self.units(UnitTypeId.SCV).idle:
+            obs[2] += 1
+
+        # Set obs[3]
+        obs[3] = min(self.minerals, 999)
+
+        # Set obs[4]
         for cc in self.structures(UnitTypeId.COMMANDCENTER).idle:
-            obs[3] += 1
-        for bar in self.structures(UnitTypeId.BARRACKS).idle:
             obs[4] += 1
+
+        # Set obs[5]
+        for bar in self.structures(UnitTypeId.BARRACKS).idle:
+            obs[5] += 1
 
         #Compute reward
         try:
-            for scv in self.units(UnitTypeId.SCV).idle:
-                reward -= 2
-            if obs[2] > 50:
-                reward -= (self.minerals - 50) / 100
+            reward -= obs[2] * 0.2
+            if obs[3] > 50:
+                reward -= (self.minerals) / 200
         except Exception as e:
             print("reward",e)
             reward = 0
 
-        truncated = False
-        if iteration == 2000:
-            truncated = True
-
-        self.result_out.put({"observation" : obs, "reward" : reward, "action" : None, "done" : False, "truncated" : truncated, "info" : {}})
+        self.result_out.put({"observation" : obs, "reward" : reward, "action" : None, "done" : False, "truncated" : False, "info" : {}})
         
