@@ -89,3 +89,4 @@
 [36m(RolloutWorker pid=84064)[39m     response = await self.__request(sc_pb.Request(**kwargs))
 [36m(RolloutWorker pid=84064)[39m   File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\sc2\protocol.py", line 51, in __request
 [36m(RolloutWorker pid=84064)[39m     raise ConnectionAlreadyClosed("Connection already closed.") from exc
+[36m(RolloutWorker pid=84064)[39m sc2.protocol.ConnectionAlreadyClosed: Connection already closed.

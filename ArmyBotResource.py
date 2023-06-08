@@ -61,7 +61,7 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
             return None
 
         #Base reward
-        reward = -0.01
+        reward = -0.05
         '''
         0: Train SCV
         1: Train marine
@@ -89,8 +89,7 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         
         #2: Distribute workers
         elif self.action == 2:
-            await self.distribute_workers()
-            reward += 0.01    
+            await self.distribute_workers()  
 
         # Values: [MarineNr, SCVNr, IdleSCVs, Minerals, CCAvailable, BarAvailable]
         obs = np.zeros(6, dtype=np.uint16)

@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "c:\Users\Emil WC\Bachelor\RL-SC2-bot\QueueEnv.py", line 186, in <module>
+    train_ppo()
+  File "c:\Users\Emil WC\Bachelor\RL-SC2-bot\QueueEnv.py", line 165, in train_ppo
+    config = config.callbacks(callbacks_class=WandBCallback(run))
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\rllib\algorithms\algorithm_config.py", line 1688, in callbacks
+    raise ValueError(
+ValueError: `config.callbacks_class` must be a callable method that returns a subclass of DefaultCallbacks, got <__main__.WandBCallback object at 0x000001D9B46360B0>!
+Traceback (most recent call last):
+  File "c:\Users\Emil WC\Bachelor\RL-SC2-bot\QueueEnv.py", line 186, in <module>
+    train_ppo()
+  File "c:\Users\Emil WC\Bachelor\RL-SC2-bot\QueueEnv.py", line 165, in train_ppo
+    config = config.callbacks(callbacks_class=WandBCallback(run))
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\ray\rllib\algorithms\algorithm_config.py", line 1688, in callbacks
+    raise ValueError(
+ValueError: `config.callbacks_class` must be a callable method that returns a subclass of DefaultCallbacks, got <__main__.WandBCallback object at 0x000001D9B46360B0>!

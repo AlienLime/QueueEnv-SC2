@@ -132,7 +132,7 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         #4: Distribute workers
         elif self.action == 4:
             await self.distribute_workers()
-            reward += 0.01
+            reward += 0.05
 
         # Values: [MarineHealth, ZergDist, WeaponCD, MarineNr, SCVNr, IdleSCVs, Minerals, CCAvailable, BarAvailable]
         obs = np.zeros(9, dtype=np.uint16)
@@ -157,7 +157,7 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
             obs[2] = 1
 
         # Set obs[3]
-        obs[3] = self.army_count
+        obs[3] = self.supply_army
 
         # Set obs[4]
         obs[4] = self.supply_workers
@@ -183,7 +183,7 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
             reward -= obs[5] * 0.2
             # Bad micro
             if self.enemy_units:
-                if self.action <= 1 and self.enemy_units.closer_than(5, furthest_marine):
+                if self.action != 0 and obs[2] == 0:
                     reward -= 2
 
         except Exception as e:

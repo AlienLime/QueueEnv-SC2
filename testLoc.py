@@ -17,3 +17,18 @@ table = wandb.Table(data = data, columns = ["Episodes", "Rewards"])
 wandb.log({"episode_rewards" : wandb.plot.line(table, "Episodes", "Rewards", title="Custom Episode Rewards Line Plot")})
 
 wandb.finish()
+
+
+"""
+episode_reward = result["hist_stats"]["episode_reward"]
+
+data = []
+
+for ep in range(len(episode_reward)):
+    data.append([ep, episode_reward[ep]])
+print(data)    
+
+table = wandb.Table(data = data, columns = ["Episodes", "Rewards"])
+
+wandb.log({"episode_rewards" : wandb.plot.line(table, "Episodes", "Rewards", title="Custom Episode Rewards Line Plot")})
+"""

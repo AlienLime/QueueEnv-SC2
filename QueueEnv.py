@@ -20,6 +20,7 @@ from sc2 import maps  # maps method for loading maps to play in.
 # Global variables to pick the right experiment and WandB project.
 projectName = "ArmyBot2"
 mapName = "TrainingMapResource"
+episode_reward_list = []
 
 #Custom imports
 match mapName:
@@ -112,15 +113,32 @@ class QueueEnv(gym.Env):
         self.pcom.start()
         return observation, info
 
+
 class WandBCallback(DefaultCallbacks):
     def on_episode_end(self, *, worker, base_env, policies, episode, env_index, **kwargs):
         episode_reward = episode.total_reward
-        wandb.run.log({"Episode Reward": episode_reward})
+
+        global episode_reward_list
+        episode_reward_list.append(episode_reward)
+        listLength = len(episode_reward_list)
+
+        if listLength > 0 and listLength % 100 == 0:
+            wandb.init(project="ResourcePlot")
+
+            data = []
+
+            for ep in range(len(episode_reward_list)):
+                data.append([ep, episode_reward_list[ep]])
+            print(data)    
+
+            table = wandb.Table(data = data, columns = ["Episodes", "Rewards"])
+
+            wandb.log({"episode_rewards" : wandb.plot.line(table, "Episodes", "Rewards", title="Custom Episode Rewards Line Plot")})
+                
+            wandb.finish()
+
 
 def train_ppo():
-    # Initialize WandB
-    wandb.init(project = projectName)
-
     # Create a configuration for training
     config = PPOConfig()
     config = config.callbacks(callbacks_class=WandBCallback)
@@ -132,17 +150,14 @@ def train_ppo():
     algo = config.build(env=QueueEnv)
 
     # Train the PPO agent
-    iterations = 2
+    iterations = 600
     for i in range(iterations):  # Number of training iterations
         result = algo.train()
 
         if i == iterations - 1:
             checkpoint_dir = algo.save()
             print(f"Checkpoint saved in directory {checkpoint_dir}")
-            
-    wandb.finish()
 
 if __name__ == "__main__":    
 
     train_ppo()
-

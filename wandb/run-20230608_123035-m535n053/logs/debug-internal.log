@@ -79,3 +79,25 @@
 2023-06-08 12:31:51,823 DEBUG   SenderThread:84712 [sender.py:send_request():402] send_request: stop_status
 2023-06-08 12:31:53,020 DEBUG   HandlerThread:84712 [handler.py:handle_request():144] handle_request: status_report
 2023-06-08 12:31:58,073 DEBUG   HandlerThread:84712 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:32:03,125 DEBUG   HandlerThread:84712 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:32:06,685 DEBUG   SenderThread:84712 [sender.py:send():375] send: stats
+2023-06-08 12:32:06,838 DEBUG   HandlerThread:84712 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-08 12:32:06,838 DEBUG   SenderThread:84712 [sender.py:send_request():402] send_request: stop_status
+2023-06-08 12:32:09,040 DEBUG   HandlerThread:84712 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:32:14,078 DEBUG   HandlerThread:84712 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:32:19,118 DEBUG   HandlerThread:84712 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:32:21,847 DEBUG   HandlerThread:84712 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-08 12:32:21,848 DEBUG   SenderThread:84712 [sender.py:send_request():402] send_request: stop_status
+2023-06-08 12:32:25,094 DEBUG   HandlerThread:84712 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:32:30,126 DEBUG   HandlerThread:84712 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:32:35,173 DEBUG   HandlerThread:84712 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:32:36,689 DEBUG   SenderThread:84712 [sender.py:send():375] send: stats
+2023-06-08 12:32:36,861 DEBUG   HandlerThread:84712 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-08 12:32:36,861 DEBUG   SenderThread:84712 [sender.py:send_request():402] send_request: stop_status
+2023-06-08 12:32:40,620 DEBUG   HandlerThread:84712 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:32:41,042 INFO    Thread-16 :84712 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_123035-m535n053\files\output.log
+2023-06-08 12:32:45,672 DEBUG   HandlerThread:84712 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:32:50,716 DEBUG   HandlerThread:84712 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:32:51,880 DEBUG   HandlerThread:84712 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-08 12:32:51,880 DEBUG   SenderThread:84712 [sender.py:send_request():402] send_request: stop_status
+2023-06-08 12:32:56,120 DEBUG   HandlerThread:84712 [handler.py:handle_request():144] handle_request: status_report
