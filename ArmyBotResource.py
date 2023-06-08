@@ -13,7 +13,6 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
     output = {"observation" : map, "reward" : 0, "action" : None, "done" : False}
     def __init__(self, *args,bot_in_box=None, action_in=None, result_out=None, **kwargs, ):
         super().__init__(*args, **kwargs)
-        self.tickRate = 0.05
         self.action_in = action_in
         self.result_out = result_out
 
@@ -54,14 +53,12 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
     async def on_step(self, iteration): # on_step is a method that is called every step of the game.
         self.action = self.action_in.get()
 
-        if iteration % 10 == 0:
+        if iteration % 100 == 0:
             print("armybot at...", iteration)
 
         if self.action is None:
             print("no action returning.")
             return None
-        
-        time.sleep(self.tickRate)
 
         #Base reward
         reward = -0.01
@@ -98,7 +95,7 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         # Values: [MarineNr, SCVNr, IdleSCVs, Minerals, CCAvailable, BarAvailable]
         obs = np.zeros(6, dtype=np.uint16)
         # Set obs[0]
-        obs[0] = self.army_count
+        obs[0] = self.supply_army
 
         # Set obs[1]
         obs[1] = self.supply_workers
@@ -121,8 +118,6 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         #Compute reward
         try:
             reward -= obs[2] * 0.2
-            if obs[3] > 50:
-                reward -= (self.minerals) / 200
         except Exception as e:
             print("reward",e)
             reward = 0

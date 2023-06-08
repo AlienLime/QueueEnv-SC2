@@ -10,7 +10,6 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
     output = {"observation" : map, "reward" : 0, "action" : None, "done" : False}
     def __init__(self, *args,bot_in_box=None, action_in=None, result_out=None, **kwargs, ):
         super().__init__(*args, **kwargs)
-        self.tickRate = 0.05
         self.action_in = action_in
         self.result_out = result_out
 
@@ -36,7 +35,7 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         obs[2] = int(furthest_marine.weapon_cooldown * 100)
 
         # Set obs[3]
-        obs[3] = self.army_count
+        obs[3] = self.supply_army
 
         # Set obs[4]
         obs[4] = self.supply_workers
@@ -67,14 +66,12 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
     async def on_step(self, iteration): # on_step is a method that is called every step of the game.
         self.action = self.action_in.get()
         
-        if iteration % 10 == 0:
+        if iteration % 100 == 0:
             print("armybot at...", iteration)
 
         if self.action is None:
             print("no action returning.")
             return None
-        
-        time.sleep(self.tickRate)
 
         #Base reward
         reward = -0.01
@@ -184,9 +181,6 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         try:
             # Idle SCVs
             reward -= obs[5] * 0.2
-            # Excess minerals
-            if obs[6] > 50:
-                reward -= (self.minerals) / 200
             # Bad micro
             if self.enemy_units:
                 if self.action <= 1 and self.enemy_units.closer_than(5, furthest_marine):

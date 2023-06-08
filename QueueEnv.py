@@ -9,6 +9,7 @@ import wandb
 
 # Ray imports
 from ray.rllib.algorithms.ppo import PPOConfig
+from ray.rllib.algorithms.callbacks import DefaultCallbacks
 
 #API imports
 from sc2.data import Difficulty, Race  # difficulty for bots, race for the 1 of 3 races
@@ -30,7 +31,6 @@ match mapName:
 
     case "TrainingMapBoth":
         from ArmyBotBoth import ArmyBot
-
 
 class AST(Thread):
     def __init__(self) -> None:
@@ -112,17 +112,19 @@ class QueueEnv(gym.Env):
         self.pcom.start()
         return observation, info
 
+class WandBCallback(DefaultCallbacks):
+    def on_episode_end(self, *, worker, base_env, policies, episode, env_index, **kwargs):
+        episode_reward = episode.total_reward
+        wandb.run.log({"Episode Reward": episode_reward})
 
 def train_ppo():
     # Initialize WandB
     wandb.init(project = projectName)
 
-    # Make a list
-    rewards = []
-
     # Create a configuration for training
     config = PPOConfig()
-    #config = config.training(entropy_coeff = 0.01) # Entropy coeff determines how likeliy the algorithm is to explore new options
+    config = config.callbacks(callbacks_class=WandBCallback)
+    config = config.training(entropy_coeff=0.01) # Entropy coeff determines how likeliy the algorithm is to explore new options
     config = config.resources(num_gpus=0)
     config = config.rollouts(num_rollout_workers=1)
 
@@ -130,28 +132,17 @@ def train_ppo():
     algo = config.build(env=QueueEnv)
 
     # Train the PPO agent
-    iterations = 20
+    iterations = 2
     for i in range(iterations):  # Number of training iterations
         result = algo.train()
-        episode_reward = result["hist_stats"]["episode_reward"]
 
-        for rwd in episode_reward:
-            rewards.append(rwd)
-        
         if i == iterations - 1:
             checkpoint_dir = algo.save()
             print(f"Checkpoint saved in directory {checkpoint_dir}")
-            data = []
-
-            for ep in range(len(rewards)):
-                data.append([ep, rewards[ep]])
-
-            table = wandb.Table(data = data, columns = ["Episodes", "Rewards"])
-
-            wandb.log({"episode_rewards" : wandb.plot.line(table, "Episodes", "Rewards", title="Custom Episode Rewards Line Plot")})
-
+            
     wandb.finish()
 
-
 if __name__ == "__main__":    
+
     train_ppo()
+

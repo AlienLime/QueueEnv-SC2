@@ -10,7 +10,6 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
     output = {"observation" : map, "reward" : 0, "action" : None, "done" : False}
     def __init__(self, *args,bot_in_box=None, action_in=None, result_out=None, **kwargs, ):
         super().__init__(*args, **kwargs)
-        self.tickRate = 0.05
         self.action_in = action_in
         self.result_out = result_out
 
@@ -46,7 +45,6 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
             print("no action returning.")
             return None
         
-        time.sleep(self.tickRate)
         '''
         0: Force Move
         1: Attack Move

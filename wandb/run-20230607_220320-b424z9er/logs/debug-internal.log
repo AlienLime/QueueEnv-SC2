@@ -1,0 +1,5 @@
+2023-06-07 22:03:20,970 INFO    StreamThr :6444 [internal.py:wandb_internal():86] W&B internal server running at pid: 6444, started at: 2023-06-07 22:03:20.970762
+2023-06-07 22:03:20,971 DEBUG   HandlerThread:6444 [handler.py:handle_request():144] handle_request: status
+2023-06-07 22:03:20,975 INFO    WriterThread:6444 [datastore.py:open_for_write():85] open: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230607_220320-b424z9er\run-b424z9er.wandb
+2023-06-07 22:03:20,975 DEBUG   SenderThread:6444 [sender.py:send():375] send: header
+2023-06-07 22:03:21,032 DEBUG   SenderThread:6444 [sender.py:send():375] send: run
