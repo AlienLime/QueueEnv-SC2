@@ -39,3 +39,156 @@
 2023-06-08 12:28:32,671 INFO    Thread-16 :65972 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_122831-ku7lfpiq\files\wandb-metadata.json
 2023-06-08 12:28:32,672 INFO    Thread-16 :65972 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_122831-ku7lfpiq\files\requirements.txt
 2023-06-08 12:28:32,959 INFO    wandb-upload_0:65972 [upload_job.py:push():137] Uploaded file C:\Users\EMILWC~1\AppData\Local\Temp\tmpdh3n3osdwandb\c32vh6rp-wandb-metadata.json
+2023-06-08 12:28:35,693 INFO    Thread-16 :65972 [dir_watcher.py:_on_file_created():278] file/dir created: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_122831-ku7lfpiq\files\output.log
+2023-06-08 12:28:36,500 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:28:37,719 INFO    Thread-16 :65972 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_122831-ku7lfpiq\files\output.log
+2023-06-08 12:28:41,547 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:28:45,783 INFO    Thread-16 :65972 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_122831-ku7lfpiq\files\output.log
+2023-06-08 12:28:47,078 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:28:47,078 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-08 12:28:47,078 DEBUG   SenderThread:65972 [sender.py:send_request():402] send_request: stop_status
+2023-06-08 12:28:49,804 INFO    Thread-16 :65972 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_122831-ku7lfpiq\files\output.log
+2023-06-08 12:28:52,082 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:28:55,845 INFO    Thread-16 :65972 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_122831-ku7lfpiq\files\output.log
+2023-06-08 12:28:58,008 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:28:59,885 INFO    Thread-16 :65972 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_122831-ku7lfpiq\files\output.log
+2023-06-08 12:29:01,907 INFO    Thread-16 :65972 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_122831-ku7lfpiq\files\output.log
+2023-06-08 12:29:02,085 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-08 12:29:02,085 DEBUG   SenderThread:65972 [sender.py:send_request():402] send_request: stop_status
+2023-06-08 12:29:03,339 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:29:03,915 INFO    Thread-16 :65972 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_122831-ku7lfpiq\files\config.yaml
+2023-06-08 12:29:05,932 INFO    Thread-16 :65972 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_122831-ku7lfpiq\files\output.log
+2023-06-08 12:29:07,951 INFO    Thread-16 :65972 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_122831-ku7lfpiq\files\output.log
+2023-06-08 12:29:09,054 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:29:09,961 INFO    Thread-16 :65972 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_122831-ku7lfpiq\files\output.log
+2023-06-08 12:29:11,984 INFO    Thread-16 :65972 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_122831-ku7lfpiq\files\output.log
+2023-06-08 12:29:14,159 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:29:16,023 INFO    Thread-16 :65972 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_122831-ku7lfpiq\files\output.log
+2023-06-08 12:29:17,096 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-08 12:29:17,096 DEBUG   SenderThread:65972 [sender.py:send_request():402] send_request: stop_status
+2023-06-08 12:29:19,248 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:29:22,086 INFO    Thread-16 :65972 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_122831-ku7lfpiq\files\output.log
+2023-06-08 12:29:24,284 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:29:29,329 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:29:31,963 DEBUG   SystemMonitor:65972 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2023-06-08 12:29:31,963 DEBUG   SenderThread:65972 [sender.py:send():375] send: stats
+2023-06-08 12:29:32,117 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-08 12:29:32,118 DEBUG   SenderThread:65972 [sender.py:send_request():402] send_request: stop_status
+2023-06-08 12:29:32,165 INFO    Thread-16 :65972 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_122831-ku7lfpiq\files\output.log
+2023-06-08 12:29:34,641 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:29:36,208 INFO    Thread-16 :65972 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_122831-ku7lfpiq\files\output.log
+2023-06-08 12:29:38,232 INFO    Thread-16 :65972 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_122831-ku7lfpiq\files\output.log
+2023-06-08 12:29:39,734 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:29:40,239 INFO    Thread-16 :65972 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_122831-ku7lfpiq\files\output.log
+2023-06-08 12:29:42,246 INFO    Thread-16 :65972 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_122831-ku7lfpiq\files\output.log
+2023-06-08 12:29:44,999 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:29:47,122 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-08 12:29:47,122 DEBUG   SenderThread:65972 [sender.py:send_request():402] send_request: stop_status
+2023-06-08 12:29:50,396 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:29:55,449 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:29:58,672 DEBUG   SenderThread:65972 [sender.py:send():375] send: exit
+2023-06-08 12:29:58,672 INFO    SenderThread:65972 [sender.py:send_exit():598] handling exit code: 1
+2023-06-08 12:29:58,673 INFO    SenderThread:65972 [sender.py:send_exit():600] handling runtime: 86
+2023-06-08 12:29:58,674 INFO    SenderThread:65972 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-08 12:29:58,674 INFO    SenderThread:65972 [sender.py:send_exit():606] send defer
+2023-06-08 12:29:58,675 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: defer
+2023-06-08 12:29:58,675 INFO    HandlerThread:65972 [handler.py:handle_request_defer():170] handle defer: 0
+2023-06-08 12:29:58,675 DEBUG   SenderThread:65972 [sender.py:send_request():402] send_request: defer
+2023-06-08 12:29:58,675 INFO    SenderThread:65972 [sender.py:send_request_defer():622] handle sender defer: 0
+2023-06-08 12:29:58,675 INFO    SenderThread:65972 [sender.py:transition_state():626] send defer: 1
+2023-06-08 12:29:58,676 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: defer
+2023-06-08 12:29:58,676 INFO    HandlerThread:65972 [handler.py:handle_request_defer():170] handle defer: 1
+2023-06-08 12:29:58,676 DEBUG   SenderThread:65972 [sender.py:send_request():402] send_request: defer
+2023-06-08 12:29:58,676 INFO    SenderThread:65972 [sender.py:send_request_defer():622] handle sender defer: 1
+2023-06-08 12:29:58,676 INFO    SenderThread:65972 [sender.py:transition_state():626] send defer: 2
+2023-06-08 12:29:58,676 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: defer
+2023-06-08 12:29:58,676 INFO    HandlerThread:65972 [handler.py:handle_request_defer():170] handle defer: 2
+2023-06-08 12:29:58,676 INFO    HandlerThread:65972 [system_monitor.py:finish():190] Stopping system monitor
+2023-06-08 12:29:58,676 DEBUG   SystemMonitor:65972 [system_monitor.py:_start():166] Finished system metrics aggregation loop
+2023-06-08 12:29:58,705 DEBUG   SystemMonitor:65972 [system_monitor.py:_start():170] Publishing last batch of metrics
+2023-06-08 12:29:58,706 INFO    HandlerThread:65972 [interfaces.py:finish():202] Joined cpu monitor
+2023-06-08 12:29:58,706 INFO    HandlerThread:65972 [interfaces.py:finish():202] Joined disk monitor
+2023-06-08 12:29:58,889 INFO    HandlerThread:65972 [interfaces.py:finish():202] Joined gpu monitor
+2023-06-08 12:29:58,889 INFO    HandlerThread:65972 [interfaces.py:finish():202] Joined memory monitor
+2023-06-08 12:29:58,889 INFO    HandlerThread:65972 [interfaces.py:finish():202] Joined network monitor
+2023-06-08 12:29:58,889 DEBUG   SenderThread:65972 [sender.py:send_request():402] send_request: defer
+2023-06-08 12:29:58,889 INFO    SenderThread:65972 [sender.py:send_request_defer():622] handle sender defer: 2
+2023-06-08 12:29:58,890 INFO    SenderThread:65972 [sender.py:transition_state():626] send defer: 3
+2023-06-08 12:29:58,890 DEBUG   SenderThread:65972 [sender.py:send():375] send: stats
+2023-06-08 12:29:58,890 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: defer
+2023-06-08 12:29:58,890 INFO    HandlerThread:65972 [handler.py:handle_request_defer():170] handle defer: 3
+2023-06-08 12:29:58,890 DEBUG   SenderThread:65972 [sender.py:send_request():402] send_request: defer
+2023-06-08 12:29:58,890 INFO    SenderThread:65972 [sender.py:send_request_defer():622] handle sender defer: 3
+2023-06-08 12:29:58,890 INFO    SenderThread:65972 [sender.py:transition_state():626] send defer: 4
+2023-06-08 12:29:58,891 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: defer
+2023-06-08 12:29:58,891 INFO    HandlerThread:65972 [handler.py:handle_request_defer():170] handle defer: 4
+2023-06-08 12:29:58,891 DEBUG   SenderThread:65972 [sender.py:send_request():402] send_request: defer
+2023-06-08 12:29:58,891 INFO    SenderThread:65972 [sender.py:send_request_defer():622] handle sender defer: 4
+2023-06-08 12:29:58,891 INFO    SenderThread:65972 [sender.py:transition_state():626] send defer: 5
+2023-06-08 12:29:58,891 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: defer
+2023-06-08 12:29:58,891 INFO    HandlerThread:65972 [handler.py:handle_request_defer():170] handle defer: 5
+2023-06-08 12:29:58,891 DEBUG   SenderThread:65972 [sender.py:send():375] send: summary
+2023-06-08 12:29:58,892 INFO    SenderThread:65972 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-08 12:29:58,892 DEBUG   SenderThread:65972 [sender.py:send_request():402] send_request: defer
+2023-06-08 12:29:58,892 INFO    SenderThread:65972 [sender.py:send_request_defer():622] handle sender defer: 5
+2023-06-08 12:29:58,892 INFO    SenderThread:65972 [sender.py:transition_state():626] send defer: 6
+2023-06-08 12:29:58,892 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: defer
+2023-06-08 12:29:58,892 INFO    HandlerThread:65972 [handler.py:handle_request_defer():170] handle defer: 6
+2023-06-08 12:29:58,892 DEBUG   SenderThread:65972 [sender.py:send_request():402] send_request: defer
+2023-06-08 12:29:58,892 INFO    SenderThread:65972 [sender.py:send_request_defer():622] handle sender defer: 6
+2023-06-08 12:29:58,892 INFO    SenderThread:65972 [sender.py:transition_state():626] send defer: 7
+2023-06-08 12:29:58,892 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:29:58,893 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: defer
+2023-06-08 12:29:58,893 INFO    HandlerThread:65972 [handler.py:handle_request_defer():170] handle defer: 7
+2023-06-08 12:29:58,893 DEBUG   SenderThread:65972 [sender.py:send_request():402] send_request: defer
+2023-06-08 12:29:58,893 INFO    SenderThread:65972 [sender.py:send_request_defer():622] handle sender defer: 7
+2023-06-08 12:29:59,536 INFO    Thread-16 :65972 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_122831-ku7lfpiq\files\wandb-summary.json
+2023-06-08 12:30:01,461 INFO    SenderThread:65972 [sender.py:transition_state():626] send defer: 8
+2023-06-08 12:30:01,461 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: defer
+2023-06-08 12:30:01,461 INFO    HandlerThread:65972 [handler.py:handle_request_defer():170] handle defer: 8
+2023-06-08 12:30:01,461 DEBUG   SenderThread:65972 [sender.py:send_request():402] send_request: defer
+2023-06-08 12:30:01,461 INFO    SenderThread:65972 [sender.py:send_request_defer():622] handle sender defer: 8
+2023-06-08 12:30:01,468 INFO    SenderThread:65972 [sender.py:transition_state():626] send defer: 9
+2023-06-08 12:30:01,468 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: defer
+2023-06-08 12:30:01,468 INFO    HandlerThread:65972 [handler.py:handle_request_defer():170] handle defer: 9
+2023-06-08 12:30:01,468 DEBUG   SenderThread:65972 [sender.py:send():375] send: artifact
+2023-06-08 12:30:01,557 INFO    Thread-16 :65972 [dir_watcher.py:_on_file_modified():295] file/dir modified: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_122831-ku7lfpiq\files\output.log
+2023-06-08 12:30:02,479 INFO    SenderThread:65972 [sender.py:send_artifact():1474] sent artifact job-https___github.com_AlienLime_RL-SC2-bot.git_QueueEnv.py - {'id': 'QXJ0aWZhY3Q6NDgxMTk1Mzc2', 'digest': '79cf73f06fb75fd356f6f4d45ab00a6a', 'state': 'COMMITTED', 'aliases': [{'artifactCollectionName': 'job-https___github.com_AlienLime_RL-SC2-bot.git_QueueEnv.py', 'alias': 'latest'}, {'artifactCollectionName': 'job-https___github.com_AlienLime_RL-SC2-bot.git_QueueEnv.py', 'alias': 'v3'}], 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjc0NzQ1OTY5', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6NDgxMTk1Mzc2', 'versionIndex': 3}}, 'version': 'v3'}
+2023-06-08 12:30:02,479 DEBUG   SenderThread:65972 [sender.py:send_request():402] send_request: defer
+2023-06-08 12:30:02,479 INFO    SenderThread:65972 [sender.py:send_request_defer():622] handle sender defer: 9
+2023-06-08 12:30:02,479 INFO    SenderThread:65972 [dir_watcher.py:finish():365] shutting down directory watcher
+2023-06-08 12:30:02,572 INFO    SenderThread:65972 [dir_watcher.py:finish():395] scan: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_122831-ku7lfpiq\files
+2023-06-08 12:30:02,572 INFO    SenderThread:65972 [dir_watcher.py:finish():409] scan save: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_122831-ku7lfpiq\files\config.yaml config.yaml
+2023-06-08 12:30:02,572 INFO    SenderThread:65972 [dir_watcher.py:finish():409] scan save: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_122831-ku7lfpiq\files\output.log output.log
+2023-06-08 12:30:02,572 INFO    SenderThread:65972 [dir_watcher.py:finish():409] scan save: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_122831-ku7lfpiq\files\requirements.txt requirements.txt
+2023-06-08 12:30:02,572 INFO    SenderThread:65972 [dir_watcher.py:finish():409] scan save: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_122831-ku7lfpiq\files\wandb-metadata.json wandb-metadata.json
+2023-06-08 12:30:02,572 INFO    SenderThread:65972 [dir_watcher.py:finish():409] scan save: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230608_122831-ku7lfpiq\files\wandb-summary.json wandb-summary.json
+2023-06-08 12:30:02,572 INFO    SenderThread:65972 [sender.py:transition_state():626] send defer: 10
+2023-06-08 12:30:02,572 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: defer
+2023-06-08 12:30:02,572 INFO    HandlerThread:65972 [handler.py:handle_request_defer():170] handle defer: 10
+2023-06-08 12:30:02,572 DEBUG   SenderThread:65972 [sender.py:send_request():402] send_request: defer
+2023-06-08 12:30:02,572 INFO    SenderThread:65972 [sender.py:send_request_defer():622] handle sender defer: 10
+2023-06-08 12:30:02,572 INFO    SenderThread:65972 [file_pusher.py:finish():167] shutting down file pusher
+2023-06-08 12:30:06,619 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:30:11,646 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:30:16,668 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:30:21,718 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:30:26,738 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:30:31,778 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:30:36,807 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:30:41,860 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:30:46,898 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:30:51,926 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:30:56,967 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:31:01,999 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:31:07,044 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:31:12,063 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:31:17,085 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:31:22,120 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:31:27,157 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:31:32,205 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:31:37,241 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:31:42,271 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:31:47,315 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:31:52,357 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
+2023-06-08 12:31:57,384 DEBUG   HandlerThread:65972 [handler.py:handle_request():144] handle_request: status_report
