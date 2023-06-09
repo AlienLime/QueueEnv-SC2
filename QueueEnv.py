@@ -64,12 +64,12 @@ class QueueEnv(gym.Env):
             case "TrainingMapResource":
                 self.action_space = Discrete(3)
                 # Values: [MarineNr, SCVNr, IdleSCVs, Minerals, CCAvailable, BarAvailable]
-                self.observation_space = MultiDiscrete([20, 20, 20,1000, 2, 3])
+                self.observation_space = MultiDiscrete([36, 36, 36, 1000, 2, 3])
 
             case "TrainingMapBoth":
                 self.action_space = Discrete(5)
                 # Values: [MarineHealth, ZergDist, WeaponCD, MarineNr, SCVNr, IdleSCVs, Minerals, CCAvailable, BarAvailable]
-                self.observation_space = MultiDiscrete([46, 250, 2, 25, 20, 20, 1000, 2, 3])
+                self.observation_space = MultiDiscrete([46, 250, 2, 36, 36, 36, 1000, 2, 3])
 
             case _:
                 print("You must choose a valid experiment")
@@ -121,7 +121,7 @@ class WandBCallback(DefaultCallbacks):
         global episode_reward_list
         episode_reward_list.append(episode_reward)
         listLength = len(episode_reward_list)
-
+        print("End of episode", listLength)
         if listLength > 0 and listLength % 100 == 0:
             wandb.init(project="ResourcePlot")
 
@@ -150,13 +150,14 @@ def train_ppo():
     algo = config.build(env=QueueEnv)
 
     # Train the PPO agent
-    iterations = 600
+    iterations = 500
     for i in range(iterations):  # Number of training iterations
         result = algo.train()
 
         if i == iterations - 1:
             checkpoint_dir = algo.save()
             print(f"Checkpoint saved in directory {checkpoint_dir}")
+
 
 if __name__ == "__main__":    
 

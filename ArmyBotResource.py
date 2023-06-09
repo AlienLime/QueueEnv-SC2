@@ -73,6 +73,7 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
                 if self.can_afford(UnitTypeId.SCV):
                     for cc in self.structures(UnitTypeId.COMMANDCENTER).idle:
                         cc.train(UnitTypeId.SCV)
+                        reward += 2.4
             except Exception as e:
                 print(e)
 
@@ -83,7 +84,7 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
                     for bar in self.structures(UnitTypeId.BARRACKS).idle:
                         if self.can_afford(UnitTypeId.MARINE):
                             bar.train(UnitTypeId.MARINE)
-                            reward += 2
+                            reward += 2.4
             except Exception as e:
                 print(e)
         
