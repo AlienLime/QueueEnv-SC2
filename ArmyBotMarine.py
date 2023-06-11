@@ -19,14 +19,18 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         
         # Values: [MarineHealth, ZergDist, WeaponCD]
         obs = np.zeros(3, dtype=np.uint16)
-        obs[1] = 0
 
         if str(game_result) == "Result.Victory":
             for marine in self.units(UnitTypeId.MARINE):
                 if marine.health_percentage < 1:
-                    reward += marine.health
+                    reward += (marine.health * marine.health) / 5
+                    # Set obs[0]
                     obs[0] = marine.health
-                    obs[2] = int(marine.weapon_cooldown * 100)
+                    
+                    # Set obs[2]
+                    if marine.weapon_cooldown > 0:
+                        obs[2] = 1
+
                     
         else:
             reward = 0
@@ -37,9 +41,6 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
     
     async def on_step(self, iteration): # on_step is a method that is called every step of the game.
         self.action = self.action_in.get()
-        
-        if iteration % 10 == 0:
-            print("armybot at...", iteration)
 
         if self.action is None:
             print("no action returning.")
@@ -69,16 +70,23 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         # Values: [MarineHealth, ZergDist, WeaponCD, MarineNr, SCVNr, Minerals]
         obs = np.zeros(3, dtype=np.uint16)
 
-        # Compute reward
-        reward = -1
-
         try:
             # iterate through our marines:
             for marine in self.units(UnitTypeId.MARINE):
+                # Set obs[0]
                 obs[0] = marine.health
-                obs[1] = int(marine.distance_to(random.choice(self.enemy_units)) * 10)
+
+                # Set obs[1]
+                if self.enemy_units:
+                    zergling = random.choice(self.enemy_units)
+                    obs[1] = int(marine.distance_to(zergling) * 10)
+                
+                # Set obs[2]
                 if marine.weapon_cooldown > 0:
                     obs[2] = 1
+
+                # Compute reward
+                reward = -1
 
                 # if marine is attacking and is in range of enemy unit:
                 if marine.is_attacking:
