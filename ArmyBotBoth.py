@@ -179,9 +179,8 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
             # Idle SCVs
             reward -= obs[5] * 0.2
             # Bad micro
-            if self.enemy_units:
-                if self.action != 0 and obs[2] == 1:
-                    reward -= 2
+            if self.enemy_units and self.action != 0 and obs[2] == 1:
+                reward -= 2
 
         except Exception as e:
             print("reward",e)
