@@ -1,0 +1,63 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    python_version: 3.10.10
+    cli_version: 0.15.3
+    framework: torch
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    start_time: 1686567441.712015
+    t:
+      1:
+      - 1
+      - 2
+      - 3
+      - 30
+      - 55
+      2:
+      - 1
+      - 2
+      - 3
+      - 30
+      - 55
+      3:
+      - 2
+      - 23
+      4: 3.10.10
+      5: 0.15.3
+      8:
+      - 3
+      - 5
+    visualize:
+      episode_rewards:
+        panel_type: Vega2
+        panel_config:
+          panelDefId: wandb/line/v0
+          fieldSettings:
+            x: Episodes
+            y: Rewards
+            stroke: null
+          stringSettings:
+            title: Custom Episode Rewards Line Plot
+          transform:
+            name: tableWithLeafColNames
+          userQuery:
+            queryFields:
+            - name: runSets
+              args:
+              - name: runSets
+                value: ${runSets}
+              fields:
+              - name: id
+                fields: []
+              - name: name
+                fields: []
+              - name: _defaultColorIndex
+                fields: []
+              - name: summaryTable
+                args:
+                - name: tableKey
+                  value: episode_rewards_table
+                fields: []

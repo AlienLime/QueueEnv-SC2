@@ -65,16 +65,13 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
     
     async def on_step(self, iteration): # on_step is a method that is called every step of the game.
         self.action = self.action_in.get()
-        
-        if iteration % 100 == 0:
-            print("armybot at...", iteration)
 
         if self.action is None:
             print("no action returning.")
             return None
 
         #Base reward
-        reward = -0.01
+        reward = -0.05
         '''
         0: Force Move
         1: Attack Move
@@ -105,7 +102,7 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
                     furthest_marine.attack(zergling)
                     reward += 0.1
                     if self.enemy_units.closer_than(5, furthest_marine) and furthest_marine.weapon_cooldown == 0:
-                        reward += 1
+                        reward += 0.9
             except Exception as e:
                 print(e)
 
@@ -115,6 +112,7 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
                 if self.can_afford(UnitTypeId.SCV):
                     for cc in self.structures(UnitTypeId.COMMANDCENTER).idle:
                         cc.train(UnitTypeId.SCV)
+                        reward += 2.4
             except Exception as e:
                 print(e)
 
@@ -125,14 +123,13 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
                     for bar in self.structures(UnitTypeId.BARRACKS).idle:
                         if self.can_afford(UnitTypeId.MARINE):
                             bar.train(UnitTypeId.MARINE)
-                            reward += 2
+                            reward += 2.4
             except Exception as e:
                 print(e)
         
         #4: Distribute workers
         elif self.action == 4:
             await self.distribute_workers()
-            reward += 0.05
 
         # Values: [MarineHealth, ZergDist, WeaponCD, MarineNr, SCVNr, IdleSCVs, Minerals, CCAvailable, BarAvailable]
         obs = np.zeros(9, dtype=np.uint16)
@@ -183,7 +180,7 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
             reward -= obs[5] * 0.2
             # Bad micro
             if self.enemy_units:
-                if self.action != 0 and obs[2] == 0:
+                if self.action != 0 and obs[2] == 1:
                     reward -= 2
 
         except Exception as e:
