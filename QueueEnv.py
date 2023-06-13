@@ -154,7 +154,7 @@ def train_ppo():
     for i in range(iterations):  # Number of training iterations
         result = algo.train()
 
-        if i == iterations - 1:
+        if 0 == i%(iterations/4):
             checkpoint_dir = algo.save()
             print(f"Checkpoint saved in directory {checkpoint_dir}")
 
