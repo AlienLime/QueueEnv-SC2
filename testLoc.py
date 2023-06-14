@@ -1,6 +1,12 @@
 import wandb
 
 
+
+
+
+print(min(140, 999))
+
+"""
 # Initialize WandB
 wandb.init(project="test")
 
@@ -17,7 +23,7 @@ table = wandb.Table(data = data, columns = ["Episodes", "Rewards"])
 wandb.log({"episode_rewards" : wandb.plot.line(table, "Episodes", "Rewards", title="Custom Episode Rewards Line Plot")})
 
 wandb.finish()
-
+"""
 
 """
 episode_reward = result["hist_stats"]["episode_reward"]
