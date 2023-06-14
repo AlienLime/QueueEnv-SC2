@@ -33,7 +33,7 @@ match mapName:
     case "TrainingMapBoth":
         from ArmyBotBoth import ArmyBot
 
-class AST(Thread):
+class GameThread(Thread):
     def __init__(self) -> None:
         super().__init__()
         self.action_in = Queue()
@@ -76,10 +76,10 @@ class QueueEnv(gym.Env):
 
     def step(self, action):
         # Send an action to the Bot
-        self.pcom.action_in.put(action)
+        self.gameThread.action_in.put(action)
 
         # Get the result
-        out = self.pcom.result_out.get()               
+        out = self.gameThread.result_out.get()               
         observation = out["observation"]
         reward = out["reward"]
         done = out["done"]
@@ -109,8 +109,8 @@ class QueueEnv(gym.Env):
                 print("You must choose a valid experiment")
 
         info = {}
-        self.pcom = AST()
-        self.pcom.start()
+        self.gameThread = GameThread()
+        self.gameThread.start()
         return observation, info
 
 
