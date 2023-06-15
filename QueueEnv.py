@@ -150,11 +150,11 @@ def train_ppo():
     algo = config.build(env=QueueEnv)
 
     # Train the PPO agent
-    iterations = 1000
+    iterations = 2000
     for i in range(iterations):  # Number of training iterations
         result = algo.train()
 
-        if 0 == i%(iterations/4):
+        if 0 == (i+1)%(iterations/8):
             checkpoint_dir = algo.save()
             print(f"Checkpoint saved in directory {checkpoint_dir}")
 
@@ -162,3 +162,4 @@ def train_ppo():
 if __name__ == "__main__":    
 
     train_ppo()
+    
