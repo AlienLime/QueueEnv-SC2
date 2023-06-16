@@ -18,8 +18,8 @@ from sc2.player import Bot, Computer  #wrapper for whether or not the agent is o
 from sc2 import maps  # maps method for loading maps to play in.
 
 # Global variables to pick the right experiment and WandB project.
-projectName = "ArmyBot3"
-mapName = "TrainingMapBoth"
+plotName = "MarinePlot"
+mapName = "TrainingMapMarine"
 episode_reward_list = []
 
 #Custom imports
@@ -123,7 +123,7 @@ class WandBCallback(DefaultCallbacks):
         listLength = len(episode_reward_list)
         print("End of episode", listLength)
         if listLength > 0 and listLength % 100 == 0:
-            wandb.init(project="BothPlot")
+            wandb.init(project=plotName)
 
             data = []
 

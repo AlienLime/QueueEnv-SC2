@@ -32,7 +32,8 @@ class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         obs[1] = 0
 
         # Set obs[2]            
-        obs[2] = int(furthest_marine.weapon_cooldown * 100)
+        if furthest_marine.weapon_cooldown > 0:
+            obs[2] = 1
 
         # Set obs[3]
         obs[3] = self.supply_army
