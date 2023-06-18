@@ -1,6 +1,0 @@
-ArmyBotMarine = at most 80 episodes in 1 iteration
-                at the start it is closer to 40 per iteration
-
-ArmyBotResource = 50 iterations = 100 Episode
-
-ArmyBotBoth = should be approx. 50 iterations = 100 Episode
