@@ -1,0 +1,79 @@
+2023-06-17 00:18:34,320 INFO    StreamThr :23336 [internal.py:wandb_internal():86] W&B internal server running at pid: 23336, started at: 2023-06-17 00:18:34.320355
+2023-06-17 00:18:34,320 DEBUG   HandlerThread:23336 [handler.py:handle_request():144] handle_request: status
+2023-06-17 00:18:34,335 INFO    WriterThread:23336 [datastore.py:open_for_write():85] open: C:\Users\Emil WC\Bachelor\RL-SC2-bot\wandb\run-20230617_001834-jv1fk6xi\run-jv1fk6xi.wandb
+2023-06-17 00:18:34,335 DEBUG   SenderThread:23336 [sender.py:send():375] send: header
+2023-06-17 00:18:34,774 DEBUG   SenderThread:23336 [sender.py:send():375] send: run
+2023-06-17 00:18:37,882 INFO    SenderThread:23336 [retry.py:__call__():172] Retry attempt failed:
+Traceback (most recent call last):
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\util\connection.py", line 72, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 714, in urlopen
+    httplib_response = self._make_request(
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 403, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 1053, in _validate_conn
+    conn.connect()
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connection.py", line 363, in connect
+    self.sock = conn = self._new_conn()
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x000002AF118E47F0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 798, in urlopen
+    retries = retries.increment(
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\util\retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.wandb.ai', port=443): Max retries exceeded with url: /graphql (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000002AF118E47F0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\wandb\sdk\lib\retry.py", line 131, in __call__
+    result = self._call_fn(*args, **kwargs)
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\wandb\sdk\internal\internal_api.py", line 285, in execute
+    return self.client.execute(*args, **kwargs)  # type: ignore
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\wandb\vendor\gql-0.2.0\wandb_gql\client.py", line 52, in execute
+    result = self._get_result(document, *args, **kwargs)
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\wandb\vendor\gql-0.2.0\wandb_gql\client.py", line 60, in _get_result
+    return self.transport.execute(document, *args, **kwargs)
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\wandb\sdk\lib\gql_request.py", line 55, in execute
+    request = self.session.post(self.url, **post_args)
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Emil WC\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.wandb.ai', port=443): Max retries exceeded with url: /graphql (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000002AF118E47F0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+2023-06-17 00:18:39,813 DEBUG   HandlerThread:23336 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-17 00:18:44,834 DEBUG   HandlerThread:23336 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-17 00:18:49,858 DEBUG   HandlerThread:23336 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-17 00:18:54,896 DEBUG   HandlerThread:23336 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-17 00:18:59,928 DEBUG   HandlerThread:23336 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-17 00:19:04,969 DEBUG   HandlerThread:23336 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-17 00:19:09,998 DEBUG   HandlerThread:23336 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-17 00:19:15,043 DEBUG   HandlerThread:23336 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-17 00:19:20,076 DEBUG   HandlerThread:23336 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-17 00:19:25,106 DEBUG   HandlerThread:23336 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-17 00:19:30,168 DEBUG   HandlerThread:23336 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-17 00:19:35,200 DEBUG   HandlerThread:23336 [handler.py:handle_request():144] handle_request: cancel
+2023-06-17 00:19:35,200 DEBUG   HandlerThread:23336 [handler.py:handle_request():144] handle_request: cancel
+2023-06-17 00:19:35,200 DEBUG   SenderThread:23336 [sender.py:send():384] Record cancelled: run
+2023-06-17 00:19:35,200 DEBUG   HandlerThread:23336 [handler.py:handle_request():144] handle_request: status_report
+2023-06-17 00:19:37,784 INFO    MainThread:23336 [internal.py:handle_exit():76] Internal process exited
