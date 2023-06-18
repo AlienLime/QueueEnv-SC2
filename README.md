@@ -1,2 +1,2 @@
-# RL-SC2-bot
-An SC2 bot trained using RL to perform different tasks
+# QueueEnv-SC2
+An SC2 environment for training agents with reinforcement learning
