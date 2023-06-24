@@ -1,9 +1,10 @@
-from sc2.bot_ai import BotAI  # parent class we inherit from
-from sc2.ids.unit_typeid import UnitTypeId
-
+# General imports
 import numpy as np
 import random
-import time
+
+# API imports
+from sc2.bot_ai import BotAI  # parent class we inherit from
+from sc2.ids.unit_typeid import UnitTypeId
 
 class ArmyBot(BotAI): # inhereits from BotAI (part of BurnySC2)
     action = None

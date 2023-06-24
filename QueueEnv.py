@@ -1,4 +1,4 @@
-#General Python packages
+# General imports
 import gymnasium as gym
 from gymnasium.spaces import MultiDiscrete, Discrete
 import numpy as np
@@ -11,18 +11,18 @@ import wandb
 from ray.rllib.algorithms.ppo import PPOConfig
 from ray.rllib.algorithms.callbacks import DefaultCallbacks
 
-#API imports
-from sc2.data import Difficulty, Race  # difficulty for bots, race for the 1 of 3 races
-from sc2.main import run_game  # function that facilitates actually running the agents in games
-from sc2.player import Bot, Computer  #wrapper for whether or not the agent is one of your bots, or a "computer" player
-from sc2 import maps  # maps method for loading maps to play in.
+# API imports
+from sc2.data import Difficulty, Race
+from sc2.main import run_game
+from sc2.player import Bot, Computer
+from sc2 import maps
 
 # Global variables to pick the right experiment and WandB project.
 plotName = "ResourcePlot"
 mapName = "TrainingMapResource"
 episode_reward_list = []
 
-#Custom imports
+#ArmyBot imports (depends on the chosen mapName above)
 match mapName:
     case "TrainingMapMarine":
         from ArmyBotMarine import ArmyBot
@@ -33,6 +33,7 @@ match mapName:
     case "TrainingMapBoth":
         from ArmyBotBoth import ArmyBot
 
+# This is the thread that holds the queues and runs the game
 class GameThread(Thread):
     def __init__(self) -> None:
         super().__init__()
@@ -49,7 +50,7 @@ class GameThread(Thread):
             realtime=False, # When set to True, the agent is limited in how long each step can take to process.
         )
 
-
+# This is the environment itself where Step and Reset are defined
 class QueueEnv(gym.Env):
     def __init__(self, config=None, render_mode=None): # None, "human", "rgb_array"
         super(QueueEnv, self).__init__()
@@ -114,6 +115,7 @@ class QueueEnv(gym.Env):
         return observation, info
 
 
+# This method is called at the end of each episode and is used to produce graphs in WandB
 class WandBCallback(DefaultCallbacks):
     def on_episode_end(self, *, worker, base_env, policies, episode, env_index, **kwargs):
         episode_reward = episode.total_reward
@@ -137,7 +139,7 @@ class WandBCallback(DefaultCallbacks):
                 
             wandb.finish()
 
-
+# This method trains the agent using RLlib
 def train_ppo():
     # Create a configuration for training
     config = PPOConfig()
